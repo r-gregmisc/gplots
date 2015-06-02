@@ -1,7 +1,7 @@
 # $Id$
 boxplot.n <- function( ..., top=FALSE, shrink=1.0, textcolor=NULL )
     {
-        .Defunct("gboxplot", package="gplots")
+        .Defunct("boxplot2", package="gplots")
     }
 
 boxplot2  <- function( ..., top=FALSE, shrink=1.0, textcolor=NULL )
