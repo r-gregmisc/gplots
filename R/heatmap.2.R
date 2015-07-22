@@ -107,6 +107,9 @@ heatmap.2 <- function (x,
   if(length(col)==1 && is.character(col) )
     col <- get(col, mode="function")
 
+  if(!missing(breaks) && any(duplicated(breaks)) )
+      stop("breaks may not contian duplicate values")
+
   if(!missing(breaks) && (scale!="none"))
     warning("Using scale=\"row\" or scale=\"column\" when breaks are",
             "specified can produce unpredictable results.",
@@ -384,14 +387,18 @@ heatmap.2 <- function (x,
   on.exit(par(op))
   layout(lmat, widths = lwid, heights = lhei, respect = FALSE)
 
+  plot.index <- 1
+
   ## draw the side bars
   if(!missing(RowSideColors)) {
     par(mar = c(margins[1],0, 0,0.5))
     image(rbind(1:nr), col = RowSideColors[rowInd], axes = FALSE)
+    plot.index <- plot.index + 1
   }
   if(!missing(ColSideColors)) {
     par(mar = c(0.5,0, 0,margins[2]))
     image(cbind(1:nc), col = ColSideColors[colInd], axes = FALSE)
+    plot.index <- plot.index + 1
   }
   ## draw the main carpet
   par(mar = c(margins[1], 0, 0, margins[2]))
@@ -576,6 +583,13 @@ heatmap.2 <- function (x,
          col=notecol,
          cex=notecex)
 
+  plot.index <- plot.index + 1
+
+  ## increment plot.index and then do
+  ##   latout_set( lmat, plot.index )
+  ## to set to the correct plot region, instead of
+  ## relying on plot.new().
+
   ## the two dendrograms :
   par(mar = c(margins[1], 0, 0, 0))
   if( dendrogram %in% c("both","row") )
@@ -614,6 +628,7 @@ heatmap.2 <- function (x,
   if(!is.null(main)) title(main, cex.main = 1.5*op[["cex.main"]])
 
   ## Add the color-key
+  browser()
   if(key)
     {
       mar <- c(5, 4, 2, 1)
@@ -720,7 +735,6 @@ heatmap.2 <- function (x,
       else
           if (is.null(key.title))
               title("Color Key")
-
 
       if(trace %in% c("both","column") )
           {

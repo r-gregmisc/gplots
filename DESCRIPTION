@@ -1,7 +1,7 @@
 Package: gplots
 Title: Various R Programming Tools for Plotting Data
 Description: Various R programming tools for plotting data, including:
-  - calculating and plotting locally smoothed summary functionas
+  - calculating and plotting locally smoothed summary functionals
     ('bandplot', 'wapply'),
   - enhanced versions of standard plots ('barplot2', 'boxplot2',
     'heatmap.2', 'smartlegend'),
@@ -14,11 +14,11 @@ Description: Various R programming tools for plotting data, including:
   - displaying textual data in plots ('textplot', 'sinkplot'),
   - plotting a matrix where each cell contains a dot whose size
     reflects the relative magnitude of the elements ('balloonplot'),
-  - plotting venn diagrams ('venn'),
-  - displaying Open-Office syle plots ('ooplot'),
-  - plotting multiple datasets on same region, with separate axes
+  - plotting Venn diagrams ('venn'),
+  - displaying Open-Office style plots ('ooplot'),
+  - plotting multiple data sets on same region, with separate axes
     ('overplot'),
-  - plotting means and cofidence intervals ('plotCI', 'plotmeans'),
+  - plotting means and confidence intervals ('plotCI', 'plotmeans'),
   - spacing points in an x-y plot so they don't overlap ('space').
 Depends: R (>= 3.0)
 Imports: gtools, gdata, stats, caTools, KernSmooth
