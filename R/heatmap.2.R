@@ -468,7 +468,6 @@ heatmap.2 <- function (x,
                srt=srtCol,
                col=colCol
                )
-          print(colCol)
           par(xpd=xpd.orig)
         }
       else
