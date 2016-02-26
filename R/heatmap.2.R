@@ -225,6 +225,7 @@ heatmap.2 <- function (x,
         stop("row dendrogram ordering gave index of wrong length")
     } else {
       rowInd <- nr:1
+      ddr <- as.dendrogram(Rowv)
     }
 
   ## if( dendrogram %in% c("both","column") )
@@ -273,6 +274,7 @@ heatmap.2 <- function (x,
   else
     {
       colInd <- 1:nc
+      ddc <- as.dendrogram(Colv)
     }
 
   retval$rowInd <- rowInd
@@ -627,7 +629,6 @@ heatmap.2 <- function (x,
   if(!is.null(main)) title(main, cex.main = 1.5*op[["cex.main"]])
 
   ## Add the color-key
-  browser()
   if(key)
     {
       mar <- c(5, 4, 2, 1)
@@ -655,7 +656,7 @@ heatmap.2 <- function (x,
           max.raw <- max.breaks
         }
 
-      z <- seq(min.raw, max.raw, by=min(diff(breaks)/4))
+      z <- seq(min.raw, max.raw, by=min(diff(breaks)/100))
       image(z=matrix(z, ncol=1),
             col=col, breaks=tmpbreaks,
             xaxt="n", yaxt="n")
