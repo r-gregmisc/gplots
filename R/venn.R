@@ -26,6 +26,11 @@ getVennCounts.data.frame <- function(l, universe=NA, verbose=F, ...)
     getVennCounts.list(l, universe=universe, verbose=verbose)
   }
 
+getVennCounts.matrix <- function(l, universe=NA, verbose=F, ...)
+{
+  getVennCounts.data.frame(as.data.frame(l), universe=NA, verbose=F, ...)
+}
+
 # l offers a list of arrays, their values are to
 # be tested for the size of their intersects.
 getVennCounts.list<-function(l, universe=NA, verbose=F, intersections=TRUE) {
