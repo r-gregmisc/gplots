@@ -1,50 +1,49 @@
-# $Id$
+# make stats::lowess into a generic base-function
+lowess.default <- stats::lowess
 
-if(is.R())
-  {
-    # make original lowess into the default method
-    if(R.version$major == 1 && R.version$minor < 9)
-      lowess.default <- base::lowess
-    else
-      lowess.default <- stats::lowess
+# add "..." to the argument list to match the generic
+formals(lowess.default) <- c(formals(lowess.default),alist(...= ))
 
-    lowess  <- function(x,...)
-      UseMethod("lowess")
-
-    # add "..." to the argument list to match the generic
-    formals(lowess.default) <- c(formals(lowess.default),alist(...= ))
-
-    NULL
-
-  } else
-  {
-
-    # make original lowess into the default method
-    lowess.default  <- getFunction("lowess",where="main")
-
-    lowess  <- function(x,...)
-      UseMethod("lowess")
-
-    NULL
-  }
-
+lowess  <- function(x,...)
+  UseMethod("lowess")
 
 
 "lowess.formula" <-  function (formula,
-                               data = parent.frame(), subset, na.action,
-                               f=2/3,  iter=3,
-                               delta=.01*diff(range(mf[-response])), ... )
+                               data = parent.frame(), 
+                               ...,
+                               subset, 
+                               f=2/3,  
+                               iter=3,
+                               delta=.01*diff(range(mf[-response])) 
+                               )
 {
   if (missing(formula) || (length(formula) != 3))
     stop("formula missing or incorrect")
-  if (missing(na.action))
-    na.action <- getOption("na.action")
+
   m <- match.call(expand.dots = FALSE)
-  if (is.matrix(eval(m$data, parent.frame())))
-    m$data <- as.data.frame(data)
+  eframe <- parent.frame()
+  md <- eval(m$data, eframe)
+  if (is.matrix(md)) 
+    m$data <- md <- as.data.frame(data)
+  dots <- lapply(m$..., eval, md, eframe)
+  nmdots <- names(dots)
   m$...  <- m$f <- m$iter <- m$delta <- NULL
-  m[[1]] <- as.name("model.frame")
-  mf <- eval(m, parent.frame())
-  response <- attr(attr(mf, "terms"), "response")
+  subset.expr <- m$subset
+  m$subset <- NULL
+  m <- as.list(m)
+  m[[1L]] <- stats::model.frame.default
+  m <- as.call(c(m, list(na.action = NULL)))
+  mf <- eval(m, eframe)
+  if (!missing(subset)) {
+    s <- eval(subset.expr, data, eframe)
+    l <- nrow(mf)
+    dosub <- function(x) if (length(x) == l) 
+      x[s]
+    else x
+    dots <- lapply(dots, dosub)
+    mf <- mf[s, ]
+  }
+  
+  response <- attr(attr(mf, "terms"), "response" )
   lowess.default(mf[[-response]], mf[[response]], f=f, iter=iter, delta=delta)
 }
