@@ -457,7 +457,10 @@ heatmap.2 <- function (x,
         {
           if(missing(adjCol) || is.null(adjCol))
             adjCol=c(1,NA)
-
+          
+          if(is.null(srtCol))
+            srtCol <- 90
+          
           xpd.orig <- par("xpd")
           par(xpd=NA)
           xpos <- axis(1, 1:nc, labels=rep("", nc), las=2, tick=0)
