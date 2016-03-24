@@ -1,5 +1,18 @@
 # make stats::lowess into a generic base-function
-lowess.default <- stats::lowess
+lowess.default <- function (x, y = NULL,
+                            f = 2/3,
+                            iter = 3L,
+                            delta = 0.01 * diff(range(x)),
+                            ...)
+  {
+    m <- match.call()
+    m[[1L]] <- quote(stats::lowess)
+    retval <- eval(m, envir=parent.frame())
+    class(retval) <- "lowess"
+    retval$call <- match.call()
+    retval
+  }
+
 
 # add "..." to the argument list to match the generic
 formals(lowess.default) <- c(formals(lowess.default),alist(...= ))
@@ -9,12 +22,12 @@ lowess  <- function(x,...)
 
 
 "lowess.formula" <-  function (formula,
-                               data = parent.frame(), 
+                               data = parent.frame(),
                                ...,
-                               subset, 
-                               f=2/3,  
+                               subset,
+                               f=2/3,
                                iter=3,
-                               delta=.01*diff(range(mf[-response])) 
+                               delta=.01*diff(range(mf[-response]))
                                )
 {
   if (missing(formula) || (length(formula) != 3))
@@ -23,7 +36,7 @@ lowess  <- function(x,...)
   m <- match.call(expand.dots = FALSE)
   eframe <- parent.frame()
   md <- eval(m$data, eframe)
-  if (is.matrix(md)) 
+  if (is.matrix(md))
     m$data <- md <- as.data.frame(data)
   dots <- lapply(m$..., eval, md, eframe)
   nmdots <- names(dots)
@@ -37,15 +50,19 @@ lowess  <- function(x,...)
   if (!missing(subset)) {
     s <- eval(subset.expr, data, eframe)
     l <- nrow(mf)
-    dosub <- function(x) if (length(x) == l) 
+    dosub <- function(x) if (length(x) == l)
       x[s]
     else x
     dots <- lapply(dots, dosub)
     mf <- mf[s, ]
   }
-  
+
   mf <- na.omit(mf)
-  
+
   response <- attr(attr(mf, "terms"), "response" )
-  lowess.default(mf[[-response]], mf[[response]], f=f, iter=iter, delta=delta)
+  retval <- stats::lowess(mf[[-response]], mf[[response]], f=f, iter=iter, delta=delta)
+  class(retval) <- "lowess"
+  retval$call <- match.call()
+
+  retval
 }
