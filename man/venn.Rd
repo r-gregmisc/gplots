@@ -7,7 +7,7 @@
 }
 \usage{
 venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
-     simplify=FALSE, show.plot=TRUE, intersections=TRUE)
+     simplify=FALSE, show.plot=TRUE, intersections=TRUE, names)
 \method{plot}{venn}(x, y, ..., small=0.7, showSetLogicLabel=FALSE,
           simplify=FALSE)
 }
@@ -40,10 +40,16 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
   names.
 }
 \value{
-  Invisibly returns an object of class "venn", containing a matrix of
-  all possible sets of groups, and the observed count of items belonging
-  to each The fist column contains observed counts, subsequent columns
-  contain 0-1 indicators of group intersectionship.
+  Invisibly returns an object of class "venn", containing:
+  \itemize{
+    \item A matrix of all possible sets of groups, and the observed count
+      of items belonging to each The fist column contains observed
+      counts, subsequent columns contain 0-1 indicators of group
+      intersectionship.
+    \item If \code{intersections=TRUE}, the attribute \code{intersections}
+      will be a list of vectors containing the names of the elements
+      belonging to each subset.
+  }
 }
 \author{
   Steffen Moeller \email{steffen\_moeller@gmx.de},
@@ -114,34 +120,34 @@ tmp
 
 ##
 ## Example to determine which elements are in A and B but not in
-## C and D: first determine the universe, then form indicator columns
-## and perform intersections on these.  R allows using the set operations
-## directly, but some might find this approach more intuitive.
+## C and D using the 'intersections' attribute.
 ##
+tmp <- venn(input, intersection=TRUE)
+isect <- attr(tmp, "intersection")
 
-universe <- unique(c(GroupA,GroupB,GroupC,GroupD))
-GroupA.l <-universe \%in\% GroupA
-GroupB.l <-universe \%in\% GroupB
-GroupC.l <-universe \%in\% GroupC
-GroupD.l <-universe \%in\% GroupD
+# Look at all of the subsets
+str(isect)
 
-## Genes that are in GroupA and in GroupB but not in GroupD (unification
-## of sets III0 and II00 in the venn diagram:
-universe[GroupA.l & GroupB.l & !GroupD.l]
+# Extract and combine the subsets of interest..
+AandB <- unique(c(int$A, int$B, int$'A:B'))
 
-##
-## Alternatively: construct a function to test for the pattern you want.
-##
-test <- function(x) (x \%in\% GroupA) & (x \%in\% GroupB) & !(x \%in\% GroupC)
-universe[ test(universe) ]
+# and look at the results
+str(AandB)
 
 ##
-## Intriduced with gplots 2.16, the names of individuals for everz intersection
-## is offered as an attribute to the retrun value.
+## The full set of elements of each intersection is provided in the
+## "interesections" attribute.
 ##
 a<-venn(list(1:5,3:8), show.plot=FALSE)
 intersections<-attr(a,"intersections")
 print(intersections)
-
+# $A
+# [1] "1" "2"
+#
+# $B
+# [1] "6" "7" "8"
+#
+# $`A:B`
+# [1] "3" "4" "5"
 }
 \keyword{hplot}
