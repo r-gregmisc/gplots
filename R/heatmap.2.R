@@ -457,10 +457,10 @@ heatmap.2 <- function (x,
         {
           if(missing(adjCol) || is.null(adjCol))
             adjCol=c(1,NA)
-          
+
           if(is.null(srtCol))
             srtCol <- 90
-          
+
           xpd.orig <- par("xpd")
           par(xpd=NA)
           xpos <- axis(1, 1:nc, labels=rep("", nc), las=2, tick=0)
@@ -769,6 +769,13 @@ heatmap.2 <- function (x,
                              high=retval$breaks[-1],
                              color=retval$col
                              )
+
+  # Store layout information, suggested by Jenny Drnevich
+  retval$layout <- list(lmat = lmat,
+                        lhei = lhei,
+                        lwid = lwid
+                        )
+
 
   ## If user has provided an extra function, call it.
   if(!is.null(extrafun))
