@@ -44,6 +44,8 @@ lowess  <- function(x,...)
     mf <- mf[s, ]
   }
   
+  mf <- na.omit(mf)
+  
   response <- attr(attr(mf, "terms"), "response" )
   lowess.default(mf[[-response]], mf[[response]], f=f, iter=iter, delta=delta)
 }
