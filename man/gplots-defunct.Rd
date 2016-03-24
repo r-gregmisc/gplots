@@ -1,9 +1,10 @@
 \name{gplots-defunct}
 \alias{boxplot.n}
 \alias{plot.lm2}
+\alias{smartlegend}
 \title{Defunct functions}
 \description{
-  These funcntion are defunct and have been removed from the gplots package.
+  These functions are defunct and have been removed from the gplots package.
 }
 \usage{
    boxplot.n(..., top=FALSE, shrink=1, textcolor=NULL)
@@ -25,6 +26,10 @@
             width=1/10,
             max.n=5000
             )
+  smartlegend(x = c("left", "center", "right"),
+             y = c("top", "center", "bottom"),
+             ...,
+             inset = 0.05)
 }
 \arguments{
   \item{\dots}{see man page for the corresponding replacement function}
@@ -33,6 +38,7 @@
   \item{x, which, caption, panel, sub.caption, main, ask, id.n,
     labels.id, cex.id, band, rug, width, max.n}{See man page for
     \code{\link{lmplot2}}.}
+  \item{x, y, inset, \dots}{see man page for the corresponding replacement function}
 }
 \details{
 These functions are no longer available.  Please refer to the manual page
@@ -40,12 +46,15 @@ for the replacement function:
   \itemize{
     \item \code{boxplot.n} has been replaced by \code{\link{boxplot2}}
     \item \code{plot.lm2} has been replaced by \code{\link{lmplot2}}
+    \item \code{smartlegend} is no longer needed because relative
+    positioning has been implemented in \code{\link[graphics]{legend}}.
   }
 }
 \author{Gregory R. Warnes \email{greg@warnes.net}}
 \seealso{
   \code{\link{boxplot2}},
   \code{\link{lmplot2}},
+  \code{\link[graphics]{legend}},
   \code{\link[base]{Defunct}}
 }
 \keyword{misc}
