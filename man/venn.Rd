@@ -31,7 +31,9 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
     if the returned object should have the attribute
     "individuals.in.intersections" featuring for every set a list of
     individuals that are assigned to it.}
-  \item{y,...}{Ignored}
+  \item{y}{Ignored}
+  \item{...}{Optional graphical parameters.}
+  \item{names}{Optional vector of group names.}
 }
 \details{
   \code{data} should be either a named list of vectors containing
