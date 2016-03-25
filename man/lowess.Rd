@@ -24,14 +24,16 @@
 \title{Scatter Plot Smoothing}
 \usage{
 lowess(x, ...)
-\method{lowess}{default}(x, y = NULL, f = 2/3, iter = 3, delta = 0.01 *
-                  diff(range(x)), ...)
-\method{lowess}{formula}(formula,data = parent.frame(), subset, na.action,
-               f=2/3,  iter=3, delta=.01*diff(range(mf[-response])), ... )
 
-\method{plot}{lowess}(x, y, ..., col.lowess = "red", lty.lowess = 2)
+\method{lowess}{default}(x, y=NULL, f=2/3, iter=3L, delta=0.01 *
+       diff(range(x)), ...)
 
-plotLowess(formula, data = parent.frame(), ..., subset=parent.frame(),
+\method{lowess}{formula}(formula,data=parent.frame(), subset, f=2/3,
+       iter=3L, delta=.01*diff(range(mf[-response])), ... )
+
+\method{plot}{lowess}(x, y, ..., col.lowess="red", lty.lowess=2)
+
+plotLowess(formula, data=parent.frame(), ..., subset=parent.frame(),
            col.lowess="red", lty.lowess=2  )
 }
 \alias{lowess}
@@ -97,30 +99,30 @@ data(cars)
 #
 # x,y method
 #
-plot(cars$speed, cars$dist, main = "lowess(cars)")
-lines(lowess(cars$speed, cars$dist), col = 2)
-lines(lowess(cars$speed, cars$dist, f=.2), col = 3)
-legend(5, 120, c(paste("f = ", c("2/3", ".2"))), lty = 1, col = 2:3)
+plot(cars$speed, cars$dist, main="lowess(cars)")
+lines(lowess(cars$speed, cars$dist), col=2)
+lines(lowess(cars$speed, cars$dist, f=.2), col=3)
+legend(5, 120, c(paste("f=", c("2/3", ".2"))), lty=1, col=2:3)
 
 #
 # formula method: plot, then calculate the lowess smoother,
 #                 then add smooth to the plot
 #
-plot(dist ~ speed, data=cars, main = "lowess(cars)")
-lines(lowess(dist ~ speed, data=cars), col = 2, lty=2)
-lines(lowess(dist ~ speed, data=cars, f=.2), col = 3) # smaller bandwith
-legend(5, 120, c(paste("f = ", c("2/3", ".2"))), lty = 1, col = 2:3)
+plot(dist ~ speed, data=cars, main="lowess(cars)")
+lines(lowess(dist ~ speed, data=cars), col=2, lty=2)
+lines(lowess(dist ~ speed, data=cars, f=.2), col=3) # smaller bandwith
+legend(5, 120, c(paste("f=", c("2/3", ".2"))), lty=1, col=2:3)
 
 #
 # formula method: calculate lowess() smoother, then call plot()
 #                  on the lowess object
 #
 lw <- lowess(dist ~ speed, data=cars)
-plot(lw, main = "lowess(cars)"  )
+plot(lw, main="lowess(cars)"  )
 
 #
 # formula method: calculate and plot in a single command
 #
-plotLowess(dist ~ speed, data=cars, main = "lowess(cars)")
+plotLowess(dist ~ speed, data=cars, main="lowess(cars)")
 }
 \keyword{smooth}
