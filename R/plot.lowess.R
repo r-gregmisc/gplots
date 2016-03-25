@@ -9,6 +9,8 @@ plotLowess <- function (formula, data = parent.frame(), ..., subset=parent.frame
   lw <- eval(m)
   lines(lw, col=col.lowess, lty=lty.lowess)
   grid()
+
+  invisible(lw)
 }
 
 plot.lowess <- function(x, y, ..., col.lowess="red", lty.lowess=2)
@@ -20,4 +22,6 @@ plot.lowess <- function(x, y, ..., col.lowess="red", lty.lowess=2)
 
   lines(x$x, x$y, col=col.lowess, lty=lty.lowess)
   grid()
+
+  invisible(x)
 }
