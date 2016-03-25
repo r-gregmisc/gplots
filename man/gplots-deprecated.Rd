@@ -6,7 +6,7 @@
   releases of gplots.
 }
 \usage{
-  (No deprecated functions at this time)
+  ## No deprecated functions at this time ##
 }
 \arguments{
 }

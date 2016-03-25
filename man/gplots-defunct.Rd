@@ -32,13 +32,26 @@
              inset = 0.05)
 }
 \arguments{
-  \item{\dots}{see man page for the corresponding replacement function}
-  \item{top, shrink, textcolor}{See man page for
-    \code{\link{boxplot2}}.}
-  \item{x, which, caption, panel, sub.caption, main, ask, id.n,
-    labels.id, cex.id, band, rug, width, max.n}{See man page for
-    \code{\link{lmplot2}}.}
-  \item{x, y, inset, \dots}{see man page for the corresponding replacement function}
+  \item{ask,
+        band,
+        caption,
+        cex.id,
+        id.n,
+        inset,
+        labels.id,
+        main,
+        max.n,
+        panel,
+        rug,
+        shrink,
+        sub.caption,
+        textcolor,
+        top,
+        which,
+        width,
+        x,
+        y,
+        \dots}{see man page for the corresponding replacement function}
 }
 \details{
 These functions are no longer available.  Please refer to the manual page
