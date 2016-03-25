@@ -276,7 +276,7 @@ heatmap.2 (x,
   The default colors range from red to white (\code{heat.colors}) and
   are not pretty.  Consider using enhancements such as the
   \pkg{RColorBrewer} package,
-  \url{http://cran.r-project.org/web/packages/RColorBrewer}
+  \url{http://cran.r-project.org/web/packages/RColorBrewer/}
   to select better colors.
 
   By default four components will be displayed in the plot.  At the top
