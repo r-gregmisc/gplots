@@ -7,9 +7,11 @@
 }
 \usage{
 venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
-     simplify=FALSE, show.plot=TRUE, intersections=TRUE, names)
+     simplify=FALSE, show.plot=TRUE, intersections=TRUE, names,
+     ...)
+
 \method{plot}{venn}(x, y, ..., small=0.7, showSetLogicLabel=FALSE,
-          simplify=FALSE)
+     simplify=FALSE)
 }
 \arguments{
   \item{data,x}{Either a list list containing vectors of names or indices
