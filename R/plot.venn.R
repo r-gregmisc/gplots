@@ -7,7 +7,7 @@ plot.venn <- function(x, y, ...,
   {
     drawVennDiagram(
                     data=x,
-                    small=small, 
+                    small=small,
                     showSetLogicLabel=showSetLogicLabel,
                     simplify=simplify
                     )
@@ -20,8 +20,11 @@ plot.venn <- function(x, y, ...,
 ##     giving the pattern of group membership
 
 
-drawVennDiagram <-function(data,small=0.7,
-		showSetLogicLabel=FALSE,simplify=FALSE) {
+drawVennDiagram <-function(data,
+                           small=0.7,
+                           showSetLogicLabel=FALSE,
+                           simplify=FALSE)
+  {
 	numCircles<-NA
 	data.colnames<-NULL
 	data.rownames<-NULL
@@ -56,7 +59,7 @@ drawVennDiagram <-function(data,small=0.7,
 		}))
 
 		#print(data)
-		
+
 		#data.names<-apply(data,1,function(X){
 		#	return(paste(X),collapse="")
 		#})
@@ -88,8 +91,10 @@ drawVennDiagram <-function(data,small=0.7,
 		circle <- function(x,y=NULL,r=1) {
 			elps=cbind(r*cos(seq(0,2*pi,len=1000)), r*sin(seq(0,2*pi,len=1000)));
 			if (!is.null(y)) {
-				if (length(x) != length(y)) stop("circle: both x and y need to be of same length")
-				if (is.matrix(x) && ncol(x)>1) stop("circle: if y is not NULL, then x must not be a matrix")
+				if (length(x) != length(y))
+				  stop("circle: both x and y need to be of same length")
+				if (is.matrix(x) && ncol(x)>1)
+				  stop("circle: if y is not NULL, then x must not be a matrix")
 				x<-cbind(x,y)
 			}
 			for(i in 1:nrow(x)) {
@@ -155,7 +160,7 @@ drawVennDiagram <-function(data,small=0.7,
 		}
 
 				#degrees[2^i+1] + degrees[2^((i+1)%%numCircles)+1])/2
-			
+
 		if (3 <=numCircles) {
 			for (i in 0:(numCircles-1)) {
 				distFromZero[(2^i+2^((i+1)%%numCircles))+1]<- 2.2/12*h
@@ -176,7 +181,7 @@ drawVennDiagram <-function(data,small=0.7,
 			v<-data[n,1]
 			d<-degrees[i]
 			if (1 == length(d) && is.na(d)) {
-				if (v>0) warning("Not shown: ",n,"is",v,"\n")
+				if (v>0) warning("Not shown: ",n," contains ",v,"\n")
 			}
 			else {
 				l<-distFromZero[i]
@@ -234,19 +239,19 @@ drawVennDiagram <-function(data,small=0.7,
 		text(260, 315, lab("0010",data));
 		text(365, 250, lab("0001",data));
 
-		text( 90, 280, lab("1100",data), cex=small) 
-		text( 95, 110, lab("1010",data) ) 
-		text(200,  50, lab("1001",data), cex=small) 
-		text(200, 290, lab("0110",data)) 
-		text(300, 110, lab("0101",data)) 
-		text(310, 280, lab("0011",data), cex=small) 
+		text( 90, 280, lab("1100",data), cex=small)
+		text( 95, 110, lab("1010",data) )
+		text(200,  50, lab("1001",data), cex=small)
+		text(200, 290, lab("0110",data))
+		text(300, 110, lab("0101",data))
+		text(310, 280, lab("0011",data), cex=small)
 
 		text(130, 230, lab("1110",data))
-		text(245,  75, lab("1101",data),cex=small) 
+		text(245,  75, lab("1101",data),cex=small)
 		text(155,  75, lab("1011",data),cex=small)
-		text(270, 230, lab("0111",data)) 
+		text(270, 230, lab("0111",data))
 
-		text(200,150,lab("1111",data)) 
+		text(200,150,lab("1111",data))
 	    }
 	    else if (5 == numCircles) {
 
@@ -273,32 +278,32 @@ drawVennDiagram <-function(data,small=0.7,
 
 		text(146, 250, lab("11000",data), cex=small)
 		text(123, 188, lab("10100",data), cex=small)
-		text(275, 152, lab("10010",data), cex=small) 
-		text(137, 146, lab("10001",data), cex=small) 
-		text(243, 268, lab("01100",data), cex=small) 
-		text(175, 267, lab("01010",data), cex=small) 
-		text(187, 117, lab("01001",data), cex=small) 
-		text(286, 188, lab("00110",data), cex=small) 
-		text(267, 235, lab("00101",data), cex=small) 
-		text(228, 105, lab("00011",data), cex=small) 
+		text(275, 152, lab("10010",data), cex=small)
+		text(137, 146, lab("10001",data), cex=small)
+		text(243, 268, lab("01100",data), cex=small)
+		text(175, 267, lab("01010",data), cex=small)
+		text(187, 117, lab("01001",data), cex=small)
+		text(286, 188, lab("00110",data), cex=small)
+		text(267, 235, lab("00101",data), cex=small)
+		text(228, 105, lab("00011",data), cex=small)
 
 		text(148, 210, lab("11100",data),cex=small)
-		text(159, 253, lab("11010",data),cex=small) 
-		text(171, 141, lab("11001",data),cex=small) 
-		text(281, 175, lab("10110",data),cex=small) 
-		text(143, 163, lab("10101",data),cex=small) 
-		text(252, 145, lab("10011",data),cex=small) 
-		text(205, 255, lab("01110",data),cex=small) 
-		text(254, 243, lab("01101",data),cex=small) 
-		text(211, 118, lab("01011",data),cex=small) 
-		text(267, 211, lab("00111",data),cex=small) 
+		text(159, 253, lab("11010",data),cex=small)
+		text(171, 141, lab("11001",data),cex=small)
+		text(281, 175, lab("10110",data),cex=small)
+		text(143, 163, lab("10101",data),cex=small)
+		text(252, 145, lab("10011",data),cex=small)
+		text(205, 255, lab("01110",data),cex=small)
+		text(254, 243, lab("01101",data),cex=small)
+		text(211, 118, lab("01011",data),cex=small)
+		text(267, 211, lab("00111",data),cex=small)
 
-		text(170, 231,lab("11110",data),cex=small) 
-		text(158, 169,lab("11101",data),cex=small) 
+		text(170, 231,lab("11110",data),cex=small)
+		text(158, 169,lab("11101",data),cex=small)
 		text(212, 139,lab("11011",data),cex=small)
-		text(263, 180,lab("10111",data),cex=small) 
+		text(263, 180,lab("10111",data),cex=small)
 		text(239, 232,lab("01111",data),cex=small)
-		 
+
 		text(204,190,lab("11111",data))
 	    }
 	}
