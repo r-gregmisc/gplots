@@ -1,4 +1,5 @@
 export(
+       angleAxis,
        balloonplot,
        bandplot,
        barplot2,
@@ -19,6 +20,7 @@ export(
        plot.lm2,
        plot.venn,
        plotCI,
+       plotLowess,
        plotmeans,
        qqnorm.aov,
        redblue,
@@ -59,7 +61,10 @@ S3method(lowess, default)
 S3method(lowess, formula)
 
 S3method(ooplot, default)
+
+S3method(plot, lowess)
 S3method(plot, venn)
+
 S3method(print, ci2d)
 S3method(print, hist2d)
 
