@@ -1,3 +1,61 @@
+Release 2.18.0 - 2016-03-24
+---------------------------
+
+New Features:
+
+- venn():
+    - now support matrices of indicator values. Previously indicator
+      values were only supported when supplied as a dataframe.
+    - The 'intersections' attribute returned from venn() has been
+      improved so that goups are labeled using set names instead
+      of indicators, and are ordered from simplest to most complex
+      set intersection.
+
+- New angleAxis() function to create axis labels with rotated text.
+
+- heatmap.2():
+    - heatmap.2() can now be used to plot subsets of a previous
+      heatmap.
+    - Decrease the granularity of the carpet in heatmap.2()'s
+      color key to avoid visual artifacts.
+    - Returned object now includes 'layout' element that contains
+      layout information. (Patch provided by Jenny Drnevich.)
+
+- lowess():
+    - New function plotLowess() to display a scatter plot with a
+      superimposed lowess curve.
+    - The lowess() functions now returns a list object of class
+      'lowess'
+    - A new lowess method for plot() method for 'lowess' objects
+      that generates a scatterplot of the raw data with a lowess
+      curve superimposed.
+
+Bug Fixes:
+
+- Defunct message for boxplot.n() was recommending the wrong
+  function.
+
+- heatmap.2():
+  - Remove debugging print() statement.
+  - Now properly sets 'srtCol' default if missing and 'colCol' is
+    specified.
+  - Corrected a bug causing "Error in plot.new() : figure margins
+    too large" to occur when 'key=FALSE'.  (Reported and patch
+    provided by Sveinung Gundersen.)
+  - Corrected a bug causing an error when "Rowv=FALSE" or "Colv=FALSE".
+  - Corrected message when "Rowv=FALSE" or "Colv=FALSE" and the the
+    "dendrogram" argument requested the corresponding dendrogram.
+
+- venn():
+  - Fix warning message that was missing spaces between words.
+
+Other Changes:
+
+- The smartlegend() function has been made defunct and is no
+  longer available.
+
+
+
 Release 2.17.0 - 2015-05-01
 ---------------------------
 
