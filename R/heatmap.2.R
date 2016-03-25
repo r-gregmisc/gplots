@@ -761,8 +761,10 @@ heatmap.2 <- function (x,
 
     }
   else
-    plot.new()
-
+    {
+      par(mar=c(0, 0, 0, 0))
+      plot.new()
+    }
   ## Create a table showing how colors match to (transformed) data ranges
   retval$colorTable <- data.frame(
                              low=retval$breaks[-length(retval$breaks)],
