@@ -142,7 +142,7 @@ heatmap.2 <- function (x,
     ## Check if Rowv and dendrogram arguments are consistent
     if (
           (
-             ( is.logical(Rowv)  && !isTRUE(Rowv) )
+             ( is.logical(Rowv) && !isTRUE(Rowv) )
               ||
              ( is.null(Rowv) )
           )
@@ -150,13 +150,13 @@ heatmap.2 <- function (x,
           ( dendrogram %in% c("both","row") )
        )
       {
-        if (is.logical(Colv) && (Colv))
+        warning("Discrepancy: Rowv is FALSE, while dendrogram is `",
+                dendrogram, "'. Omitting row dendogram.")
+
+        if (dendrogram=="both")
           dendrogram <- "column"
         else
           dendrogram <- "none"
-
-        warning("Discrepancy: Rowv is FALSE, while dendrogram is `",
-                dendrogram, "'. Omitting row dendogram.")
 
       }
   }
@@ -172,13 +172,14 @@ heatmap.2 <- function (x,
          &&
          ( dendrogram %in% c("both","column")) )
       {
-        if (is.logical(Rowv) && (Rowv))
+        warning("Discrepancy: Colv is FALSE, while dendrogram is `",
+                dendrogram, "'. Omitting column dendogram.")
+
+        if (dendrogram=="both")
           dendrogram <- "row"
         else
           dendrogram <- "none"
 
-        warning("Discrepancy: Colv is FALSE, while dendrogram is `",
-                dendrogram, "'. Omitting column dendogram.")
       }
   }
 
@@ -223,13 +224,18 @@ heatmap.2 <- function (x,
       rowInd <- order.dendrogram(ddr)
       if(nr != length(rowInd))
         stop("row dendrogram ordering gave index of wrong length")
-    } else {
+    }
+  else if(!isTRUE(Rowv))
+    {
+      rowInd <- nr:1
+      ddr <- as.dendrogram(hclust(dist(diag(nr))))
+    }
+  else
+    {
       rowInd <- nr:1
       ddr <- as.dendrogram(Rowv)
     }
 
-  ## if( dendrogram %in% c("both","column") )
-  ##   {
   if(inherits(Colv, "dendrogram"))
     {
       ddc <- Colv ## use Colv 'as-is', when it is dendrogram
@@ -270,6 +276,11 @@ heatmap.2 <- function (x,
       colInd <- order.dendrogram(ddc)
       if(nc != length(colInd))
         stop("column dendrogram ordering gave index of wrong length")
+    }
+  else if(!isTRUE(Colv))
+    {
+      colInd <- 1:nc
+      ddc <- as.dendrogram(hclust(dist(diag(nc))))
     }
   else
     {
