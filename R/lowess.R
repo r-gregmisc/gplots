@@ -13,10 +13,6 @@ lowess.default <- function (x, y = NULL,
     retval
   }
 
-
-# add "..." to the argument list to match the generic
-formals(lowess.default) <- c(formals(lowess.default),alist(...= ))
-
 lowess  <- function(x,...)
   UseMethod("lowess")
 
