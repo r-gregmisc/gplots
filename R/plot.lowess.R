@@ -15,6 +15,7 @@ plot.lowess <- function(x, y, ..., col.lowess="red", lty.lowess=2)
 {
   m <- x$call
   m[[1]] <- quote(plot)
+  m <- as.call(append(as.list(m), list(...)))
   eval(m,  envir = parent.frame())
 
   lines(x$x, x$y, col=col.lowess, lty=lty.lowess)
