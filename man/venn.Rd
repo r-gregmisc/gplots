@@ -133,7 +133,7 @@ isect <- attr(tmp, "intersection")
 str(isect)
 
 # Extract and combine the subsets of interest..
-AandB <- unique(c(int$A, int$B, int$'A:B'))
+AandB <- unique(c(isect$A, isect$B, isect$'A:B'))
 
 # and look at the results
 str(AandB)

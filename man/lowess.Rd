@@ -28,8 +28,8 @@ lowess(x, ...)
 \method{lowess}{default}(x, y=NULL, f=2/3, iter=3L, delta=0.01 *
        diff(range(x)), ...)
 
-\method{lowess}{formula}(formula,data=parent.frame(), subset, f=2/3,
-       iter=3L, delta=.01*diff(range(mf[-response])), ... )
+\method{lowess}{formula}(formula,data=parent.frame(), ..., subset, f=2/3,
+       iter=3L, delta=.01*diff(range(mf[-response])))
 
 \method{plot}{lowess}(x, y, ..., col.lowess="red", lty.lowess=2)
 
@@ -57,10 +57,6 @@ plotLowess(formula, data=parent.frame(), ..., subset=parent.frame(),
   \item{delta}{values of \code{x} which lie within \code{delta}
     of each other replaced by a single value in the output from
     \code{lowess}.}
-  \item{na.action}{a function which indicates what should happen when the
-    data contain `NA's.  The default is set by the `na.action' setting
-    of `options', and is `na.fail' if that is unset. The ``factory-fresh''
-    default is `na.omit'.}
   \item{...}{parameters for methods.}
   \item{col.lowess, lty.lowess}{color and line type for plotted line}
 }
