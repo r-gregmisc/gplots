@@ -10,15 +10,15 @@ Description: Various R programming tools for plotting data, including:
   - calculating and plotting two-dimensional data summaries ('ci2d',
     'hist2d'),
   - enhanced regression diagnostic plots ('lmplot2', 'residplot'),
-  - formula-enabled interface to stats::lowess function ('lowess'),
+  - formula-enabled interface to 'stats::lowess' function ('lowess'),
   - displaying textual data in plots ('textplot', 'sinkplot'),
   - plotting a matrix where each cell contains a dot whose size
     reflects the relative magnitude of the elements ('balloonplot'),
-  - plotting venn diagrams ('venn'),
+  - plotting "Venn" diagrams ('venn'),
   - displaying Open-Office style plots ('ooplot'),
-  - plotting multiple datasets on same region, with separate axes
+  - plotting multiple data on same region, with separate axes
     ('overplot'),
-  - plotting means and cofidence intervals ('plotCI', 'plotmeans'),
+  - plotting means and confidence intervals ('plotCI', 'plotmeans'),
   - spacing points in an x-y plot so they don't overlap ('space').
 Depends: R (>= 3.0)
 Imports: gtools, gdata, stats, caTools, KernSmooth
