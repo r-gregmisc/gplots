@@ -17,7 +17,7 @@ plot.lm2 <- function(
                      max.n=5000
                      )
 {
-  .Defunct("lmplot", "gplots")
+  .Defunct("lmplot2", "gplots")
 }
 
 
@@ -157,7 +157,7 @@ lmplot2 <- function(
     if(id.n > 0)
       text.id(show.r, cook[show.r] + 0.4*cex.id * strheight(" "), show.r)
   }
-  
+
   if (show[5])
   {
     ## plot residuals against each predictor ##
@@ -176,7 +176,7 @@ lmplot2 <- function(
       )
     }
   }
-  
+
   if (!one.fig && par("oma")[3] >= 1)
     mtext(sub.caption, outer = TRUE, cex = 1.25)
   invisible()
