@@ -19,13 +19,15 @@
 \alias{lowess}
 \alias{lowess.default}
 \alias{lowess.formula}
+\alias{plot.lowess}
 \title{Scatter Plot Smoothing}
 \usage{
 lowess(x, ...)
 \method{lowess}{default}(x, y = NULL, f = 2/3, iter = 3, delta = 0.01 *
                   diff(range(x)), ...)
-\method{lowess}{formula}(formula,data = parent.frame(), subset, na.action, 
+\method{lowess}{formula}(formula,data = parent.frame(), subset, na.action,
                f=2/3,  iter=3, delta=.01*diff(range(mf[-response])), ... )
+\method{plot}{lowess}(x, y, ..., col.lowess = "red", lty.lowess = 2)
 }
 \alias{lowess}
 \arguments{
@@ -52,14 +54,17 @@ lowess(x, ...)
           of `options', and is `na.fail' if that is unset. The
           ``factory-fresh'' default is `na.omit'.}
   \item{...}{parameters for methods.}
+  \item{col.lowess, lty.lowess}{color and line type for plotted line}
 }
 \description{
   This function performs the computations for the
   \emph{LOWESS} smoother (see the reference below).
-  \code{lowess} returns a list containing components
+  \code{lowess} returns a an object containing components
   \code{x} and \code{y} which give the coordinates of the smooth.
-  The smooth should be added to a plot of the original
-  points with the function \code{lines}.
+  The smooth can be added to a plot of the original
+  points with the function \code{lines}, or \code{plot} can be
+  directly on the lowess object to generate a scatterplot with
+  the lowess line superimposed.
 }
 \references{
   Cleveland, W. S. (1979)
@@ -87,6 +92,14 @@ plot(dist ~ speed, data=cars, main = "lowess(cars)")
 lines(lowess(dist ~ speed, data=cars), col = 2)
 lines(lowess(dist ~ speed, data=cars, f=.2), col = 3)
 legend(5, 120, c(paste("f = ", c("2/3", ".2"))), lty = 1, col = 2:3)
+
+# plot example
+plot(lowess(dist ~ speed, data=cars), main = "lowess(cars)")
+# is equivalent to
+plot(dist ~ speed, data=cars, main = "lowess(cars)")
+lines(lowess(dist ~ speed, data=cars), col = 2)
+grid()
+
 
 }
 \keyword{smooth}
