@@ -1,4 +1,4 @@
-Release 2.18.0 - 2016-03-24
+Release 3.0.0 - 2016-03-28
 ---------------------------
 
 New Features:
@@ -51,9 +51,9 @@ Bug Fixes:
 
 Other Changes:
 
-- The smartlegend() function has been made defunct and is no
-  longer available.
-
+- The smartlegend(), plot.lm2(), and boxplot.n() functions are now
+  defunct. Please use grephics::legend(), lmplot2() or boxplot2()
+  respectively.
 
 
 Release 2.17.0 - 2015-05-01

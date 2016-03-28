@@ -23,7 +23,7 @@ Description: Various R programming tools for plotting data, including:
 Depends: R (>= 3.0)
 Imports: gtools, gdata, stats, caTools, KernSmooth
 Suggests: grid, MASS
-Version: 2.18.0
+Version: 3.0.0
 Date: 2016-03-25
 Author: Gregory R. Warnes, Ben Bolker, Lodewijk Bonebakker, Robert
 	Gentleman, Wolfgang Huber Andy Liaw, Thomas Lumley, Martin
