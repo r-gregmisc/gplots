@@ -8,8 +8,8 @@
 \usage{
   ## No deprecated functions at this time ##
 }
-\arguments{
-}
+#\arguments{
+#}
 \details{
 These functions have been deprecated.  Please refer to the manual page
 for the replacement function:
