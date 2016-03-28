@@ -322,7 +322,7 @@ heatmap.2 (x,
     \code{trace="both"} or \code{trace="row"} }
   \item{colorTable}{A three-column data frame providing the lower and upper
     bound and color for each bin}
-  \item{layout}{A named numeric vector containing the values used for
+  \item{layout}{A named list containing the values used for
     \code{lmat}, \code{lhei}, and \code{lwid}. }
 }
 \author{Andy Liaw, original; R. Gentleman, M. Maechler, W. Huber,
