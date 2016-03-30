@@ -1,5 +1,30 @@
+2016-03-30  warnes
+
+	* [r2122] R/plot.lowess.R: plotLowess() wasn't finding objects in
+	  the caller's environment.
+
+2016-03-28  warnes
+
+	* [r2121] DESCRIPTION, inst/NEWS: Update gplots version to 3.0.0.
+	* [r2120] man/heatmap.2.Rd: The 'layout' element of the list
+	  returned from heatmap.2 is a named list, not a named vector.
+	* [r2119] man/gplots-deprecated.Rd: Used wrong comment character.
+	* [r2118] man/gplots-deprecated.Rd: Comment out arguments section
+	  to avoid R CMD check warning.
+
 2016-03-25  warnes
 
+	* [r2112] man/heatmap.2.Rd: Update URL for RColorBrewer
+	* [r2111] DESCRIPTION: Fix typos and quote uncommon words to make R
+	  CMD check happy
+	* [r2110] DESCRIPTION, inst/ChangeLog, inst/NEWS: Update files for
+	  gplots 2.18.0
+	* [r2109] NAMESPACE: Add imports recommended by R CMD check on
+	  WinBuilder
+	* [r2108] man/heatmap.2.Rd: Add trailing slash to make R CMD
+	  check's URL testing happy.
+	* [r2107] tests/heatmap2Test.Rout.save: Update test output to match
+	  corrected messages
 	* [r2106] R/plot.venn.R: Warning message didn't have spaces between
 	  words. Minor code reformatting.
 	* [r2105] R/lowess.R: Remove obsolete function to add '...' to
