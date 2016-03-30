@@ -120,5 +120,27 @@ plot(lw, main="lowess(cars)"  )
 # formula method: calculate and plot in a single command
 #
 plotLowess(dist ~ speed, data=cars, main="lowess(cars)")
+
+\dontshow{
+# test non-standard evaluation
+
+with(cars, plotLowess(dist ~ speed, main="lowess(cars)") )
+with(cars, plot(lowess(dist ~ speed, main="lowess(cars)") ) )
+
+idx <- cars$speed > 10
+plotLowess(dist[idx] ~ speed[idx], data=cars, main="lowess(cars)")
+plot(lowess(dist[idx] ~ speed[idx], data=cars, main="lowess(cars)"))
+
+with(cars, plotLowess(dist[idx] ~ speed[idx], main="lowess(cars)") )
+with(cars, plot(lowess(dist[idx] ~ speed[idx], main="lowess(cars)") ))
+
+local({
+dist <- cars$dist
+speed <- cars$speed
+plotLowess(dist[idx] ~ speed[idx], main="lowess(cars)")
+plot(lowess(dist[idx] ~ speed[idx], main="lowess(cars)"))
+})
+} % dontshow
+
 }
 \keyword{smooth}
