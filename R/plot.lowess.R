@@ -1,12 +1,13 @@
-plotLowess <- function (formula, data = parent.frame(), ..., subset=parent.frame(),
+plotLowess <- function (formula, data=parent.frame(), ..., subset=parent.frame(),
                         col.lowess="red",
                         lty.lowess=2  )
 {
   m <- match.call(expand.dots=TRUE)
   m[[1]] <- as.name("plot")
-  eval(m)
+  eframe <- parent.frame()
+  eval(m, eframe)
   m[[1]] <- as.name("lowess")
-  lw <- eval(m)
+  lw <- eval(m, eframe)
   lines(lw, col=col.lowess, lty=lty.lowess)
   grid()
 
