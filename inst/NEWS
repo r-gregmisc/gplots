@@ -1,3 +1,16 @@
+Release 3.0.1 - 2016-03-30
+--------------------------
+
+Bug Fixes:
+
+- An error in plotLowess() prevented it from finding objects in
+	the caller's environment.
+
+- The manual page for heatmap.2() stated the incorrect type for
+  the 'layout' element of the return list.  It is a named list,
+  not a named numeric vector.
+
+
 Release 3.0.0 - 2016-03-28
 ---------------------------
 
