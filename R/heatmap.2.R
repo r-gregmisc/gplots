@@ -65,6 +65,7 @@ heatmap.2 <- function (x,
                        ## color key + density info
                        key = TRUE,
                        keysize = 1.5,
+                       keygrid=255,
                        density.info=c("histogram","density","none"),
                        denscol=tracecol,
                        symkey = any(x < 0, na.rm=TRUE) || symbreaks,
@@ -670,19 +671,27 @@ heatmap.2 <- function (x,
           max.raw <- max.breaks
         }
 
-      z <- seq(min.raw, max.raw, by=min(diff(breaks)/100))
+      z <- seq(min.raw, max.raw, length.out=keygrid)
       image(z=matrix(z, ncol=1),
-            col=col, breaks=tmpbreaks,
-            xaxt="n", yaxt="n")
+            #x=matrix(z),
+            #y=0,
+            col=col,
+            breaks=tmpbreaks,
+            xlab="",
+            xaxt="n",
+            yaxt="n")
 
-      par(usr=c(0,1,0,1))
       if (is.null(key.xtickfun)) {
-          lv <- pretty(breaks)
-          xv <- scale01(as.numeric(lv), min.raw, max.raw)
-          xargs <- list(at=xv, labels=lv)
+        usr <- par("usr")
+        par(usr=c(usr[1], usr[2], 0, 1))
+        lv <- pretty(breaks)
+        xv <- scale01(as.numeric(lv), min.raw, max.raw)
+        xargs <- list(at=xv, labels=lv)
       } else {
-          xargs <- key.xtickfun()
+        xargs <- key.xtickfun()
       }
+
+
       xargs$side <- 1
       do.call(axis, xargs)
       if (is.null(key.xlab)) {

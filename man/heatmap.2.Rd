@@ -77,6 +77,7 @@ heatmap.2 (x,
            # color key + density info
            key = TRUE,
            keysize = 1.5,
+           keygrid = 255,
            density.info=c("histogram","density","none"),
            denscol=tracecol,
            symkey = any(x < 0, na.rm=TRUE) || symbreaks,
@@ -215,6 +216,7 @@ heatmap.2 (x,
   % Color key and density info
   \item{key}{logical indicating whether a color-key should be shown.}
   \item{keysize}{numeric value indicating the size of the key}
+  \item{keygrid}{number of bins used to plot the color-key}
   \item{density.info}{character string indicating whether to superimpose
     a 'histogram', a 'density' plot, or no plot ('none') on the
     color-key.}
@@ -436,6 +438,17 @@ heatmap.2 (x,
                      line=line, cex=cex, col=col, font=font)
                return(list(labels=FALSE, tick=FALSE))
           })
+
+ heatmap.2(x,
+          breaks=256,
+          keygrid=10
+
+          )
+
+ heatmap.2(x,
+          breaks=256,
+          keygrid=1001
+          )
 
 
  ##
