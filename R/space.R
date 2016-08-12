@@ -7,6 +7,7 @@
 
 space <-  function(x,y,s=1/50, na.rm=TRUE, direction="x")
   {
+    # to avoid duplicating code for direction="y", swap x and y temporarily...
     if(direction!='x')
       {
         tmp <- y
@@ -35,29 +36,45 @@ space <-  function(x,y,s=1/50, na.rm=TRUE, direction="x")
     x <- x[ord]
     y <- y[ord]
 
-    startsame <- 1
-    same.x <- x[1]
-    same.y <- y[1]
+    # split into groups within the same interval
+    sames.x <- c(FALSE, within(x[1:(length(x)-1)],
+                               x[-1],
+                               delta=spacing.x)
+                 )
+    sames.y <- c(FALSE, within(y[1:(length(y)-1)],
+                               y[-1],
+                               delta=spacing.y)
+    )
+    sames <- sames.x & sames.y
+    groups <- cumsum(!sames)
+    xList <- split(x, groups)
+    yList <- split(y, groups)
 
-    for( i in 1:length(x) )
+
+    for( i in 1:max(groups) )
       {
-        if(i>1 &&
-           within(x[i],same.x,spacing.x) &&
-           within(y[i],same.y,spacing.y) )
-          {
-            if(x[startsame] == same.x )
-              x[startsame] <- x[startsame]
+      len <- length(xList[[i]])
+      if(len==1)
+        next
 
-            cumrun <- i - startsame
+      m <- mean(xList[[i]])
+      s <- len/2 * spacing.x
+      deltas <- seq(from=-s, to=+s, length.out=len)
+      order <- "permute"
+      if (order=="permute")
+        deltas <- sample(deltas)
+      else if (order=="A")
+        deltas <- deltas[order(abs(deltas), decreasing=TRUE)]
+      else if (order=="V")
+        deltas <- deltas[order(abs(deltas), decreasing=FALSE)]
 
-            x[i] <- x[i] + (-1)^(cumrun+1) * floor((cumrun+1) /2) * spacing.x
-          } else {
-            startsame <- i
-            same.x <- x[i]
-            same.y <- y[i]
-          }
-      }
+      xList[[i]] <- xList[[i]] + deltas
+    }
 
+    x <- unlist(xList)[undo]
+    y <- unlist(yList)[undo]
+
+    # undo swap of x and y.
     if(direction!='x')
       {
         tmp <- y
@@ -65,6 +82,6 @@ space <-  function(x,y,s=1/50, na.rm=TRUE, direction="x")
         x <- tmp
       }
 
-    return( list(x=x[undo], y=y[undo]) )
+    return( list(x=x, y=y) )
 }
 
