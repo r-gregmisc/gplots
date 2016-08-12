@@ -10,7 +10,7 @@ plotmeans(formula, data=NULL, subset, na.action,
           digits=getOption("digits"), col="black", barwidth=1,
           barcol="blue", connect=TRUE, ccol=
           col, legends=names(means), xaxt, use.t=TRUE,
-          lwd=par("lwd"), ...)
+          lwd=par("lwd"), add = FALSE, ...)
 }
 \arguments{
   \item{formula}{symbolic expression specifying the outcome (continuous)
@@ -91,6 +91,9 @@ plotmeans(formula, data=NULL, subset, na.action,
 
   \item{lwd}{Width of connecting lines  }
 
+  \item{add}{Logical specifying whether to add to an existing plot
+    (\code{add=TRUE}) or to generate a new plot (\code{add=FALSE}).}
+
   \item{\dots}{ optional plotting parameters. }
 
   }
@@ -133,6 +136,28 @@ plotmeans(formula, data=NULL, subset, na.action,
                    "Ile-et-Vilaine Esophageal Cancer Study")
             )
   abline(v=c(6.5, 12.5, 18.5), lty=2)
+  grid()
+
+  # add to a boxplot
+  boxplot(ncases/ncontrols ~ interaction(agegp , alcgp, sep ="   "),
+          data=esoph,
+          xlab="Age Group and Alcohol Consumption",
+          ylab="# Cases / # Controls",
+          main=c("Fraction of Cases for by Age and Alcohol Consumption",
+                 "Ile-et-Vilaine Esophageal Cancer Study"),
+          ylim=c(-0.75, 1.5),
+          col="green"
+            )
+  plotmeans(ncases/ncontrols ~ interaction(agegp , alcgp, sep ="   "),
+            data=esoph,
+            connect=list(1:6,7:12,13:18,19:24),
+            barwidth=2,
+            barcol="dark blue",
+            col="dark blue",
+            add=TRUE)
+  grid()
+  abline(v=c(6.5, 12.5, 18.5), lty=2)
+
 
 }
 

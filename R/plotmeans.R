@@ -17,6 +17,7 @@ plotmeans  <- function (formula, data = NULL, subset, na.action,
                         xaxt,
                         use.t = TRUE,
                         lwd=par("lwd"),
+                        add = FALSE,
                         ...)
 {
   if (invalid(formula) || (length(formula) != 3))
@@ -51,6 +52,7 @@ plotmeans  <- function (formula, data = NULL, subset, na.action,
 
   if(!bars)
     {
+      if(add) par(new=TRUE)
       plot( means, ..., col=col, xlim=xlim)
     }
   else
@@ -77,7 +79,8 @@ plotmeans  <- function (formula, data = NULL, subset, na.action,
 
       plotCI(x=1:length(means), y=means, uiw=ci.width, xaxt="n",
              xlab=xlab, ylab=ylab, labels=mean.labels, col=col, xlim=xlim,
-             lwd=barwidth, barcol=barcol, minbar=minbar, maxbar=maxbar, ... )
+             lwd=barwidth, barcol=barcol, minbar=minbar, maxbar=maxbar,
+             add=add, ... )
       if(invalid(xaxt) || xaxt!="n")
         axis(1, at = 1:length(means), labels = legends, ...)
 
