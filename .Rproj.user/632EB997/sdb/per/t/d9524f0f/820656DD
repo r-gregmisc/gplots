@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: gplots\nTitle: Various R Programming Tools for Plotting Data\nDescription: Various R programming tools for plotting data, including:\n  - calculating and plotting locally smoothed summary function as\n    ('bandplot', 'wapply'),\n  - enhanced versions of standard plots ('barplot2', 'boxplot2',\n    'heatmap.2', 'smartlegend'),\n  - manipulating colors ('col2hex', 'colorpanel', 'redgreen',\n    'greenred', 'bluered', 'redblue', 'rich.colors'),\n  - calculating and plotting two-dimensional data summaries ('ci2d',\n    'hist2d'),\n  - enhanced regression diagnostic plots ('lmplot2', 'residplot'),\n  - formula-enabled interface to 'stats::lowess' function ('lowess'),\n  - displaying textual data in plots ('textplot', 'sinkplot'),\n  - plotting a matrix where each cell contains a dot whose size\n    reflects the relative magnitude of the elements ('balloonplot'),\n  - plotting \"Venn\" diagrams ('venn'),\n  - displaying Open-Office style plots ('ooplot'),\n  - plotting multiple data on same region, with separate axes\n    ('overplot'),\n  - plotting means and confidence intervals ('plotCI', 'plotmeans'),\n  - spacing points in an x-y plot so they don't overlap ('space').\nDepends: R (>= 3.0)\nImports: gtools, gdata, stats, caTools, KernSmooth\nSuggests: grid, MASS\nVersion: 3.0.1\nDate: 2016-03-30\nAuthor: Gregory R. Warnes, Ben Bolker, Lodewijk Bonebakker, Robert\n\tGentleman, Wolfgang Huber Andy Liaw, Thomas Lumley, Martin\n\tMaechler, Arni Magnusson, Steffen Moeller, Marc Schwartz, Bill\n\tVenables\nMaintainer: Gregory R. Warnes <greg@warnes.net>\nLicense: GPL-2\nNeedsCompilation: no\n",
+    "created" : 1459173532121.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1911963595",
+    "id" : "820656DD",
+    "lastKnownWriteTime" : 1459346100,
+    "last_content_update" : 1459346100635,
+    "path" : "~/src/r-gregmisc/gplots/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

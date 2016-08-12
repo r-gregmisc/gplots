@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Normalization functions, taken from\n# https://haroldpimentel.wordpress.com/2014/05/08/what-the-fpkm-a-review-rna-seq-expression-units/\n\ncountToTpm <- function(counts, effLen)\n{\n  countToTpm.inner <- function(counts, effLen)\n  {\n    rate <- log(counts) - log(effLen)\n    denom <- log(sum(exp(rate)))\n    exp(rate - denom + log(1e6))\n  }\n\n  apply(as.matrix(counts), 2, countToTpm.inner, effLen=effLen)\n}\n\n\ncountToFpkm <- function(counts, effLen)\n{\n  countToFpkm.inner <- function(counts, effLen)\n  {\n    N <- sum(counts)\n    exp( log(counts) + log(1e9) - log(effLen) - log(N) )\n  }\n\n  apply(as.matrix(counts), 2, countToFpkm.inner, effLen=effLen)\n}\n\nfpkmToTpm <- function(fpkm)\n{\n  fpkmToTpm.inner <- function(fpkm)\n  {\n    exp(log(fpkm) - log(sum(fpkm)) + log(1e6))\n  }\n\n  (apply(as.matrix(fpkm), 2, fpkmToTpm.inner))\n}\n\ncountToEffCounts <- function(counts, len, effLen)\n{\n  countToEffCounts.inner <- function(counts, len, effLen)\n  {\n    counts * (len / effLen)\n  }\n\n  (apply(as.matrix(counts), countToEffCounts.inner, len=len, effLen=effLen))\n}\n\n\nif(FALSE)\n{\n################################################################################\n# An example\n################################################################################\ncnts <- c(4250, 3300, 200, 1750, 50, 0)\nlens <- c(900, 1020, 2000, 770, 3000, 1777)\ncountDf <- data.frame(count = cnts, length = lens)\n\n# assume a mean(FLD) = 203.7\ncountDf$effLength <- countDf$length - 203.7 + 1\ncountDf$tpm <- with(countDf, countToTpm(count, effLength))\ncountDf$fpkm <- with(countDf, countToFpkm(count, effLength))\nwith(countDf, all.equal(tpm, fpkmToTpm(fpkm)))\ncountDf$effCounts <- with(countDf, countToEffCounts(count, length, effLength))\n\ncountDf\n}\n",
+    "created" : 1459356044910.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2940610074",
+    "id" : "6C32B82",
+    "lastKnownWriteTime" : 1459356077,
+    "last_content_update" : 1459356077318,
+    "path" : "~/src/BIexpr/R/normization.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

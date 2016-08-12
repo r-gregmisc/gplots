@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\\name{gplots-deprecated}\n\\alias{deprecated}\n\\title{Deprecated functions}\n\\description{\n  These functions have been deprecated and will be removed in future\n  releases of gplots.\n}\n\\usage{\n  ## No deprecated functions at this time ##\n}\n%\\arguments{\n%}\n\\details{\nThese functions have been deprecated.  Please refer to the manual page\nfor the replacement function:\n  \\itemize{\n    \\item (No deprecated functions at this time)\n  }\n}\n\\author{Gregory R. Warnes \\email{greg@warnes.net}}\n\\seealso{\n  \\code{\\link[base]{Deprecated}}\n}\n\\keyword{misc}\n",
+    "created" : 1459173040977.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3450359209",
+    "id" : "456A8AE1",
+    "lastKnownWriteTime" : 1459173046,
+    "last_content_update" : 1459173046664,
+    "path" : "~/src/r-gregmisc/gplots/man/gplots-deprecated.Rd",
+    "project_path" : "man/gplots-deprecated.Rd",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}
