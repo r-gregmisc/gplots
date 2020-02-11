@@ -48,7 +48,9 @@ hv <- heatmap.2(x, col=cm.colors(256), scale="column",
 	       main="heatmap(<Mtcars data>, \n        ..., scale=\"column\")", 
                tracecol="green", density="density")
 
+## IGNORE_RDIFF_BEGIN
 str(hv) # the two re-ordering index vectors
+## IGNORE_RDIFF_END
 
 ## Test row and column separators 
 heatmap.2(x,dendrogram="col", colsep=1) ## one colsep
