@@ -23,12 +23,12 @@ Description: Various R programming tools for plotting data, including:
 Depends: R (>= 3.0)
 Imports: gtools, gdata, stats, caTools, KernSmooth
 Suggests: grid, MASS
-Version: 3.0.1.1
-Date: 2019-01-27
+Version: 3.0.1.2
+Date: 2020-01-11
 Author: Gregory R. Warnes, Ben Bolker, Lodewijk Bonebakker, Robert
 	Gentleman, Wolfgang Huber Andy Liaw, Thomas Lumley, Martin
 	Maechler, Arni Magnusson, Steffen Moeller, Marc Schwartz, Bill
 	Venables
-Maintainer: Gregory R. Warnes <greg@warnes.net>
+Maintainer: ORPHANED
 License: GPL-2
 NeedsCompilation: no
