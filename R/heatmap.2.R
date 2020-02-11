@@ -115,9 +115,9 @@ heatmap.2 <- function (x,
             "specified can produce unpredictable results.",
             "Please consider using only one or the other.")
 
-  if ( is.null(Rowv) || is.na(Rowv) )
+  if ( is.null(Rowv) || any(is.na(Rowv)) )
     Rowv <- FALSE
-  if ( is.null(Colv) || is.na(Colv) )
+  if ( is.null(Colv) || any(is.na(Colv)) )
     Colv <- FALSE
   else if( all(Colv=="Rowv") )
     Colv <- Rowv
