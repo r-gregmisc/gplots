@@ -1,7 +1,4 @@
-rich.colors <- function(n,
-                        palette="temperature",
-                        alpha=1,
-                        rgb=FALSE,
+rich.colors <- function(n, palette="temperature", alpha=1, rgb=FALSE,
                         plot=FALSE)
 {
   if(n <= 0)
@@ -28,9 +25,9 @@ rich.colors <- function(n,
                   dimnames=list(NULL,c("red","green","blue")))
   col <- mapply(rgb, r, g, b, alpha)
 
-  if(rgb) 
+  if(rgb)
     attr(col, "rgb") <- cbind(rgb.m, alpha)
-  
+
   if(plot)
   {
     opar <- par("fig", "plt")
@@ -49,5 +46,5 @@ rich.colors <- function(n,
     par(opar)
   }
 
-  return(col)
+  col
 }

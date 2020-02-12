@@ -14,9 +14,9 @@ rich.colors(n, palette="temperature", alpha=1.0, rgb=FALSE, plot=FALSE)
     blue-green-yellow-red, and \code{"blues"} contains
     black-blue-white.}
   \item{alpha}{alpha transparency, from 0 (fully transparent)  to 1
-    (opaque).} 
-  \item{rgb}{if \code{TRUE} then a matrix of RGBA values is included as an
-          attribute.}
+    (opaque).}
+  \item{rgb}{if \code{TRUE} then a matrix of RGBA values is included as
+    an attribute.}
   \item{plot}{whether to plot a descriptive color diagram.}
 }
 \value{A character vector of color codes.}
@@ -32,10 +32,10 @@ matplot(m, type="l", lty=1, lwd=3, col=rich.colors(8,"blues"))
 par(opar)
 
 barplot(rep(1,100), col=rich.colors(100), space=0, border=0, axes=FALSE)
-barplot(rep(1,20), col=rich.colors(40)[11:30]) # choose subset
+barplot(rep(1,20), col=rich.colors(40)[11:30])  # choose subset
 
 plot(m, rev(m), ylim=c(120,0), pch=16, cex=2,
-     col=rich.colors(200,"blues",alpha=0.6)[1:120]) # semitransparent
+     col=rich.colors(200,"blues",alpha=0.6)[1:120])  # semitransparent
 
 rich.colors(100, plot=TRUE)  # describe rgb recipe
 
