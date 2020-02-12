@@ -47,7 +47,7 @@ balloonplot.default <- function(x, y, z,
                                 cum.margins=TRUE,
                                 sorted=TRUE,
                                 label.lines=TRUE,
-                                fun=function(x)sum(x,na.rm=T),
+                                fun=function(x)sum(x,na.rm=TRUE),
                                 hide.duplicates=TRUE,
                                 ...)
 {
