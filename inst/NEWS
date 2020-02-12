@@ -1,7 +1,17 @@
+Release 3.0.4 - 2020-02-12
+----------------------------
+
+- Added argument 'keygrid' to heatmap.2().
+
+- Added argument 'add' to plotmeans().
+
+- Improved space() arrangement of points within the same bin.
+
+
 Release 3.0.1.2 - 2020-01-11
 ----------------------------
 
-- Suppress str(hv) comparison in heatmap2Test.R as requested by CRAN.
+- Suppressed str(hv) comparison in heatmap2Test.R as requested by CRAN.
   Contributed by Brian Ripley.
 
 
