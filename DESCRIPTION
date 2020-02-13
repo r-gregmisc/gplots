@@ -1,5 +1,23 @@
 Package: gplots
+Version: 3.0.4
+Date: 2020-02-12
 Title: Various R Programming Tools for Plotting Data
+Authors@R: c(person("Gregory", "Warnes", role="aut"),
+             person("Ben", "Bolker", role="aut"),
+             person("Lodewijk", "Bonebakker", role="aut"),
+             person("Robert", "Gentleman", role="aut"),
+             person("Wolfgang", "Huber", role="aut"),
+             person("Andy", "Liaw", role="aut"),
+             person("Thomas", "Lumley", role="aut"),
+             person("Martin", "Maechler", role="aut"),
+             person("Arni", "Magnusson", role=c("aut","cre"),
+               email="arni.magnusson@ices.dk"),
+             person("Steffen", "Moeller", role="aut"),
+             person("Marc", "Schwartz", role="aut"),
+             person("Bill", "Venables", role="aut"))
+Depends: R (>= 3.0)
+Imports: gtools, gdata, stats, caTools, KernSmooth
+Suggests: grid, MASS
 Description: Various R programming tools for plotting data, including:
   - calculating and plotting locally smoothed summary function as
     ('bandplot', 'wapply'),
@@ -20,15 +38,5 @@ Description: Various R programming tools for plotting data, including:
     ('overplot'),
   - plotting means and confidence intervals ('plotCI', 'plotmeans'),
   - spacing points in an x-y plot so they don't overlap ('space').
-Depends: R (>= 3.0)
-Imports: gtools, gdata, stats, caTools, KernSmooth
-Suggests: grid, MASS
-Version: 3.0.4
-Date: 2020-02-12
-Author: Gregory R. Warnes, Ben Bolker, Lodewijk Bonebakker, Robert
-	Gentleman, Wolfgang Huber Andy Liaw, Thomas Lumley, Martin
-	Maechler, Arni Magnusson, Steffen Moeller, Marc Schwartz, Bill
-	Venables
-Maintainer: Arni Magnusson <arni.magnusson@ices.dk>
 License: GPL-2
-NeedsCompilation: no
+URL: https://github.com/arni-magnusson/gplots
