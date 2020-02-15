@@ -43,6 +43,9 @@
 \source{
   Anonymized data.
 }
+\seealso{
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 data(rtPCR)
 

@@ -58,7 +58,10 @@ overplot(formula, data = parent.frame(), same.scale = FALSE, xlab, ylab,
 \author{ Gregory R. Warnes \email{greg@warnes.net} }
 \seealso{
   \code{\link{interaction.plot}},
-  \code{\link{coplot}} for alternative visualizations of 3-way data.}
+  \code{\link{coplot}} for alternative visualizations of 3-way data.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 
 # Example teratogenicity rtPCR data

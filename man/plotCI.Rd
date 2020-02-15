@@ -118,10 +118,13 @@ plotCI(x, y = NULL, uiw, liw = uiw, ui, li, err='y', ylim=NULL,
   \email{greg@warnes.net}.  Additional changes
   suggested by Martin Maechler \email{maechler@stat.math.ethz.ch}
   integrated on July 29, 2004.
-  }
+}
 
-\seealso{ \code{\link{plotmeans}} provides an enhanced wrapper to
-          \code{plotCI}. }
+\seealso{
+  \code{\link{plotmeans}} provides an enhanced wrapper to \code{plotCI}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 
 \examples{
 

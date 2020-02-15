@@ -64,8 +64,11 @@ space(x, y, s=1/50, na.rm=TRUE, direction="x")
   \item{y}{y location of each input point}
 }
 \author{ Gregory R. Warnes \email{greg@warnes.net} }
-\seealso{ \code{\link{jitter}}, \code{\link{sunflowerplot}} }
+\seealso{
+  \code{\link{jitter}}, \code{\link{sunflowerplot}}.
 
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
    x <- rep(1:5, 10)
    y <- round(rnorm(length(x),x))

@@ -23,6 +23,8 @@ rich.colors(n, palette="temperature", alpha=1.0, rgb=FALSE, plot=FALSE)
 \author{Arni Magnusson.}
 \seealso{
   \code{\link{rgb}}, \code{\link{rainbow}}, \code{\link{heat.colors}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
 m <- abs(matrix(1:120+rnorm(120), nrow=15, ncol=8))

@@ -61,8 +61,10 @@
 \author{Gregory R. Warnes \email{greg@warnes.net} and Nitin
   Jain \email{nitin.jain@pfizer.com}}
 \seealso{
-  \code{\link[stats]{plot.lm}}
-  }
+  \code{\link[stats]{plot.lm}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 ctl <- rnorm(100, 4)
 trt <- rnorm(100, 4.5)

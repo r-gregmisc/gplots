@@ -330,7 +330,11 @@ heatmap.2 (x,
 \author{Andy Liaw, original; R. Gentleman, M. Maechler, W. Huber,
   G. Warnes, revisions.}
 
-\seealso{\code{\link{image}}, \code{\link{hclust}}}
+\seealso{
+  \code{\link{image}}, \code{\link{hclust}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 
 \examples{
  data(mtcars)

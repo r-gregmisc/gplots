@@ -19,6 +19,8 @@ for the replacement function:
 }
 \author{Gregory R. Warnes \email{greg@warnes.net}}
 \seealso{
-  \code{\link[base]{Deprecated}}
+  \code{\link[base]{Deprecated}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
 }
 \keyword{misc}

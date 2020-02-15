@@ -58,7 +58,11 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
 \author{
   Steffen Moeller \email{steffen\_moeller@gmx.de},
   with cleanup and packaging by Gregory R. Warnes
-  \email{greg@warnes.net}.}
+  \email{greg@warnes.net}.
+}
+\seealso{
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 
 ##

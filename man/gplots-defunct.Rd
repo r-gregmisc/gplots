@@ -65,9 +65,9 @@ for the replacement function:
 }
 \author{Gregory R. Warnes \email{greg@warnes.net}}
 \seealso{
-  \code{\link{boxplot2}},
-  \code{\link{lmplot2}},
-  \code{\link[graphics]{legend}},
-  \code{\link[base]{Defunct}}
+  \code{\link{boxplot2}}, \code{\link{lmplot2}},
+  \code{\link[graphics]{legend}}, \code{\link[base]{Defunct}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
 }
 \keyword{misc}

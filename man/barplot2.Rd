@@ -229,6 +229,8 @@
 \seealso{
   \code{\link{plot}(\dots, type = "h")}, \code{\link{dotchart}},
   \code{\link{hist}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
 tN <- table(Ni <- rpois(100, lambda = 5))

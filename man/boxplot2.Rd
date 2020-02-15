@@ -22,8 +22,9 @@ boxplot2(..., top=FALSE, shrink=1, textcolor=NULL)
   avoid potential problems with S3 method dispatching.
 }
 \seealso{
-  \code{\link{boxplot}},
-  \code{\link{text}}
+  \code{\link{boxplot}}, \code{\link{text}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
 }
 
 \examples{

@@ -86,8 +86,11 @@ plotLowess(formula, data=parent.frame(), ..., subset=parent.frame(),
   LOWESS: A program for smoothing scatterplots by robust locally weighted
   regression. \emph{The American Statistician}, \bold{35}, 54.
 }
-\seealso{\code{\link{loess}} (in package \code{modreg}), a newer
-  formula based version of \code{lowess} (with different defaults!).
+\seealso{
+  \code{\link{loess}}, a newer formula based version of \code{lowess}
+  (with different defaults!).
+
+  \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
 data(cars)

@@ -87,7 +87,9 @@ ci2d(x, y = NULL,
 \author{ Gregory R. Warnes \email{greg@warnes.net}}
 \seealso{
   \code{\link[KernSmooth]{bkde2D}}, \code{\link[r2d2]{conf2d}},
-  \code{\link[KernSmooth]{dpik}}, \code{\link{hist2d}}
+  \code{\link[KernSmooth]{dpik}}, \code{\link{hist2d}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
    ####

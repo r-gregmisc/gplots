@@ -51,8 +51,10 @@ hist2d(x,y=NULL, nbins=200, same.scale=FALSE, na.rm=TRUE, show=TRUE,
 
 \seealso{
   \code{\link{image}}, \code{\link{persp}}, \code{\link{hist}},
-  \code{\link[r2d2]{freq2d}} 
-  }
+  \code{\link[r2d2]{freq2d}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 
 \examples{
    ## example data, bivariate normal, no correlation

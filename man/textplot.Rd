@@ -80,10 +80,12 @@ textplot(object, halign="center", valign="center", cex, ...)
   The character scaling factor (\code{cex}) used.
 }
 \author{Gregory R. Warnes \email{greg@warnes.net}}
-\seealso{ \code{\link{plot}}, \code{\link{text}}, 
-          \code{\link[utils]{capture.output}} 
-        }
+\seealso{
+  \code{\link{plot}}, \code{\link{text}},
+  \code{\link[utils]{capture.output}}.
 
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 \dontrun{
 ### simple examples

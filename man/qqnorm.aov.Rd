@@ -51,6 +51,12 @@
 
 \author{Kjetil Halvorsen \email{kjetil@entelnet.bo}}
 
+\seealso{
+  \code{\link{qqnorm}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
+
 \examples{
 library(MASS)
 data(npk)

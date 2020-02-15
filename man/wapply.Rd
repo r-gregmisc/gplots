@@ -103,8 +103,10 @@ wapply(x, y, fun=mean, method="range", width, n=50, drop.na=TRUE,
   \item{x }{x location'}
   \item{y }{Result of applying \code{fun} to the window about each x location}
 }
-\author{ Gregory R. Warnes \email{greg@warnes.net}
-  }
+\author{Gregory R. Warnes \email{greg@warnes.net}}
+\seealso{
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 
 #show local mean and inner 2-sd interval to help diagnose changing mean

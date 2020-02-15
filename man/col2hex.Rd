@@ -16,7 +16,9 @@ col2hex(cname)
 }
 \author{Gregory R. Warnes}
 \seealso{
-  \code{\link{col2rgb}}, \code{\link{colors}}, \code{\link{rgb}}
+  \code{\link{col2rgb}}, \code{\link{colors}}, \code{\link{rgb}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
   }
 \examples{
 col2hex(c("red","yellow","lightgrey"))

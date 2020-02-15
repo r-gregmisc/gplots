@@ -34,7 +34,11 @@ sinkplot(operation = c("start", "plot", "cancel"), ...)
    \url{https://stat.ethz.ch/pipermail/r-devel/2004-January/028483.html}.
  }
 \author{ Gregory R. Warnes \email{greg@warnes.net}  }
-\seealso{ \code{\link[utils]{capture.output}}, \code{\link{textplot}} }
+\seealso{
+  \code{\link[utils]{capture.output}}, \code{\link{textplot}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
    set.seed(12456)
    x <- factor(sample( LETTERS[1:5], 50, replace=TRUE))

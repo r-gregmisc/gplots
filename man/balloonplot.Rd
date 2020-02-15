@@ -124,7 +124,11 @@ balloonplot(x, ...)
   Function inspired by question posed on R-help by Ramon
   Alonso-Allende \email{allende@cnb.uam.es}.}
 \author{Gregory R. Warnes \email{greg@warnes.net}.}
-\seealso{\code{\link{plot.table}}}
+\seealso{
+  \code{\link{plot.table}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 \testonly{
 set.seed(12425421)

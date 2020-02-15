@@ -43,7 +43,11 @@ redblue(n)
   Vector of HTML-style RGB colors.
 }
 \author{ Gregory R. Warnes \email{greg@warnes.net} }
-\seealso{ \code{\link{colors} } }
+\seealso{
+  \code{\link{colors}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 
 showpanel <- function(col)

@@ -159,8 +159,12 @@ ooplot(data, ...)
 \author{Lodewijk Bonebakker \email{bonebakker@comcast.net} with modifications
   by Gregory R. Warnes \email{greg@warnes.net}.
   Based on barplot2().
-  }
-\seealso{ \code{\link{plot}}, \code{\link{boxplot}} }
+}
+\seealso{
+  \code{\link{plot}}, \code{\link{boxplot}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
      data(VADeaths, package = "datasets")
 

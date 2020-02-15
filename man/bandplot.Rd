@@ -60,7 +60,11 @@ bandplot(x,...)
 }
 \author{ Gregory R. Warnes \email{greg@warnes.net}
 }
-\seealso{ \code{\link{wapply}}, \code{\link{lowess}}}
+\seealso{
+  \code{\link{wapply}}, \code{\link{lowess}}.
+
+  \code{\link{gplots-package}} gives an overview of the package.
+}
 \examples{
 
 # fixed mean, changing variance

@@ -39,7 +39,9 @@ This function augments the feature of the \code{axis} functon by allowing the ax
 }
 \author{Gregory R. Warnes \email{greg@warnes.net} }
 \seealso{
-\code{\link{axis}}
+  \code{\link{axis}.}
+
+  \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
 \dontshow{set.seed(42)}
