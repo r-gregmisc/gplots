@@ -9,31 +9,31 @@
     \item calculating and plotting locally smoothed summary function
       (\code{\link{bandplot}}, \code{\link{wapply}}),
     \item enhanced versions of standard plots (\code{\link{barplot2}},
-      \code{\link{boxplot2}}, \code{\link{heatmap.2}},
-      \code{\link{smartlegend}}),
+      \code{\link{boxplot2}}, \code{\link{heatmap.2}}),
     \item manipulating colors (\code{\link{col2hex}},
       \code{\link{colorpanel}}, \code{\link{redgreen}},
       \code{\link{greenred}}, \code{\link{bluered}},
       \code{\link{redblue}}, \code{\link{rich.colors}}),
     \item calculating and plotting two-dimensional data summaries
       (\code{\link{ci2d}}, \code{\link{hist2d}}),
-    \item enhanced regression diagnostic plots (\code{\link{lmplot2}},
-      \code{\link{residplot}}),
-    \item formula-enabled interface to \code{stats::lowess}
+    \item diagnostic plots for linear regression and analysis of
+      variance (\code{\link{lmplot2}}, \code{\link{qqnorm.aov}}),
+    \item formula interface to \code{stats::lowess}
       (\code{\link{lowess}}),
     \item displaying textual data in plots (\code{\link{textplot}},
       \code{\link{sinkplot}}),
     \item plotting a matrix where each cell contains a dot whose size
       reflects the relative magnitude of the elements
       (\code{\link{balloonplot}}),
-    \item plotting "Venn" diagrams (\code{\link{venn}}),
+    \item plotting Venn diagrams (\code{\link{venn}}),
     \item displaying Open-Office style plots (\code{\link{ooplot}}),
     \item plotting multiple data on same region, with separate axes
       (\code{\link{overplot}}),
     \item plotting means and confidence intervals (\code{\link{plotCI}},
       \code{\link{plotmeans}}),
     \item spacing points in an x-y plot so they don't overlap
-      (\code{\link{space}}).
+      (\code{\link{space}}),
+    \item adding rotated axis labels (\code{\link{angleAxis}}).
   }
 }
 \author{
