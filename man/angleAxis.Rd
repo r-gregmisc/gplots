@@ -1,6 +1,6 @@
 \name{angleAxis}
 \alias{angleAxis}
-\title{Add a Axis to a Plot with Rotated Labels}
+\title{Add an Axis to a Plot with Rotated Labels}
 \description{
 Add a labeled axis to the current plot with rotated text
 }
