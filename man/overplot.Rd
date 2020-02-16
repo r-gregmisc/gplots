@@ -63,10 +63,6 @@ overplot(formula, data = parent.frame(), same.scale = FALSE, xlab, ylab,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-
-# Example teratogenicity rtPCR data
-data(rtPCR)
-
 # same scale
 overplot( RQ ~ Conc..ug.ml. | Test.Substance,
          data=rtPCR,
@@ -90,6 +86,5 @@ overplot( RQ ~ Conc..ug.ml. | Test.Substance,
          ylab="Relative Gene Quantification",
          min.y=0.01
          )
-
 }
 \keyword{hplot}

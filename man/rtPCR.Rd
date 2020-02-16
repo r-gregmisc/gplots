@@ -47,8 +47,6 @@
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-data(rtPCR)
-
 # same scale
 overplot( RQ ~ Conc..ug.ml. | Test.Substance,
          data=rtPCR,
