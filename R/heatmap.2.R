@@ -4,7 +4,7 @@ heatmap.2 <- function (x,
 
                        ## dendrogram control
                        Rowv = TRUE,
-                       Colv=if(symm)"Rowv" else TRUE,
+                       Colv = if(symm) "Rowv" else TRUE,
                        distfun = dist,
                        hclustfun = hclust,
                        dendrogram = c("both","row","column","none"),
@@ -12,8 +12,8 @@ heatmap.2 <- function (x,
                        symm = FALSE,
 
                        ## data scaling
-                       scale = c("none","row", "column"),
-                       na.rm=TRUE,
+                       scale = c("none","row","column"),
+                       na.rm = TRUE,
 
                        ## image plot
                        revC = identical(Colv, "Rowv"),
@@ -21,29 +21,29 @@ heatmap.2 <- function (x,
 
                        ## mapping data to colors
                        breaks,
-                       symbreaks=any(x < 0, na.rm=TRUE) || scale!="none",
+                       symbreaks = any(x<0, na.rm=TRUE) || scale!="none",
 
                        ## colors
-                       col="heat.colors",
+                       col = "heat.colors",
 
                        ## block sepration
                        colsep,
                        rowsep,
-                       sepcolor="white",
-                       sepwidth=c(0.05,0.05),
+                       sepcolor = "white",
+                       sepwidth = c(0.05,0.05),
 
                        ## cell labeling
                        cellnote,
-                       notecex=1.0,
-                       notecol="cyan",
-                       na.color=par("bg"),
+                       notecex = 1.0,
+                       notecol = "cyan",
+                       na.color = par("bg"),
 
                        ## level trace
-                       trace=c("column","row","both","none"),
-                       tracecol="cyan",
-                       hline=median(breaks),
-                       vline=median(breaks),
-                       linecol=tracecol,
+                       trace = c("column","row","both","none"),
+                       tracecol = "cyan",
+                       hline = median(breaks),
+                       vline = median(breaks),
+                       linecol = tracecol,
 
                        ## Row/Column Labeling
                        margins = c(5, 5),
@@ -65,9 +65,9 @@ heatmap.2 <- function (x,
                        ## color key + density info
                        key = TRUE,
                        keysize = 1.5,
-                       keygrid=255,
-                       density.info=c("histogram","density","none"),
-                       denscol=tracecol,
+                       keygrid = 255,
+                       density.info = c("histogram","density","none"),
+                       denscol = tracecol,
                        symkey = any(x < 0, na.rm=TRUE) || symbreaks,
                        densadj = 0.25,
                        key.title = NULL,
@@ -75,7 +75,7 @@ heatmap.2 <- function (x,
                        key.ylab = NULL,
                        key.xtickfun = NULL,
                        key.ytickfun = NULL,
-                       key.par=list(),
+                       key.par = list(),
 
                        ## plot labels
                        main = NULL,
@@ -88,11 +88,11 @@ heatmap.2 <- function (x,
                        lwid = NULL,
 
                        ## extras
-                       extrafun=NULL,
+                       extrafun = NULL,
                        ...
-                       )
+                      )
 {
-  scale01 <- function(x, low=min(x), high=max(x) )
+  scale01 <- function(x, low=min(x), high=max(x))
     {
       x <- (x-low)/(high - low)
       x
@@ -105,22 +105,22 @@ heatmap.2 <- function (x,
   trace <- match.arg(trace)
   density.info <- match.arg(density.info)
 
-  if(length(col)==1 && is.character(col) )
+  if(length(col)==1 && is.character(col))
     col <- get(col, mode="function")
 
-  if(!missing(breaks) && any(duplicated(breaks)) )
-      stop("breaks may not contian duplicate values")
+  if(!missing(breaks) && any(duplicated(breaks)))
+    stop("breaks may not contian duplicate values")
 
-  if(!missing(breaks) && (scale!="none"))
+  if(!missing(breaks) && scale!="none")
     warning("Using scale=\"row\" or scale=\"column\" when breaks are",
             "specified can produce unpredictable results.",
             "Please consider using only one or the other.")
 
-  if ( is.null(Rowv) || any(is.na(Rowv)) )
+  if(is.null(Rowv) || any(is.na(Rowv)))
     Rowv <- FALSE
-  if ( is.null(Colv) || any(is.na(Colv)) )
+  if(is.null(Colv) || any(is.na(Colv)))
     Colv <- FALSE
-  else if( all(Colv=="Rowv") )
+  else if(all(Colv=="Rowv"))
     Colv <- Rowv
 
 
@@ -141,46 +141,31 @@ heatmap.2 <- function (x,
 
   if(!inherits(Rowv, "dendrogram")) {
     ## Check if Rowv and dendrogram arguments are consistent
-    if (
-          (
-             ( is.logical(Rowv) && !isTRUE(Rowv) )
-              ||
-             ( is.null(Rowv) )
-          )
-          &&
-          ( dendrogram %in% c("both","row") )
-       )
+    if(((is.logical(Rowv) && !isTRUE(Rowv)) || is.null(Rowv))
+       && dendrogram %in% c("both","row"))
       {
         warning("Discrepancy: Rowv is FALSE, while dendrogram is `",
                 dendrogram, "'. Omitting row dendogram.")
 
-        if (dendrogram=="both")
+        if(dendrogram=="both")
           dendrogram <- "column"
         else
           dendrogram <- "none"
-
       }
   }
 
   if(!inherits(Colv, "dendrogram")) {
     ## Check if Colv and dendrogram arguments are consistent
-    if (
-         (
-           (is.logical(Colv) && !isTRUE(Colv) )
-             ||
-            (is.null(Colv))
-         )
-         &&
-         ( dendrogram %in% c("both","column")) )
+    if(((is.logical(Colv) && !isTRUE(Colv)) || is.null(Colv))
+       && dendrogram %in% c("both","column"))
       {
         warning("Discrepancy: Colv is FALSE, while dendrogram is `",
                 dendrogram, "'. Omitting column dendogram.")
 
-        if (dendrogram=="both")
+        if(dendrogram=="both")
           dendrogram <- "row"
         else
           dendrogram <- "none"
-
       }
   }
 
@@ -191,18 +176,18 @@ heatmap.2 <- function (x,
 
   ## get the dendrograms and reordering indices
 
-  ## if( dendrogram %in% c("both","row") )
+  ## if(dendrogram %in% c("both","row"))
   ##  { ## dendrogram option is used *only* for display purposes
   if(inherits(Rowv, "dendrogram"))
     {
       ddr <- Rowv ## use Rowv 'as-is', when it is dendrogram
       rowInd <- order.dendrogram(ddr)
-      if(length(rowInd)>nr || any(rowInd<1 | rowInd > nr ))
+      if(length(rowInd)>nr || any(rowInd<1 | rowInd>nr))
          stop("Rowv dendrogram doesn't match size of x")
-      if (length(rowInd) < nr)
-          nr <- length(rowInd)
+      if(length(rowInd) < nr)
+        nr <- length(rowInd)
     }
-  else if (is.integer(Rowv))
+  else if(is.integer(Rowv))
     {
       ## Compute dendrogram and do reordering based on given vector
       distr <- distfun(x)
@@ -214,7 +199,7 @@ heatmap.2 <- function (x,
       if(nr != length(rowInd))
         stop("row dendrogram ordering gave index of wrong length")
     }
-  else if (isTRUE(Rowv))
+  else if(isTRUE(Rowv))
     { ## If TRUE, compute dendrogram and do reordering based on rowMeans
       Rowv <- rowMeans(x, na.rm = na.rm)
       distr <- distfun(x)
@@ -241,23 +226,26 @@ heatmap.2 <- function (x,
     {
       ddc <- Colv ## use Colv 'as-is', when it is dendrogram
       colInd <- order.dendrogram(ddc)
-      if(length(colInd)>nc || any(colInd<1 | colInd > nc ))
-         stop("Colv dendrogram doesn't match size of x")
-      if (length(colInd) < nc)
-          nc <- length(colInd)
+      if(length(colInd)>nc || any(colInd<1 | colInd > nc))
+        stop("Colv dendrogram doesn't match size of x")
+      if(length(colInd) < nc)
+        nc <- length(colInd)
     }
-  else if(identical(Colv, "Rowv")) {
-    if(nr != nc)
-      stop('Colv = "Rowv" but nrow(x) != ncol(x)')
-    if(exists("ddr"))
-      {
-        ddc <- ddr
-        colInd <- order.dendrogram(ddc)
-      } else
-    colInd <- rowInd
-  } else if(is.integer(Colv))
+  else if(identical(Colv, "Rowv"))
+    {
+      if(nr != nc)
+        stop('Colv = "Rowv" but nrow(x) != ncol(x)')
+      if(exists("ddr"))
+        {
+          ddc <- ddr
+          colInd <- order.dendrogram(ddc)
+        }
+      else
+        colInd <- rowInd
+    }
+  else if(is.integer(Colv))
     {## Compute dendrogram and do reordering based on given vector
-      distc <- distfun(if(symm)x else t(x))
+      distc <- distfun(if(symm) x else t(x))
       hcc <- hclustfun(distc)
       ddc <- as.dendrogram(hcc)
       ddc <- reorderfun(ddc, Colv)
@@ -266,10 +254,10 @@ heatmap.2 <- function (x,
       if(nc != length(colInd))
         stop("column dendrogram ordering gave index of wrong length")
     }
-  else if (isTRUE(Colv))
+  else if(isTRUE(Colv))
     {## If TRUE, compute dendrogram and do reordering based on rowMeans
       Colv <- colMeans(x, na.rm = na.rm)
-      distc <- distfun(if(symm)x else t(x))
+      distc <- distfun(if(symm) x else t(x))
       hcc <- hclustfun(distc)
       ddc <- as.dendrogram(hcc)
       ddc <- reorderfun(ddc, Colv)
@@ -318,38 +306,38 @@ heatmap.2 <- function (x,
   if(scale == "row") {
     retval$rowMeans <- rm <- rowMeans(x, na.rm = na.rm)
     x <- sweep(x, 1, rm)
-    retval$rowSDs <-  sx <- apply(x, 1, sd, na.rm = na.rm)
+    retval$rowSDs <- sx <- apply(x, 1, sd, na.rm = na.rm)
     x <- sweep(x, 1, sx, "/")
   }
   else if(scale == "column") {
     retval$colMeans <- rm <- colMeans(x, na.rm = na.rm)
     x <- sweep(x, 2, rm)
-    retval$colSDs <-  sx <- apply(x, 2, sd, na.rm = na.rm)
+    retval$colSDs <- sx <- apply(x, 2, sd, na.rm = na.rm)
     x <- sweep(x, 2, sx, "/")
   }
 
   ## Set up breaks and force values outside the range into the endmost bins
-  if(missing(breaks) || is.null(breaks) || length(breaks)<1 )
+  if(missing(breaks) || is.null(breaks) || length(breaks)<1)
     {
-      if( missing(col) ||  is.function(col) )
+      if(missing(col) || is.function(col))
         breaks <- 16
       else
-        breaks <- length(col)+1
+        breaks <- length(col) + 1
     }
 
-  if(length(breaks)==1)
+  if(length(breaks) == 1)
     {
       if(!symbreaks)
-        breaks <- seq( min(x, na.rm=na.rm), max(x,na.rm=na.rm), length=breaks)
+        breaks <- seq(min(x, na.rm=na.rm), max(x,na.rm=na.rm), length=breaks)
       else
         {
           extreme <- max(abs(x), na.rm=TRUE)
-          breaks <- seq( -extreme, extreme, length=breaks )
+          breaks <- seq(-extreme, extreme, length=breaks)
         }
     }
 
   nbr <- length(breaks)
-  ncol <- length(breaks)-1
+  ncol <- length(breaks) - 1
 
   if(class(col)=="function")
     col <- col(ncol)
@@ -362,13 +350,13 @@ heatmap.2 <- function (x,
 
 
   ## Calculate the plot layout
-  if( missing(lhei) || is.null(lhei) )
+  if(missing(lhei) || is.null(lhei))
     lhei <- c(keysize, 4)
 
-  if( missing(lwid) || is.null(lwid) )
+  if(missing(lwid) || is.null(lwid))
     lwid <- c(keysize, 4)
 
-  if( missing(lmat) || is.null(lmat) )
+  if(missing(lmat) || is.null(lmat))
     {
       lmat <- rbind(4:3, 2:1)
 
@@ -429,7 +417,8 @@ heatmap.2 <- function (x,
       x <- x[,iy]
       cellnote <- cellnote[,iy]
     }
-  else iy <- 1:nr
+  else
+    iy <- 1:nr
 
   ## display the main carpet
   image(1:nc, 1:nr, x, xlim = 0.5+ c(0, nc), ylim = 0.5+ c(0, nr),
@@ -455,14 +444,14 @@ heatmap.2 <- function (x,
   if(is.null(srtCol) && is.null(colCol))
     axis(1,
          1:nc,
-         labels= labCol,
-         las= 2,
-         line= -0.5 + offsetCol,
-         tick= 0,
-         cex.axis= cexCol,
+         labels=labCol,
+         las=2,
+         line=-0.5 + offsetCol,
+         tick=0,
+         cex.axis=cexCol,
          hadj=adjCol[1],
          padj=adjCol[2]
-         )
+        )
   else
     {
       if(is.null(srtCol) || is.numeric(srtCol))
@@ -484,7 +473,7 @@ heatmap.2 <- function (x,
                cex=cexCol,
                srt=srtCol,
                col=colCol
-               )
+              )
           par(xpd=xpd.orig)
         }
       else
@@ -503,7 +492,7 @@ heatmap.2 <- function (x,
            cex.axis=cexRow,
            hadj=adjRow[1],
            padj=adjRow[2]
-           )
+          )
     }
   else
     {
@@ -519,7 +508,7 @@ heatmap.2 <- function (x,
                cex=cexRow,
                srt=srtRow,
                col=colRow
-               )
+              )
           par(xpd=xpd.orig)
         }
       else
@@ -533,20 +522,20 @@ heatmap.2 <- function (x,
   if(!is.null(ylab)) mtext(ylab, side = 4, line = margins[2] - 1.25)
 
   ## perform user-specified function
-  if (!missing(add.expr))
+  if(!missing(add.expr))
     eval(substitute(add.expr))
 
   ## add 'background' colored spaces to visually separate sections
   if(!missing(colsep))
-      for(csep in colsep)
-        rect(xleft =csep+0.5,               ybottom=0,
-             xright=csep+0.5+sepwidth[1],   ytop=ncol(x)+1,
-             lty=1, lwd=1, col=sepcolor, border=sepcolor)
+    for(csep in colsep)
+      rect(xleft=csep+0.5,              ybottom=0,
+           xright=csep+0.5+sepwidth[1], ytop=ncol(x)+1,
+           lty=1, lwd=1, col=sepcolor, border=sepcolor)
 
   if(!missing(rowsep))
     for(rsep in rowsep)
-      rect(xleft =0,          ybottom= (ncol(x)+1-rsep)-0.5,
-           xright=nrow(x)+1,  ytop   = (ncol(x)+1-rsep)-0.5 - sepwidth[2],
+      rect(xleft=0,          ybottom= (ncol(x)+1-rsep)-0.5,
+           xright=nrow(x)+1, ytop   = (ncol(x)+1-rsep)-0.5 - sepwidth[2],
            lty=1, lwd=1, col=sepcolor, border=sepcolor)
 
 
@@ -555,11 +544,11 @@ heatmap.2 <- function (x,
   max.scale <- max(breaks)
   x.scaled  <- scale01(t(x), min.scale, max.scale)
 
-  if(trace %in% c("both","column") )
+  if(trace %in% c("both","column"))
     {
       retval$vline <- vline
       vline.vals <- scale01(vline, min.scale, max.scale)
-      for( i in 1:length(colInd) )
+      for(i in 1:length(colInd))
         {
           if(!is.null(vline))
             {
@@ -573,11 +562,11 @@ heatmap.2 <- function (x,
     }
 
 
-  if(trace %in% c("both","row") )
+  if(trace %in% c("both","row"))
     {
       retval$hline <- hline
       hline.vals <- scale01(hline, min.scale, max.scale)
-      for( i in 1:length(rowInd) )
+      for(i in 1:length(rowInd))
         {
           if(!is.null(hline))
             {
@@ -602,60 +591,61 @@ heatmap.2 <- function (x,
   plot.index <- plot.index + 1
 
   ## increment plot.index and then do
-  ##   latout_set( lmat, plot.index )
+  ##   latout_set(lmat, plot.index)
   ## to set to the correct plot region, instead of
   ## relying on plot.new().
 
   ## the two dendrograms :
   par(mar = c(margins[1], 0, 0, 0))
-  if( dendrogram %in% c("both","row") )
+  if(dendrogram %in% c("both","row"))
     {
-        flag <- try(
-            plot.dendrogram(ddr, horiz = TRUE, axes = FALSE, yaxs = "i", leaflab = "none")
-            )
-        if("try-error" %in% class(flag))
-            {
-                cond <- attr(flag, "condition")
-                if(!is.null(cond) && conditionMessage(cond)=="evaluation nested too deeply: infinite recursion / options(expressions=)?")
-                    stop('Row dendrogram too deeply nested, recursion limit exceeded.  Try increasing option("expressions"=...).')
-            }
+      flag <- try(
+        plot.dendrogram(ddr, horiz = TRUE, axes = FALSE, yaxs = "i", leaflab = "none")
+      )
+      if("try-error" %in% class(flag))
+        {
+          cond <- attr(flag, "condition")
+          if(!is.null(cond) && conditionMessage(cond)=="evaluation nested too deeply: infinite recursion / options(expressions=)?")
+            stop('Row dendrogram too deeply nested, recursion limit exceeded.  Try increasing option("expressions"=...).')
+        }
     }
   else
     plot.new()
 
   par(mar = c(0, 0, if(!is.null(main)) 5 else 0, margins[2]))
 
-  if( dendrogram %in% c("both","column") )
+  if(dendrogram %in% c("both","column"))
     {
-        flag <- try(
-            plot.dendrogram(ddc, axes = FALSE, xaxs = "i", leaflab = "none")
-            )
-        if("try-error" %in% class(flag))
-            {
-                cond <- attr(flag, "condition")
-                if(!is.null(cond) && conditionMessage(cond)=="evaluation nested too deeply: infinite recursion / options(expressions=)?")
-                    stop('Column dendrogram too deeply nested, recursion limit exceeded.  Try increasing option("expressions"=...).')
-            }
+      flag <- try(
+        plot.dendrogram(ddc, axes = FALSE, xaxs = "i", leaflab = "none")
+      )
+      if("try-error" %in% class(flag))
+        {
+          cond <- attr(flag, "condition")
+          if(!is.null(cond) && conditionMessage(cond)=="evaluation nested too deeply: infinite recursion / options(expressions=)?")
+            stop('Column dendrogram too deeply nested, recursion limit exceeded.  Try increasing option("expressions"=...).')
+        }
     }
   else
     plot.new()
 
   ## title
-  if(!is.null(main)) title(main, cex.main = 1.5*op[["cex.main"]])
+  if(!is.null(main))
+    title(main, cex.main = 1.5*op[["cex.main"]])
 
   ## Add the color-key
   if(key)
     {
       mar <- c(5, 4, 2, 1)
-      if (!is.null(key.xlab) && is.na(key.xlab))
-          mar[1] <- 2
-      if (!is.null(key.ylab) && is.na(key.ylab))
-          mar[2] <- 2
-      if (!is.null(key.title) && is.na(key.title))
-          mar[3] <- 1
+      if(!is.null(key.xlab) && is.na(key.xlab))
+        mar[1] <- 2
+      if(!is.null(key.ylab) && is.na(key.ylab))
+        mar[2] <- 2
+      if(!is.null(key.title) && is.na(key.title))
+        mar[3] <- 1
       par(mar = mar, cex=0.75, mgp=c(2, 1, 0))
-      if (length(key.par) > 0)
-          do.call(par, key.par)
+      if(length(key.par) > 0)
+        do.call(par, key.par)
       tmpbreaks <- breaks
 
       if(symkey)
@@ -681,7 +671,7 @@ heatmap.2 <- function (x,
             xaxt="n",
             yaxt="n")
 
-      if (is.null(key.xtickfun)) {
+      if(is.null(key.xtickfun)) {
         usr <- par("usr")
         par(usr=c(usr[1], usr[2], 0, 1))
         lv <- pretty(breaks)
@@ -694,16 +684,16 @@ heatmap.2 <- function (x,
 
       xargs$side <- 1
       do.call(axis, xargs)
-      if (is.null(key.xlab)) {
+      if(is.null(key.xlab)) {
         if(scale=="row")
-            key.xlab <- "Row Z-Score"
+          key.xlab <- "Row Z-Score"
         else if(scale=="column")
-           key.xlab <- "Column Z-Score"
+          key.xlab <- "Column Z-Score"
         else
-            key.xlab <- "Value"
+          key.xlab <- "Value"
       }
-      if (!is.na(key.xlab)) {
-          mtext(side=1, key.xlab, line=par("mgp")[1], padj=0.5, cex=par("cex") * par("cex.lab"))
+      if(!is.na(key.xlab)) {
+        mtext(side=1, key.xlab, line=par("mgp")[1], padj=0.5, cex=par("cex") * par("cex.lab"))
       }
 
       if(density.info=="density")
@@ -715,21 +705,21 @@ heatmap.2 <- function (x,
           dens$y <- dens$y[!omit]
           dens$x <- scale01(dens$x, min.raw, max.raw)
           lines(dens$x, dens$y / max(dens$y) * 0.95, col=denscol, lwd=1)
-          if (is.null(key.ytickfun)) {
-              yargs <- list(at=pretty(dens$y)/max(dens$y) * 0.95, labels=pretty(dens$y))
+          if(is.null(key.ytickfun)) {
+            yargs <- list(at=pretty(dens$y)/max(dens$y) * 0.95, labels=pretty(dens$y))
           } else {
-              yargs <- key.ytickfun()
+            yargs <- key.ytickfun()
           }
           yargs$side <- 2
           do.call(axis, yargs)
-          if (is.null(key.title))
-              key.title <- "Color Key\nand Density Plot"
-          if (!is.na(key.title))
+          if(is.null(key.title))
+            key.title <- "Color Key\nand Density Plot"
+          if(!is.na(key.title))
             title(key.title)
           par(cex=0.5)
-          if (is.null(key.ylab))
-              key.ylab <- "Density"
-          if (!is.na(key.ylab))
+          if(is.null(key.ylab))
+            key.ylab <- "Density"
+          if(!is.na(key.ylab))
             mtext(side=2,key.ylab, line=par("mgp")[1], padj=0.5, cex=par("cex") * par("cex.lab"))
         }
       else if(density.info=="histogram")
@@ -738,47 +728,44 @@ heatmap.2 <- function (x,
           hx <- scale01(breaks, min.raw, max.raw)
           hy <- c(h$counts, h$counts[length(h$counts)])
           lines(hx, hy/max(hy)*0.95, lwd=1, type="s", col=denscol)
-          if (is.null(key.ytickfun)) {
-              yargs <- list(at=pretty(hy)/max(hy) * 0.95, labels=pretty(hy))
+          if(is.null(key.ytickfun)) {
+            yargs <- list(at=pretty(hy)/max(hy) * 0.95, labels=pretty(hy))
           } else {
-              yargs <- key.ytickfun()
+            yargs <- key.ytickfun()
           }
           yargs$side <- 2
           do.call(axis, yargs)
-          if (is.null(key.title))
-              key.title <- "Color Key\nand Histogram"
-          if (!is.na(key.title))
+          if(is.null(key.title))
+            key.title <- "Color Key\nand Histogram"
+          if(!is.na(key.title))
             title(key.title)
           par(cex=0.5)
-          if (is.null(key.ylab))
-              key.ylab <- "Count"
-          if (!is.na(key.ylab))
+          if(is.null(key.ylab))
+            key.ylab <- "Count"
+          if(!is.na(key.ylab))
             mtext(side=2,key.ylab, line=par("mgp")[1], padj=0.5, cex=par("cex") * par("cex.lab"))
         }
-      else
-          if (is.null(key.title))
-              title("Color Key")
+      else if(is.null(key.title))
+        title("Color Key")
 
-      if(trace %in% c("both","column") )
-          {
-              vline.vals <- scale01(vline, min.raw, max.raw)
-              if(!is.null(vline))
-                  {
-                      abline(v=vline.vals, col=linecol, lty=2)
-                  }
-          }
+      if(trace %in% c("both","column"))
+        {
+          vline.vals <- scale01(vline, min.raw, max.raw)
+          if(!is.null(vline))
+            {
+              abline(v=vline.vals, col=linecol, lty=2)
+            }
+        }
 
 
-      if(trace %in% c("both","row") )
-          {
-              hline.vals <- scale01(hline, min.raw, max.raw)
-              if(!is.null(hline))
-                  {
-                      abline(v=hline.vals, col=linecol, lty=2)
-
-                  }
-          }
-
+      if(trace %in% c("both","row"))
+        {
+          hline.vals <- scale01(hline, min.raw, max.raw)
+          if(!is.null(hline))
+            {
+              abline(v=hline.vals, col=linecol, lty=2)
+            }
+        }
     }
   else
     {
@@ -787,21 +774,20 @@ heatmap.2 <- function (x,
     }
   ## Create a table showing how colors match to (transformed) data ranges
   retval$colorTable <- data.frame(
-                             low=retval$breaks[-length(retval$breaks)],
-                             high=retval$breaks[-1],
-                             color=retval$col
-                             )
+    low=retval$breaks[-length(retval$breaks)],
+    high=retval$breaks[-1],
+    color=retval$col
+  )
 
   # Store layout information, suggested by Jenny Drnevich
   retval$layout <- list(lmat = lmat,
                         lhei = lhei,
                         lwid = lwid
-                        )
-
+                       )
 
   ## If user has provided an extra function, call it.
   if(!is.null(extrafun))
-      extrafun()
+    extrafun()
 
-  invisible( retval )
+  invisible(retval)
 }
