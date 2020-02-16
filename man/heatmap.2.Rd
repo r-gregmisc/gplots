@@ -107,37 +107,40 @@ heatmap.2(x,
 \arguments{
   % Dendrogram Control
   \item{x}{numeric matrix of the values to be plotted.}
-  \item{Rowv}{determines if and how the \emph{row} dendrogram should be
-    reordered. By default, it is TRUE, which implies dendrogram is
-    computed and reordered based on row means. If NULL or FALSE, then no
-    dendrogram is computed and no reordering is done. If a
-    \code{\link{dendrogram}}, then it is used "as-is", ie
-    without any reordering. If a vector of integers, then dendrogram is
-    computed and reordered based on the order of the vector.}
-  \item{Colv}{determines if and how the \emph{column} dendrogram should
-    be reordered. Has the options as the \code{Rowv} argument above and
-    \emph{additionally} when \code{x} is a square matrix,
-    \code{Colv="Rowv"} means that columns should be treated identically
-    to the rows.}
+  \item{Rowv}{determines if and how the \code{"row"} dendrogram should
+    be reordered. By default, it is \code{TRUE}, which implies the
+    dendrogram is computed and reordered based on row means. If
+    \code{NULL} or \code{FALSE}, then no dendrogram is computed and no
+    reordering is done. If a \code{\link{dendrogram}}, then it is used
+    "as-is", i.e. without any reordering. If a vector of integers, then
+    the dendrogram is computed and reordered based on the order of the
+    vector.}
+  \item{Colv}{determines if and how the \code{"column"} dendrogram
+    should be reordered. Has the same options as the \code{Rowv}
+    argument above and \emph{additionally} when \code{x} is a square
+    matrix, \code{Colv="Rowv"} means that columns should be treated
+    identically to the rows.}
   \item{distfun}{function used to compute the distance (dissimilarity)
     between both rows and columns. Defaults to \code{\link{dist}}.}
   \item{hclustfun}{function used to compute the hierarchical clustering
     when \code{Rowv} or \code{Colv} are not dendrograms. Defaults to
     \code{\link{hclust}}.}
-  \item{dendrogram}{character string indicating whether to draw 'none',
-    'row', 'column' or 'both' dendrograms. Defaults to 'both'. However,
-    if Rowv (or Colv) is FALSE or NULL and dendrogram is 'both', then a
-    warning is issued and Rowv (or Colv) arguments are honoured.}
+  \item{dendrogram}{character string indicating whether to draw
+    \code{"none"}, \code{"row"}, \code{"column"} or \code{"both"}
+    dendrograms. Defaults to \code{"both"}. However, if \code{Rowv} (or
+    \code{Colv}) is \code{FALSE} or \code{NULL} and dendrogram is
+    \code{"both"}, then a warning is issued and \code{Rowv} (or
+    \code{Colv}) arguments are honored.}
   \item{reorderfun}{\code{function(d, w)} of dendrogram and weights for
     reordering the row and column dendrograms. The default uses
-    \code{\link{stats}{reorder.dendrogram}}}.
+    \code{\link{stats}{reorder.dendrogram}}.}
   \item{symm}{logical indicating if \code{x} should be treated
-    \bold{symm}etrically; can only be true when \code{x} is a
-    square matrix.}
+    \emph{symm}etrically. Can only be true when \code{x} is a square
+    matrix.}
   % data scaling
-  \item{scale}{character indicating if the values should be centered and
-    scaled in either the row direction or the column direction, or
-    none. The default is \code{"none"}.}
+  \item{scale}{character string indicating if the values should be
+    centered and scaled in either the row direction or the column
+    direction, or none. The default is \code{"none"}.}
   \item{na.rm}{logical indicating whether \code{NA}'s should be removed.}
   % image plot
   \item{revC}{logical indicating if the column order should be
@@ -145,12 +148,12 @@ heatmap.2(x,
     symmetric case, the symmetry axis is as usual.}
   \item{add.expr}{expression that will be evaluated after the call to
     \code{image}. Can be used to add components to the plot.}
-  \item{breaks}{(optional) Either a numeric vector indicating the
-    splitting points for binning \code{x} into colors, or a integer
+  \item{breaks}{(optional) either a numeric vector indicating the
+    splitting points for binning \code{x} into colors, or an integer
     number of break points to be used, in which case the break points
     will be spaced equally between \code{min(x)} and \code{max(x)}.}
-  \item{symbreaks}{Boolean indicating whether breaks should be
-    made symmetric about 0. Defaults to \code{TRUE} if the data includes
+  \item{symbreaks}{logical indicating whether breaks should be made
+    symmetric about 0. Defaults to \code{TRUE} if the data includes
     negative values, and to \code{FALSE} otherwise.}
   \item{col}{colors used for the image. Defaults to heat colors
     (\code{heat.colors}).}
@@ -159,10 +162,11 @@ heatmap.2(x,
     indicating which columns or rows should be separated from the
     preceding columns or rows by a narrow space of color
     \code{sepcolor}.}
-  \item{sepwidth}{(optional) Vector of length 2 giving the width
-    (colsep) or height (rowsep) the separator box drawn by colsep and
-    rowsep as a function of the width (colsep) or height (rowsep) of a
-    cell. Defaults to \code{c(0.05, 0.05)}}
+  \item{sepwidth}{(optional) vector of length 2 giving the width
+    (\code{colsep}) or height (\code{rowsep}) of the separator box drawn
+    by \code{colsep} and \code{rowsep} as a function of the width
+    (\code{colsep}) or height (\code{rowsep}) of a cell. Defaults to
+    \code{c(0.05, 0.05)}}.
   % cell labeling
   \item{cellnote}{(optional) matrix of character strings which will be
     placed within each color cell, e.g. p-value symbols.}
@@ -170,25 +174,27 @@ heatmap.2(x,
     items.}
   \item{notecol}{(optional) character string specifying the color for
     \code{cellnote} text. Defaults to "cyan".}
-  \item{na.color}{Color to use for missing value (\code{NA}). Defaults
+  \item{na.color}{color to use for missing value (\code{NA}). Defaults
     to the plot background color.}
   % level trace
-  \item{trace}{character string indicating whether a solid "trace" line
-    should be drawn across 'row's or down 'column's, 'both' or 'none'.
-    The distance of the line from the center of each color-cell is
-    proportional to the size of the measurement. Defaults to 'column'.}
-  \item{tracecol}{character string giving the color for "trace"
-    line. Defaults to "cyan".}
-  \item{hline, vline, linecol}{Vector of values within cells where a
-    horizontal or vertical dotted line should be drawn. The color of
-    the line is controlled by \code{linecol}. Horizontal lines are only
-    plotted if \code{trace} is 'row' or 'both'. Vertical lines are only
-    drawn if \code{trace} 'column' or 'both'. \code{hline} and
-    \code{vline} default to the median of the breaks, \code{linecol}
-    defaults to the value of \code{tracecol}.}
+  \item{trace}{character string indicating whether a solid trace line
+    should be drawn across \code{"row"}s or down \code{"column"}s,
+    \code{"both"} or \code{"none"}. The distance of the line from the
+    center of each color-cell is proportional to the size of the
+    measurement. Defaults to \code{"column"}.}
+  \item{tracecol}{character string giving the color for the trace
+    lines. Defaults to \code{"cyan"}.}
+  \item{hline, vline, linecol}{vector of values within cells where a
+    horizontal or vertical dotted line should be drawn. The color of the
+    line is controlled by \code{linecol}. Horizontal lines are only
+    plotted if \code{trace} is \code{"row"} or \code{"both"}. Vertical
+    lines are only drawn if \code{trace} is \code{"column"} or
+    \code{"both"}. \code{hline} and \code{vline} default to the median
+    of the breaks, \code{linecol} defaults to the value of
+    \code{tracecol}.}
   % Row/Column Labeling
   \item{margins}{numeric vector of length 2 containing the margins (see
-    \code{\link{par}(mar= *)}) for column and row names, respectively.}
+    \code{\link{par}(mar = *)}) for column and row names, respectively.}
   \item{ColSideColors}{(optional) character vector of length
     \code{ncol(x)} containing the color names for a horizontal side bar
     that may be used to annotate the columns of \code{x}.}
@@ -202,64 +208,63 @@ heatmap.2(x,
     use; these default to \code{rownames(x)} or \code{colnames(x)},
     respectively.}
   \item{srtRow, srtCol}{angle of row/column labels, in degrees from
-    horizontal}
-  \item{adjRow, adjCol}{2-element vector giving the (left-right,
+    horizontal.}
+  \item{adjRow, adjCol}{vector of length 2 giving the (left-right,
     top-bottom) justification of row/column labels (relative to the text
     orientation).}
   \item{offsetRow, offsetCol}{Number of character-width spaces to place
     between row/column labels and the edge of the plotting region.}
   \item{colRow, colCol}{color of row/column labels, either a scalar to
     set the color of all labels the same, or a vector providing the
-    colors of each label item}
+    colors of each label item.}
   % Color key and density info
   \item{key}{logical indicating whether a color-key should be shown.}
-  \item{keysize}{numeric value indicating the size of the key}
-  \item{keygrid}{number of bins used to plot the color-key}
+  \item{keysize}{numeric value indicating the size of the key.}
+  \item{keygrid}{number of bins used to plot the color-key.}
   \item{density.info}{character string indicating whether to superimpose
-    a 'histogram', a 'density' plot, or no plot ('none') on the
-    color-key.}
+    a \code{"histogram"}, a \code{"density"} plot, or no plot
+    (\code{"none"}) on the color-key.}
   \item{denscol}{character string giving the color for the density
-    display specified by \code{density.info}, defaults to the same value
+    display specified by \code{density.info}. Defaults to the same value
     as \code{tracecol}.}
-  \item{symkey}{Boolean indicating whether the color key should be
-    made symmetric about 0. Defaults to \code{TRUE} if the data includes
+  \item{symkey}{logical indicating whether the color key should be made
+    symmetric about 0. Defaults to \code{TRUE} if the data includes
     negative values, and to \code{FALSE} otherwise.}
-  \item{densadj}{Numeric scaling value for tuning the kernel width when
-    a density plot is drawn on the color key. (See the \code{adjust}
-    parameter for the \code{density} function for details.) Defaults to
+  \item{densadj}{numeric scaling value for tuning the kernel width when
+    a density plot is drawn on the color key. See the \code{adjust}
+    parameter for the \code{density} function for details. Defaults to
     0.25.}
-  \item{key.title}{main title of the color key. If set to NA no title
-    will be plotted.}
-  \item{key.xlab}{x axis label of the color key. If set to NA no label
-    will be plotted.}
-  \item{key.ylab}{y axis label of the color key. If set to NA no label
-    will be plotted.}
+  \item{key.title}{main title of the color key. If set to \code{NA} no
+    title will be plotted.}
+  \item{key.xlab}{x axis label of the color key. If set to \code{NA} no
+    label will be plotted.}
+  \item{key.ylab}{y axis label of the color key. If set to \code{NA} no
+    label will be plotted.}
   \item{key.xtickfun}{function computing tick location and labels for
     the x axis of the color key. Returns a named list containing
-    parameters that can be passed to \code{axis}. See examples.}
+    parameters that can be passed to \code{axis}.}
   \item{key.ytickfun}{function computing tick location and labels for
     the y axis of the color key. Returns a named list containing
-    parameters that can be passed to \code{axis}. See examples.}
+    parameters that can be passed to \code{axis}.}
   \item{key.par}{graphical parameters for the color key. Named list that
     can be passed to \code{par}.}
   % plot labels
-  \item{main, xlab, ylab}{main, x- and y-axis titles; defaults to none.}
+  \item{main, xlab, ylab}{main, x- and y-axis titles. Defaults to none.}
   % figure layout
   \item{lmat, lhei, lwid}{visual layout: position matrix, column height,
-    column width. See below for details}
-  \item{extrafun}{A function to be called after all other work. See
-    examples.}
-  \item{...}{additional arguments passed on to \code{\link{image}}}
+    column width. See below for details.}
+  \item{extrafun}{function to be called after all other work.}
+  \item{...}{additional arguments passed on to \code{\link{image}}.}
 }
 \details{
   If either \code{Rowv} or \code{Colv} are dendrograms they are honored
   (and not reordered). Otherwise, dendrograms are computed as
   \code{dd <- as.dendrogram(hclustfun(distfun(X)))} where \code{X} is
-  either \code{x} or \code{t(x)}.\cr
+  either \code{x} or \code{t(x)}.
 
-  If either is a vector (of \dQuote{weights}) then the appropriate
-  dendrogram is reordered according to the supplied values subject to
-  the constraints imposed by the dendrogram, by
+  If either is a vector (of 'weights') then the appropriate dendrogram
+  is reordered according to the supplied values subject to the
+  constraints imposed by the dendrogram, by
   \code{\link{reorder}(dd, Rowv)}, in the row case. If either is
   missing, as by default, then the ordering of the corresponding
   dendrogram is by the mean value of the rows/columns, i.e., in the case
@@ -273,43 +278,32 @@ heatmap.2(x,
 
   The default colors range from red to white (\code{heat.colors}) and
   are not pretty. Consider using enhancements such as the
-  \pkg{RColorBrewer} package,
-  \url{https://cran.r-project.org/package=RColorBrewer} to select better
-  colors.
+  \pkg{RColorBrewer} package to select better colors.
 
   By default four components will be displayed in the plot. At the top
   left is the color key, top right is the column dendrogram, bottom left
-  is the row dendrogram, bottom right is the image plot. When
-  RowSideColor or ColSideColor are provided, an additional row or column
-  is inserted in the appropriate location. This layout can be overriden
-  by specifiying appropriate values for \code{lmat}, \code{lwid}, and
-  \code{lhei}. \code{lmat} controls the relative postition of each
-  element, while \code{lwid} controls the column width, and \code{lhei}
-  controls the row height. See the help page for
+  is the row dendrogram, and bottom right is the image plot. When
+  \code{RowSideColor} or \code{ColSideColor} are provided, an additional
+  row or column is inserted in the appropriate location. This layout can
+  be overriden by specifiying appropriate values for \code{lmat},
+  \code{lwid}, and \code{lhei}. \code{lmat} controls the relative
+  postition of each element, while \code{lwid} controls the column
+  width, and \code{lhei} controls the row height. See
   \code{\link[graphics]{layout}} for details on how to use these
   arguments.
-}
-\note{
-  The original rows and columns are reordered to match the dendrograms
-  \code{Rowv} and \code{Colv} (if present).
-
-  \code{heatmap.2()} uses \code{\link{layout}} to arragent the plot
-  elements. Consequentially, it can \bold{not} be used in a multi
-  column/row layout using \code{\link{layout}(\dots)},
-  \code{\link{par}(mfrow=\dots)} or \code{(mfcol=\dots)}.
 }
 \value{
   Invisibly, a list with components
   \item{rowInd}{row index permutation vector as returned by
-    \code{\link{order.dendrogram}}.}
-  \item{colInd}{column index permutation vector.}
+    \code{\link{order.dendrogram}}}
+  \item{colInd}{column index permutation vector}
   \item{call}{the matched call}
-  \item{rowMeans, rowSDs}{mean and standard deviation of each row: only
+  \item{rowMeans, rowSDs}{mean and standard deviation of each row, only
     present if \code{scale="row"}}
-  \item{colMeans, colSDs}{mean and standard deviation of each column:
+  \item{colMeans, colSDs}{mean and standard deviation of each column,
     only present if \code{scale="column"}}
-  \item{carpet}{reordered and scaled 'x' values used generate the main
-    'carpet'}
+  \item{carpet}{reordered and scaled \code{x} values used generate the
+    main 'carpet'}
   \item{rowDendrogram}{row dendrogram, if present}
   \item{colDendrogram}{column dendrogram, if present}
   \item{breaks}{values used for color break points}
@@ -318,13 +312,24 @@ heatmap.2(x,
     \code{trace="both"} or \code{trace="column"}}
   \item{hline}{center-line value used for row trace, present only if
     \code{trace="both"} or \code{trace="row"}}
-  \item{colorTable}{A three-column data frame providing the lower and
+  \item{colorTable}{a three-column data frame providing the lower and
     upper bound and color for each bin}
-  \item{layout}{A named list containing the values used for
+  \item{layout}{a named list containing the values used for
     \code{lmat}, \code{lhei}, and \code{lwid}.}
 }
-\author{Andy Liaw, original; R. Gentleman, M. Maechler, W. Huber,
-  G. Warnes, revisions.}
+\note{
+  The original rows and columns are reordered to match the dendrograms
+  \code{Rowv} and \code{Colv}, if present.
+
+  \code{heatmap.2()} uses \code{\link{layout}} to arrange the plot
+  elements. Consequentially, it can \bold{not} be used in a multi
+  column/row layout using \code{\link{layout}(\dots)},
+  \code{\link{par}(mfrow=\dots)} or \code{(mfcol=\dots)}.
+}
+\author{
+  Originally written by Andy Liaw, later revisions by R. Gentleman, M.
+  Maechler, W. Huber, and G. Warnes.
+}
 \seealso{
   \code{\link{image}}, \code{\link{hclust}}.
 
