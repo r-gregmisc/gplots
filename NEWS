@@ -66,7 +66,7 @@ New Features:
 * heatmap.2(): Can now be used to plot subsets of a previous heatmap. Decreased
   the granularity of the carpet in heatmap.2()'s color key to avoid visual
   artifacts. Returned object now includes 'layout' element that contains layout
-  information. (Patch provided by Jenny Drnevich.)
+  information. Patch provided by Jenny Drnevich.
 
 * lowess(): New function plotLowess() displays a scatter plot with a
   superimposed lowess curve. The lowess() function now returns a list object of
@@ -79,8 +79,8 @@ Bug Fixes:
 
 * heatmap.2(): Removed debugging print() statement. Now properly sets 'srtCol'
   default if missing and 'colCol' is specified. Corrected a bug causing "Error
-  in plot.new() : figure margins too large" to occur when key=FALSE. (Reported
-  and patch provided by Sveinung Gundersen.)
+  in plot.new() : figure margins too large" to occur when key=FALSE. Reported
+  and patch provided by Sveinung Gundersen.
 
 * Corrected a bug in heatmap.2() causing an error when Rowv=FALSE or Colv=FALSE.
   Corrected message when Rowv=FALSE or Colv=FALSE and the 'dendrogram' argument
@@ -107,22 +107,22 @@ New Features:
 * heatmap.2() has been modified to make it easier to extract and plot
   subclusters from a large heatmap. Simply pass the dendrogram of the subcluster
   together with the full data matrix and, optionally, the breaks of the full
-  heatmap in order to obtain the same color scaling. (Suggestion and patch
-  contributed by Ilia Kats.)
+  heatmap in order to obtain the same color scaling. Suggestion and patch
+  contributed by Ilia Kats.
 
 * venn() returns a list of the members of each set intersection in the attribute
   'intersections'. This can be disabled using the argument intersection=FALSE.
-  (Patch by Steffen Möller.)
+  Patch by Steffen Möller.
 
 Bug Fixes:
 
 * In heatmap.2(), the color key now properly handles color breaks that are not
-  equally spaced. (Issue reported by Tim Richter-Heitmann.)
+  equally spaced. Issue reported by Tim Richter-Heitmann.
 
 * In heatmap.2(), row/column traces in could be plotted on the wrong row/column.
 
-* plotCI() now properly respects the 'type' argument. (Bug report and correction
-  by Wiktor Żelazny.)
+* plotCI() now properly respects the 'type' argument. Bug report and correction
+  by Wiktor Żelazny.
 
 * Removed stray browser() call from overplot()
 
@@ -210,7 +210,7 @@ gplots 2.14.1 (2014-06-30)
 Bug Fixes:
 
 * Corrected heatmap.2() bug in Colv dendrogram object dimension checking
-  introduced in 2.14.0. (Reported by Yong Fuga Li.)
+  introduced in 2.14.0. Reported by Yong Fuga Li.
 
 
 
@@ -222,12 +222,12 @@ New Features:
 
 * heatmap.2(): Added new 'reorderfun' argument to allow the user to specify an
   alternative function to reorder rows/columns based on row/column dendrogram.
-  (Suggested by Yuanhua Liu.)
+  Suggested by Yuanhua Liu.
 
 Bug Fixes:
 
 * heatmap.2(): Fixed typo in heatmap.2() that caused an error when Rowv=FALSE.
-  (Reported by Yuanhua Liu.)
+  Reported by Yuanhua Liu.
 
 Other Changes:
 
@@ -390,13 +390,13 @@ New Features:
 
 Bug Fixes:
 
-* Corrected error in heatmap.2() that arises when data includes NA values
-  (identified by Melissa Key).
+* Corrected error in heatmap.2() that arises when data includes NA values.
+  Identified by Melissa Key.
 
 Other Changes:
 
-* Accelerate hist2d() by replacing for loop with tapply(), and allow user to
-  specify summary function applied (per suggestion by Peter Hagedorn).
+* Accelerate hist2d() by replacing for loop with tapply() and allow user to
+  specify summary function applied, per suggestion by Peter Hagedorn.
 
 
 
@@ -593,8 +593,8 @@ gplots 2.3.0 (2006-03-10)
 --------------------------------------------------------------------------------
 gplots 2.2.0 (2005-12-14)
 --------------------------------------------------------------------------------
-* plotmeans(): Fixed bug based on Stefano Calza's suggestion (the function
-  didn't account for factors unused levels, returning an error).
+* plotmeans(): Fixed bug based on Stefano Calza's suggestion. The function
+  didn't account for factors unused levels, returning an error.
 
 * plot.lm(): Exported NAMESPACE and removed .Alias calls since .Alias is
   defunct.
