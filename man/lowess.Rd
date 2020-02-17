@@ -21,7 +21,7 @@
 \alias{lowess.formula}
 \alias{plot.lowess}
 \alias{plotLowess}
-\title{Scatter Plot Smoothing}
+\title{Scatterplot Smoothing}
 \description{
   The \code{lowess} function performs the computations for the
   \emph{LOWESS} smoother (see the reference below).
@@ -57,13 +57,14 @@ plotLowess(formula, data=parent.frame(), \dots, subset=parent.frame(),
 \arguments{
   \item{formula}{ formula providing a single dependent variable (y) and
     an single independent variable (x) to use as coordinates in the
-    scatter plot.}
+    scatterplot.}
   \item{data}{a data.frame (or list) from which the variables in `formula'
     should be taken.}
   \item{subset}{ an optional vector specifying a subset of observations
     to be used in the fitting process. }
-  \item{x, y}{vectors giving the coordinates of the points in the scatter
-    plot. Alternatively a single plotting structure can be specified.}
+  \item{x, y}{vectors giving the coordinates of the points in the
+    scatterplot. Alternatively a single plotting structure can be
+    specified.}
   \item{f}{the smoother span. This gives the proportion of points in
     the plot which influence the smooth at each value.
     Larger values give more smoothness.}

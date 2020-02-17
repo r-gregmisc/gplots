@@ -22,7 +22,7 @@ bandplot(x,\dots)
 \arguments{
   \item{x}{either formula providing a single dependent variable (y) and
     an single independent variable (x) to use as coordinates in the
-    scatter plot  or a numeric vector of x locations}
+    scatterplot or a numeric vector of x locations}
   \item{y}{numeric vector of y locations}
   \item{data}{an optional data.frame, list, or environment contianing
     the variables used in the model (and in \code{subset}).  If not found in
@@ -49,7 +49,7 @@ bandplot(x,\dots)
 }
 \details{
   \code{bandplot} was created to look for changes in the mean or
-  variance of scatter plots, particularly plots of regression residuals.
+  variance of scatterplots, particularly plots of regression residuals.
 
   The local mean and standard deviation are calculated by calling
   'wapply'.  By default, bandplot asks wapply to smooth using intervals
