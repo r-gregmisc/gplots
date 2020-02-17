@@ -22,7 +22,7 @@ redblue(n)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{n}{Desired number of color elements in the panel.}
-  \item{low, mid, high}{Colors to use for the Lowest, middle,
+  \item{low, mid, high}{Colors to use for the lowest, middle,
                         and highest values. \code{mid} may be ommited.}
 }
 \details{

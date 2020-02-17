@@ -56,7 +56,7 @@ plotLowess(formula, data=parent.frame(), \dots, subset=parent.frame(),
 \alias{lowess}
 \arguments{
   \item{formula}{ formula providing a single dependent variable (y) and
-    an single independent variable (x) to use as coordinates in the
+    a single independent variable (x) to use as coordinates in the
     scatterplot.}
   \item{data}{a data.frame (or list) from which the variables in `formula'
     should be taken.}
