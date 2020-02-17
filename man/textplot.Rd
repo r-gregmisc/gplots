@@ -80,7 +80,7 @@ textplot(object, halign="center", valign="center", cex, \dots)
 \author{Gregory R. Warnes \email{greg@warnes.net}}
 \seealso{
   \code{\link{plot}}, \code{\link{text}},
-  \code{\link[utils]{capture.output}}.
+  \code{\link[utils]{capture.output}}, \code{\link{sinkplot}}.
 
   \code{\link{gplots-package}} gives an overview of the package.
 }
