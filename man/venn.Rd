@@ -8,9 +8,9 @@
 \usage{
 venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
      simplify=FALSE, show.plot=TRUE, intersections=TRUE, names,
-     ...)
+     \dots)
 
-\method{plot}{venn}(x, y, ..., small=0.7, showSetLogicLabel=FALSE,
+\method{plot}{venn}(x, y, \dots, small=0.7, showSetLogicLabel=FALSE,
      simplify=FALSE)
 }
 \arguments{
@@ -32,7 +32,7 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
     "individuals.in.intersections" featuring for every set a list of
     individuals that are assigned to it.}
   \item{y}{Ignored}
-  \item{...}{Optional graphical parameters.}
+  \item{\dots}{Optional graphical parameters.}
   \item{names}{Optional vector of group names.}
 }
 \details{

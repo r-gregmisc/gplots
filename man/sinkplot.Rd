@@ -5,7 +5,7 @@
   Divert R's standard text output to a graphics device.
 }
 \usage{
-sinkplot(operation = c("start", "plot", "cancel"), ...)
+sinkplot(operation = c("start", "plot", "cancel"), \dots)
 }
 \arguments{
   \item{operation}{See below}

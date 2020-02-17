@@ -8,9 +8,9 @@
   reflects the relative magnitude of the corresponding component.
 }
 \usage{
-balloonplot(x, ...)
+balloonplot(x, \dots)
 \method{balloonplot}{table}(x, xlab, ylab, zlab, show.zeros=FALSE,
-            show.margins=TRUE, ...)
+            show.margins=TRUE, \dots)
 \method{balloonplot}{default}(x, y, z,
             xlab,
             ylab,
@@ -38,7 +38,7 @@ balloonplot(x, ...)
             label.lines=TRUE,
             fun=function(x)sum(x,na.rm=TRUE),
             hide.duplicates=TRUE,
-            ...)
+            \dots)
 }
 \arguments{
   \item{x}{A table object, or either a vector or a list of several

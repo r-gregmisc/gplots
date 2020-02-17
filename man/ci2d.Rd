@@ -19,8 +19,8 @@ ci2d(x, y = NULL,
      pch=par("pch"),
      points.col="red",
      xlab, ylab, 
-     ...)
-\method{print}{ci2d}(x, ...)
+     \dots)
+\method{print}{ci2d}(x, \dots)
 }
 \arguments{
   \item{x}{either a vector containing the x coordinates

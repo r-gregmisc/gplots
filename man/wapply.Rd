@@ -58,7 +58,7 @@
 
 \usage{
 wapply(x, y, fun=mean, method="range", width, n=50, drop.na=TRUE,
-       pts, ...)
+       pts, \dots)
 }
 \arguments{
   \item{x}{ vector of x values for (x,y) pairs }

@@ -12,21 +12,21 @@
   equivalent of 'print' except that the output is displayed as a plot.
 }
 \usage{
-textplot(object, halign="center", valign="center", cex, ...)
+textplot(object, halign="center", valign="center", cex, \dots)
 \method{textplot}{default}(object, halign=c("center","left","right"),
-         valign=c("center", "top", "bottom"), cex, ... )
+         valign=c("center", "top", "bottom"), cex, \dots )
 \method{textplot}{character}(object, halign = c("center", "left", "right"),
          valign = c("center", "top", "bottom"), cex, fixed.width=TRUE,
          cspace=1, lspace=1, mar=c(0, 0, 3, 0) + 0.1,
-         tab.width = 8, ...)
+         tab.width = 8, \dots)
 \method{textplot}{data.frame}(object, halign = c("center", "left", "right"),
-         valign = c("center", "top", "bottom"), cex, ...)
+         valign = c("center", "top", "bottom"), cex, \dots)
 \method{textplot}{matrix}(object, halign = c("center", "left", "right"),
          valign = c("center", "top", "bottom"), cex, cmar = 2,
          rmar = 0.5, show.rownames = TRUE, show.colnames = TRUE,
          hadj = 1, vadj = 1, mar = c(1, 1, 4, 1) + 0.1,
          col.data = par("col"), col.rownames = par("col"), 
-         col.colnames = par("col"), ...) 
+         col.colnames = par("col"), \dots) 
 }
 \arguments{
   \item{object}{Object to be displayed.}

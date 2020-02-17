@@ -6,7 +6,7 @@
   annotated with the number of observations in each group.
 }
 \usage{
-boxplot2(..., top=FALSE, shrink=1, textcolor=NULL)
+boxplot2(\dots, top=FALSE, shrink=1, textcolor=NULL)
 }
 \arguments{
   \item{\dots}{ parameters passed to \code{boxplot}. }

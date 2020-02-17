@@ -101,7 +101,7 @@ heatmap.2(x,
 
           # extras
           extrafun = NULL,
-          ...
+          \dots
          )
 }
 \arguments{
@@ -254,7 +254,7 @@ heatmap.2(x,
   \item{lmat, lhei, lwid}{visual layout: position matrix, column height,
     column width. See below for details.}
   \item{extrafun}{function to be called after all other work.}
-  \item{...}{additional arguments passed on to \code{\link{image}}.}
+  \item{\dots}{additional arguments passed on to \code{\link{image}}.}
 }
 \details{
   If either \code{Rowv} or \code{Colv} are dendrograms they are honored

@@ -12,7 +12,7 @@
 \usage{
 overplot(formula, data = parent.frame(), same.scale = FALSE, xlab, ylab,
          xlim, ylim, min.y, max.y, log = "", panel = "panel.overplot",
-         subset, plot = TRUE, groups, main, f = 2/3, ...)
+         subset, plot = TRUE, groups, main, f = 2/3, \dots)
 }
 \arguments{
   \item{formula}{Formula describing the x and y variables.  It should be

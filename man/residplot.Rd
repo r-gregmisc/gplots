@@ -9,7 +9,7 @@
   for direct use.  Others simply haven't been documented yet.  
 }
 \usage{
-residplot(model, formula, ...) 
+residplot(model, formula, \dots) 
 }
 \arguments{
   \item{model}{Undocumented}

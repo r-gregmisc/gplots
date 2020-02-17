@@ -9,8 +9,8 @@
 \usage{
 hist2d(x,y=NULL, nbins=200, same.scale=FALSE, na.rm=TRUE, show=TRUE,
        col=c("black", heat.colors(12)), FUN=base::length, xlab, ylab,
-       ... )
-\method{print}{hist2d}(x, ...)
+       \dots )
+\method{print}{hist2d}(x, \dots)
 }
 \arguments{
   \item{x}{either a vector containing the x coordinates

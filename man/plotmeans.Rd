@@ -10,7 +10,7 @@ plotmeans(formula, data=NULL, subset, na.action,
           digits=getOption("digits"), col="black", barwidth=1,
           barcol="blue", connect=TRUE, ccol=
           col, legends=names(means), xaxt, use.t=TRUE,
-          lwd=par("lwd"), add = FALSE, ...)
+          lwd=par("lwd"), add = FALSE, \dots)
 }
 \arguments{
   \item{formula}{symbolic expression specifying the outcome (continuous)

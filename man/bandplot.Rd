@@ -7,13 +7,13 @@
   Plot x-y points with curves for locally smoothed mean and standard deviation.
 }
 \usage{
-bandplot(x,...)
-\method{bandplot}{formula}(x, data, subset, na.action, ...,
+bandplot(x,\dots)
+\method{bandplot}{formula}(x, data, subset, na.action, \dots,
            xlab=NULL, ylab=NULL, add = FALSE, sd = c(-2:2),
            sd.col=c("magenta", "blue", "red", "blue", "magenta"),
            sd.lwd=c(2, 2, 3, 2, 2),  sd.lty=c(2, 1, 1, 1, 2),
            method = "frac", width = 1/5, n=50)
-\method{bandplot}{default}(x, y, ..., add = FALSE, sd = c(-2:2),
+\method{bandplot}{default}(x, y, \dots, add = FALSE, sd = c(-2:2),
            sd.col=c("magenta", "blue", "red", "blue", "magenta"),
            sd.lwd=c(2, 2, 3, 2, 2),  sd.lty=c(2, 1, 1, 1, 2),
            method = "frac", width = 1/5, n=50)

@@ -7,7 +7,7 @@
   These functions are defunct and have been removed from the gplots package.
 }
 \usage{
-   boxplot.n(..., top=FALSE, shrink=1, textcolor=NULL)
+   boxplot.n(\dots, top=FALSE, shrink=1, textcolor=NULL)
    plot.lm2(
             x,
             which = 1:5,
@@ -17,7 +17,7 @@
             sub.caption = deparse(x$call),
             main = "",
             ask,
-            ...,
+            \dots,
             id.n = 3,
             labels.id = names(residuals(x)),
             cex.id = 0.75,
@@ -28,7 +28,7 @@
             )
   smartlegend(x = c("left", "center", "right"),
              y = c("top", "center", "bottom"),
-             ...,
+             \dots,
              inset = 0.05)
 }
 \arguments{

@@ -5,7 +5,7 @@
 Add a labeled axis to the current plot with rotated text
 }
 \usage{
-angleAxis(side, labels, at = 1:length(labels), srt = 45, adj, xpd = TRUE, ...)
+angleAxis(side, labels, at = 1:length(labels), srt = 45, adj, xpd = TRUE, \dots)
 }
 \arguments{
   \item{side}{

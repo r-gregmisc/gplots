@@ -34,7 +34,7 @@ plotCI(x, y = NULL, uiw, liw = uiw, ui, li, err='y', ylim=NULL,
        xlim=NULL, type="p",  col=par("col"), barcol=col,
        pt.bg = par("bg"),  sfrac = 0.01, gap=1, lwd=par("lwd"),
        lty=par("lty"), labels=FALSE, add=FALSE, xlab, ylab,  minbar,
-       maxbar, ... )
+       maxbar, \dots )
 }
 \arguments{
   \item{x,y}{ coordinates for the center of error bars. \code{y}
@@ -147,7 +147,7 @@ plotCI(x, y = NULL, uiw, liw = uiw, ui, li, err='y', ylim=NULL,
          labels=round(means,-3), xaxt="n", xlim=c(0,5) )
   axis(side=1, at=1:4, labels=names(tmp), cex=0.7)
 
-  # better yet, just use plotmeans ... #
+  # better yet, just use plotmeans ...
   plotmeans( state.area ~ state.region )
 
 \dontshow{

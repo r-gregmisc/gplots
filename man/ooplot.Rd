@@ -8,7 +8,7 @@
   each point or bar as well as confidence intervals.
 }
 \usage{
-ooplot(data, ...)
+ooplot(data, \dots)
 \method{ooplot}{default}(data, width=1, space=NULL, names.arg=NULL, 
                            legend.text=NULL, horiz=FALSE, 
                            density=NULL, angle=45, kmg="fpnumkMGTP", 
@@ -27,7 +27,7 @@ ooplot(data, ...)
                            ci.lty="solid", ci.lwd=1, plot.grid=FALSE, 
                            grid.inc=NULL, grid.lty="dotted", 
                            grid.lwd=1, grid.col="black", add=FALSE, 
-                           by.row=FALSE, ...)
+                           by.row=FALSE, \dots)
 }
 \arguments{
   \item{data}{a matrix of values describing the values that make up the

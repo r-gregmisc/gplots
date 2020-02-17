@@ -17,7 +17,7 @@
             main = "",
             ask = interactive() && nb.fig < length(which)
             && .Device != "postscript",
-            ...,
+            \dots,
             id.n = 3,
             labels.id = names(residuals(x)),
             cex.id = 0.75,
