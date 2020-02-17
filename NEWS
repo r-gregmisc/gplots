@@ -1,11 +1,16 @@
 --------------------------------------------------------------------------------
-gplots 3.0.4  (2020-02-12)
+gplots 3.1.0  (2020-02-12)
 --------------------------------------------------------------------------------
 New Features:
+
+* New function bubbleplot() draws a scatterplot with varying symbol sizes and
+  colors. Provides an alternative interface and style from balloonplot().
 
 * Added argument 'keygrid' to heatmap.2().
 
 * Added argument 'add' to plotmeans().
+
+* New example datasets catch.d, catch.m, and catch.r.
 
 Other Changes:
 

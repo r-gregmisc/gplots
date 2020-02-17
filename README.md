@@ -15,7 +15,7 @@ Including:
 - diagnostic plots for linear regression and analysis of variance (`lmplot2`, `qqnorm.aov`),
 - formula-enabled interface to `stats::lowess` function (`lowess`),
 - displaying textual data in plots (`textplot`, `sinkplot`),
-- plotting a matrix where each cell contains a dot whose size reflects the relative magnitude of the elements (`balloonplot`),
+- plotting a matrix where each cell contains a dot whose size reflects the relative magnitude of the elements (`balloonplot`, `bubbleplot`),
 - plotting Venn diagrams (`venn`),
 - displaying Open-Office style plots (`ooplot`),
 - plotting multiple data on same region, with separate axes (`overplot`),

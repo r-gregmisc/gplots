@@ -127,6 +127,9 @@ balloonplot(x, ...)
 \seealso{
   \code{\link{plot.table}}.
 
+  \code{\link{bubbleplot}} provides an alternative interface and style
+  of plot.
+
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{

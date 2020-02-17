@@ -24,7 +24,7 @@
       \code{\link{sinkplot}}),
     \item plotting a matrix where each cell contains a dot whose size
       reflects the relative magnitude of the elements
-      (\code{\link{balloonplot}}),
+      (\code{\link{balloonplot}}, \code{\link{bubbleplot}}),
     \item plotting Venn diagrams (\code{\link{venn}}),
     \item displaying Open-Office style plots (\code{\link{ooplot}}),
     \item plotting multiple data on same region, with separate axes

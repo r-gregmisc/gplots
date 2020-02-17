@@ -1,8 +1,8 @@
-export(angleAxis, balloonplot, bandplot, barplot2, bluered, boxplot2, ci2d,
-       col2hex, colorpanel, greenred, heatmap.2, hist2d, lmplot2, lowess,
-       ooplot, overplot, panel.overplot, plot.venn, plotCI, plotLowess,
-       plotmeans, qqnorm.aov, redblue, redgreen, residplot, rich.colors,
-       sinkplot, smartlegend, space, textplot, venn, wapply)
+export(angleAxis, balloonplot, bandplot, barplot2, bluered, boxplot2,
+       bubbleplot, ci2d, col2hex, colorpanel, greenred, heatmap.2, hist2d,
+       lmplot2, lowess, ooplot, overplot, panel.overplot, plot.venn, plotCI,
+       plotLowess, plotmeans, qqnorm.aov, redblue, redgreen, residplot,
+       rich.colors, sinkplot, smartlegend, space, textplot, venn, wapply)
 
 importFrom(caTools, runmean, runsd)
 importFrom(gdata, nobs, reorder.factor)
@@ -20,13 +20,15 @@ importFrom(stats, as.dendrogram, cooks.distance, density, deviance,
            fitted, hclust, is.leaf, lm.influence, median, model.frame,
            na.omit, order.dendrogram, ppoints, predict, qnorm, qqline,
            qqnorm, qt, reorder, residuals, sd, var, weights)
-importFrom(utils, str)
+importFrom(utils, str, type.convert)
 
 S3method(balloonplot, default)
 S3method(balloonplot, table)
 S3method(bandplot, default)
 S3method(bandplot, formula)
 S3method(barplot2, default)
+S3method(bubbleplot,default)
+S3method(bubbleplot,formula)
 S3method(lowess, default)
 S3method(lowess, formula)
 S3method(ooplot, default)
