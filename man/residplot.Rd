@@ -3,7 +3,7 @@
 \name{residplot}
 \alias{residplot}
 %\alias{iapply}
-\title{Undocumented functions}
+\title{Undocumented Functions}
 \description{
   These functions are undocumented.  Some are internal and not intended
   for direct use.  Others simply haven't been documented yet.  

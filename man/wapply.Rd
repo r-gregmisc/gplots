@@ -46,8 +46,7 @@
 %
 \name{wapply}
 \alias{wapply}
-\title{Compute the Value of a Function Over a Local Region Of An X-Y Plot}
-
+\title{Apply Moving Window Function}
 \description{
   This function applies the specified function to the sets of y values
   that are defined by overlapping "windows" in the x-dimension. For

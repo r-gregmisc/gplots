@@ -1,9 +1,7 @@
 \name{sinkplot}
 \alias{sinkplot}
-\title{Send textual R output to a graphics device}
-\description{
-  Divert R's standard text output to a graphics device.
-}
+\title{Plot Standard Text Output}
+\description{Divert R standard text output to a graphics device.}
 \usage{
 sinkplot(operation = c("start", "plot", "cancel"), \dots)
 }

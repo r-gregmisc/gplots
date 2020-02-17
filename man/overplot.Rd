@@ -1,7 +1,7 @@
 \name{overplot}
 \alias{overplot}
 \alias{panel.overplot}
-\title{Plot multiple variables on the same region, with appropriate axes}
+\title{Plot Variables on Same X Region}
 \description{
   \code{overplot} graphs a set of variables defined on the same x-range
   but which have varying y-ranges on the same plotting area.  For each

@@ -1,7 +1,7 @@
 \name{rtPCR}
 \alias{rtPCR}
 \docType{data}
-\title{Teratogenesis rtPCR data}
+\title{Teratogenesis rtPCR Data}
 \description{
   rtPCR data for experiments investigating a variety of markers for
   characterizing teratogenicity.

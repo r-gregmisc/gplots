@@ -2,9 +2,10 @@
 \alias{bandplot}
 \alias{bandplot.formula}
 \alias{bandplot.default}
-\title{Plot x-y Points with Locally Smoothed Mean and Standard Deviation}
+\title{Smoothed Mean and Standard Deviation}
 \description{
-  Plot x-y points with curves for locally smoothed mean and standard deviation.
+  Plot x-y points with curves for locally smoothed mean and standard
+  deviation.
 }
 \usage{
 bandplot(x,\dots)

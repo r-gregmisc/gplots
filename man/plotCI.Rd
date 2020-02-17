@@ -23,7 +23,7 @@
 
 \name{plotCI}
 \alias{plotCI}
-\title{Plot Error Bars and Confidence Intervals}
+\title{Plot Confidence Intervals}
 \description{
   Given a set of x and y values and interval width or upper and lower bounds,
   plot the points with error bars.  This can be a useful tool for

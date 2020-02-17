@@ -1,9 +1,7 @@
 \name{col2hex}
 \alias{col2hex}
-\title{Convert color names to hex RGB strings}
-\description{
-  Convert color names to hex RGB strings
-}
+\title{Color to Hex}
+\description{Convert color names to hex RGB strings.}
 \usage{
 col2hex(cname)
 }

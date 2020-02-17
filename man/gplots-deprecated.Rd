@@ -1,6 +1,6 @@
 \name{gplots-deprecated}
 \alias{deprecated}
-\title{Deprecated functions}
+\title{Deprecated Functions}
 \description{
   These functions have been deprecated and will be removed in future
   releases of gplots.

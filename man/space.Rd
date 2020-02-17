@@ -24,10 +24,8 @@
 
 \name{space}
 \alias{space}
-\title{Space points in an x-y plot so they don't overlap.}
-\description{
-  Space points in an x-y plot so they don't overlap.
-}
+\title{Spaced Scatterplot}
+\description{Space points in an x-y plot so they don't overlap.}
 \usage{
 space(x, y, s=1/50, na.rm=TRUE, direction="x")
 }

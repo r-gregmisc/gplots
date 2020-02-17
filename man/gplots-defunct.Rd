@@ -2,9 +2,10 @@
 \alias{boxplot.n}
 \alias{plot.lm2}
 \alias{smartlegend}
-\title{Defunct functions}
+\title{Defunct Functions}
 \description{
-  These functions are defunct and have been removed from the gplots package.
+  These functions are defunct and have been removed from the gplots
+  package.
 }
 \usage{
    boxplot.n(\dots, top=FALSE, shrink=1, textcolor=NULL)

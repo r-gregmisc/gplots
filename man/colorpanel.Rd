@@ -4,7 +4,7 @@
 \alias{greenred}
 \alias{bluered}
 \alias{redblue}
-\title{Generate a smoothly varying set of colors}
+\title{Smoothly Varying Colors}
 \description{
   \code{colorpanel} generate a set of colors that varies
   smoothly. \code{redgreen}, \code{greenred}, \code{bluered}, and 

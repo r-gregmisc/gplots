@@ -1,7 +1,6 @@
 \name{qqnorm.aov}
 \alias{qqnorm.aov}
-
-\title{ Makes a half or full normal plot for the effects from an aov model }
+\title{Normal QQ Plot for Analysis of Variance}
 \description{
   Makes a half or full normal plot for the effects from a model
   inheriting from

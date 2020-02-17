@@ -4,9 +4,7 @@
 \alias{textplot.character}
 \alias{textplot.matrix}
 \alias{textplot.data.frame}
-
-\title{Display text information in a graphics plot.}
-
+\title{Plot Text Output}
 \description{
   This function displays text output in a graphics window.  It is the
   equivalent of 'print' except that the output is displayed as a plot.

@@ -1,11 +1,9 @@
 \name{lmplot2}
 \alias{lmplot2}
-\title{
-  Plots to assess the goodness of fit for the linear model objects
-}
+\title{Goodness of Fit Plots}
 \description{
-   Plots to assess the goodness of fit for the linear model objects
- }
+  Plots to assess the goodness of fit for the linear model objects.
+}
  \usage{
    lmplot2(
             x,

@@ -1,7 +1,7 @@
 \name{ooplot.default}
 \alias{ooplot.default}
 \alias{ooplot}
-\title{Create an OpenOffice style plot}
+\title{OpenOffice Plot}
 \description{
   An extension of barplot2. Creates bar- and line-plots mimicking the
   style of OpenOffice plots.  This utility can plot the values next to

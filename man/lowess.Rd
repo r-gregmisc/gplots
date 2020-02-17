@@ -22,6 +22,23 @@
 \alias{plot.lowess}
 \alias{plotLowess}
 \title{Scatter Plot Smoothing}
+\description{
+  The \code{lowess} function performs the computations for the
+  \emph{LOWESS} smoother (see the reference below).
+  \code{lowess} returns a an object containing components
+  \code{x} and \code{y} which give the coordinates of the smooth.
+  The smooth can then be added to a plot of the original
+  points with the function \code{lines}.
+
+  Alternatively, \code{plot} can be called directly on the object
+  returned from \code{lowess} and the 'lowess' method for \code{plot}
+  will generate a scatterplot of the original data with a \code{lowess}
+  line superimposed.
+
+  Finally, the \code{plotLowess} function both calculates the
+  \code{lowess} smooth and plots the original data with a \code{lowess}
+  smooth.
+}
 \usage{
 lowess(x, \dots)
 
@@ -59,23 +76,6 @@ plotLowess(formula, data=parent.frame(), \dots, subset=parent.frame(),
     \code{lowess}.}
   \item{\dots}{parameters for methods.}
   \item{col.lowess, lty.lowess}{color and line type for plotted line}
-}
-\description{
-  The \code{lowess} function performs the computations for the
-  \emph{LOWESS} smoother (see the reference below).
-  \code{lowess} returns a an object containing components
-  \code{x} and \code{y} which give the coordinates of the smooth.
-  The smooth can then be added to a plot of the original
-  points with the function \code{lines}.
-
-  Alternatively, \code{plot} can be called directly on the object
-  returned from \code{lowess} and the 'lowess' method for \code{plot}
-  will generate a scatterplot of the original data with a \code{lowess}
-  line superimposed.
-
-  Finally, the \code{plotLowess} function both calculates the
-  \code{lowess} smooth and plots the original data with a \code{lowess}
-  smooth.
 }
 \references{
   Cleveland, W. S. (1979)

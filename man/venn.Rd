@@ -1,10 +1,8 @@
 \name{venn}
 \alias{venn}
 \alias{plot.venn}
-\title{Plot a Venn diagram}
-\description{
-  Plot a Venn diagrams for up to 5 sets
-}
+\title{Venn Diagram}
+\description{Plot a Venn diagrams for up to 5 sets.}
 \usage{
 venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
      simplify=FALSE, show.plot=TRUE, intersections=TRUE, names,

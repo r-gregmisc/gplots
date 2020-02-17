@@ -2,10 +2,8 @@
 \name{hist2d}
 \alias{hist2d}
 \alias{print.hist2d}
-\title{ Compute and Plot a 2-Dimensional Histogram }
-\description{
-  Compute and plot a 2-dimensional histogram.
-}
+\title{Two-Dimensional Histogram}
+\description{Compute and plot a 2-dimensional histogram.}
 \usage{
 hist2d(x,y=NULL, nbins=200, same.scale=FALSE, na.rm=TRUE, show=TRUE,
        col=c("black", heat.colors(12)), FUN=base::length, xlab, ylab,

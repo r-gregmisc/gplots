@@ -74,6 +74,11 @@
 \alias{barplot2}
 \alias{barplot2.default}
 \title{Enhanced Bar Plots}
+\description{
+  An enhancement of the standard barplot() function. Creates a bar plot
+  with vertical or horizontal bars. Can plot confidence intervals for each
+  bar, a lined grid behind the bars, change plot area color and
+  logarithmic axes may be used.}
 \usage{
 \method{barplot2}{default}(height, width = 1, space = NULL,
         names.arg = NULL, legend.text = NULL, beside = FALSE,
@@ -198,11 +203,6 @@
     passed to \code{\link{plot.window}()}, \code{\link{title}()} and
     \code{\link{axis}}.}
 }
-\description{
-  An enhancement of the standard barplot() function. Creates a bar plot
-  with vertical or horizontal bars. Can plot confidence intervals for each
-  bar, a lined grid behind the bars, change plot area color and
-  logarithmic axes may be used. }
 \details{
   This is a generic function, it currently only has a default method.
   A formula interface may be added eventually.

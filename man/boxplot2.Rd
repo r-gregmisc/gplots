@@ -1,6 +1,6 @@
 \name{boxplot2}
 \alias{boxplot2}
-\title{Produce a Boxplot Annotated with the Number of Observations}
+\title{Annotated Boxplot}
 \description{
   This funcntion uses \code{boxplot} to produce a boxplot which is then 
   annotated with the number of observations in each group.
