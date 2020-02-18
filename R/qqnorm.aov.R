@@ -2,7 +2,7 @@
 
 if(is.R())
 qqnorm.aov <- function (y, full = FALSE, label = FALSE, omit = NULL,
-                        xlab = paste(if(full) "" else "Half", " Normal plot"),
+                        xlab = paste(if(full) "" else "Half ", "Normal plot"),
                         ylab = "Effects", ...)
 {
     r <- y$rank
