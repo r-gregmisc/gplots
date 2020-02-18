@@ -1,20 +1,3 @@
-% $Id$
-%
-% $Log$
-% Revision 1.7  2005/06/09 14:20:28  nj7w
-% Updating the version number, and various help files to synchronize splitting of gregmisc bundle in 4 individual components.
-%
-% Revision 1.1.1.1  2005/05/25 22:15:30  nj7w
-% Initial submission as an individual package
-%
-% Revision 1.6  2003/12/03 02:46:51  warnes
-% - match function argument defaults with 'usage'
-%
-% Revision 1.5  2002/09/23 13:59:30  warnes
-% - Modified all files to include CVS Id and Log tags.
-%
-%
-
 \name{lowess}
 \alias{lowess}
 \alias{lowess.default}

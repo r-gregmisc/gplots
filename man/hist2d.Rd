@@ -1,4 +1,3 @@
-% $Id$
 \name{hist2d}
 \alias{hist2d}
 \alias{print.hist2d}

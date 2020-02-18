@@ -1,26 +1,3 @@
-% $Id$
-%
-% $Log$
-% Revision 1.8  2005/11/08 16:19:42  nj7w
-% Updated Greg's email
-%
-% Revision 1.7  2005/06/09 14:20:28  nj7w
-% Updating the version number, and various help files to synchronize splitting of gregmisc bundle in 4 individual components.
-%
-% Revision 1.1.1.1  2005/05/25 22:15:31  nj7w
-% Initial submission as an individual package
-%
-% Revision 1.6  2004/07/29 14:49:02  warnes
-% Integrate changes from the version of plotCI maintained by Martin Maechler.
-%
-% Revision 1.5  2004/05/27 15:11:08  warnes
-% Fix spelling error.
-%
-% Revision 1.4  2002/09/23 13:59:30  warnes
-% - Modified all files to include CVS Id and Log tags.
-%
-%
-
 \name{plotCI}
 \alias{plotCI}
 \title{Plot Confidence Intervals}

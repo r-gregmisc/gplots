@@ -1,26 +1,3 @@
-% $Id$
-%
-% $Log$
-% Revision 1.9  2005/09/12 15:44:37  nj7w
-% Updated Greg's email
-%
-% Revision 1.8  2005/06/09 14:20:28  nj7w
-% Updating the version number, and various help files to synchronize splitting of gregmisc bundle in 4 individual components.
-%
-% Revision 1.1.1.1  2005/05/25 22:15:31  nj7w
-% Initial submission as an individual package
-%
-% Revision 1.7  2004/04/13 13:42:31  warnes
-% Add ability to space points along 'y' direction.
-%
-% Revision 1.6  2003/01/03 19:23:34  warnes
-% - Added reference to and comparison example of sunflowerplot.
-% - Added code to put example plots on same plot window using par(mfrow=...).
-%
-% Revision 1.5  2002/09/23 13:59:30  warnes
-% - Modified all files to include CVS Id and Log tags.
-%
-%
 \name{space}
 \alias{space}
 \title{Spaced Scatterplot}

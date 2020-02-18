@@ -1,4 +1,3 @@
-% $Id$
 \name{ci2d}
 \alias{ci2d}
 \alias{print.ci2d}

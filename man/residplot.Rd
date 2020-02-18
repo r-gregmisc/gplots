@@ -1,4 +1,3 @@
-% $Id$
 \name{residplot}
 \alias{residplot}
 \title{Undocumented Functions}
