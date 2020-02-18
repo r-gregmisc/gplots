@@ -5,14 +5,10 @@
   These functions have been deprecated and will be removed in future
   releases of gplots.
 }
-\usage{
-  ## No deprecated functions at this time ##
-}
-%\arguments{
-%}
+\usage{No deprecated functions at this time}
 \details{
-These functions have been deprecated.  Please refer to the manual page
-for the replacement function:
+  These functions have been deprecated.  Please refer to the manual page
+  for the replacement function:
   \itemize{
     \item (No deprecated functions at this time)
   }

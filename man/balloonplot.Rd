@@ -42,34 +42,36 @@ balloonplot(x, \dots)
 }
 \arguments{
   \item{x}{A table object, or either a vector or a list of several
-    categorical vectors containing grouping variables for the first
-    (x) margin of the plotted matrix.}
+    categorical vectors containing grouping variables for the first (x)
+    margin of the plotted matrix.}
   \item{y}{Vector or list of vectors for grouping variables for the
     second (y) dimension of the plotted matrix.}
-  \item{z}{Vector of values for the size of the dots in the plotted matrix.}
-  \item{xlab}{Text label for the x dimension. This will be displayed on the
-    x axis and in the plot title.}
-  \item{ylab}{Text label for the y dimension. This will be displayed on the
-    y axis and in the plot title.}
+  \item{z}{Vector of values for the size of the dots in the plotted
+    matrix.}
+  \item{xlab}{Text label for the x dimension. This will be displayed on
+    the x axis and in the plot title.}
+  \item{ylab}{Text label for the y dimension. This will be displayed on
+    the y axis and in the plot title.}
   \item{zlab}{Text label for the dot size. This will be included in the
     plot title.}
-  \item{dotsize}{Maximum dot size. You may need to adjust this value
-    for different plot devices and layouts.}
-  \item{dotchar}{Plotting symbol or character used for dots. See the help
-    page for the \code{points} function for symbol codes.}
-  \item{dotcolor}{Scalar or vector specifying the color(s) of the dots in
-    the plot.}
+  \item{dotsize}{Maximum dot size. You may need to adjust this value for
+    different plot devices and layouts.}
+  \item{dotchar}{Plotting symbol or character used for dots. See the
+    help page for the \code{points} function for symbol codes.}
+  \item{dotcolor}{Scalar or vector specifying the color(s) of the dots
+    in the plot.}
   \item{text.size, text.color}{Character size and color for row and
     column headers.}
   \item{main}{Plot title text.}
   \item{label}{Boolean flag indicating whether the actual value of the
     elements should be shown on the plot.}
   \item{label.digits}{Number of digits used in formatting value labels.}
-  \item{label.size, label.color}{Character size and color for value labels.}
+  \item{label.size, label.color}{Character size and color for value
+    labels.}
   \item{scale.method}{Method of scaling the sizes of the dot, either
     "volume" or "diameter". See below.}
-  \item{scale.range}{Method for scaling original data to compute
-    circle diameter. \code{scale.range="absolute"} scales the data
+  \item{scale.range}{Method for scaling original data to compute circle
+    diameter. \code{scale.range="absolute"} scales the data
     relative to 0 (i.e, maps [0,max(z)] --> [0,1]), while
     \code{scale.range="relative"} scales the data relative to min(z)
     (i.e. maps [min(z), max(z)] --> [0,1]).}
@@ -77,16 +79,16 @@ balloonplot(x, \dots)
   \item{rowmar, colmar}{Space allocated for row and column labels. Each
     unit is the width/height of one cell in the table.}
   \item{show.zeros}{boolean. If \code{FALSE}, entries containing zero
-    will be left blank in the plotted matrix. If \code{TRUE}, zeros will be
-    displayed.}
+    will be left blank in the plotted matrix. If \code{TRUE}, zeros will
+    be displayed.}
   \item{show.margins}{boolean. If \code{TRUE}, row and column sums are
     printed in the bottom and right margins, respectively.}
   \item{cum.margins}{boolean. If \code{TRUE}, marginal fractions are
     graphically presented in grey behind the row/column label area.}
-  \item{sorted}{boolean. If \code{TRUE}, the rows will be
-    arranged in sorted order by using the levels of the first y factor,
-    then the second y factor, etc. The same process is used for the
-    columns, based on the x factors.}
+  \item{sorted}{boolean. If \code{TRUE}, the rows will be arranged in
+    sorted order by using the levels of the first y factor, then the
+    second y factor, etc. The same process is used for the columns,
+    based on the x factors.}
   \item{label.lines}{boolean. If \code{TRUE}, borders will be drawn for
     row and column level headers.}
   \item{hide.duplicates}{boolean. If \code{TRUE}, column and row headers
@@ -101,15 +103,14 @@ balloonplot(x, \dots)
 \details{
   This function plots a visual matrix. In each \code{x},\code{y} cell a
   dot is plotted which reflects the relative size of the corresponding
-  value of \code{z}. When \code{scale.method="volume"} the volume of
-  the dot is proportional to the relative size of \code{z}. When
-  \code{scale.method="diameter"}, the diameter of the dot is proportional to
-  the the relative size of \code{z}. The "volume" method is default
-  because the "diameter" method visually exaggerates differences.
+  value of \code{z}. When \code{scale.method="volume"} the volume of the
+  dot is proportional to the relative size of \code{z}. When
+  \code{scale.method="diameter"}, the diameter of the dot is
+  proportional to the the relative size of \code{z}. The "volume" method
+  is default because the "diameter" method visually exaggerates
+  differences.
 }
-\value{
-  Nothing of interest.
-}
+\value{Nothing of interest.}
 \note{
   \code{z} is expected to be non-negative. The function will still
   operate correctly if there are negative values of \code{z}, but the
@@ -121,8 +122,8 @@ balloonplot(x, \dots)
   \href{https://cran.r-project.org/doc/Rnews/Rnews_2006-2.pdf#page=35}{\emph{R
   News}, \bold{6}(2), 35--38}.
 
-  Function inspired by question posed on R-help by Ramon
-  Alonso-Allende \email{allende@cnb.uam.es}.}
+  Function inspired by question posed on R-help by Ramon Alonso-Allende
+  \email{allende@cnb.uam.es}.}
 \author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link{plot.table}}.

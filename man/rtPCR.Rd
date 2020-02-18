@@ -16,10 +16,12 @@
       \code{Compound H}}
     \item{Teratogenicity.in.vivo}{a factor with levels \code{Non}
       \code{Strong} \code{Weak / Moderate}}
-    \item{Sample}{a factor with levels \code{Sample 1} - \code{Sample 152}}
+    \item{Sample}{a factor with levels \code{Sample 1} -
+      \code{Sample 152}}
     \item{Rep..}{a factor with levels \code{Rep 1} - \code{Rep 21}}
     \item{Label}{a factor with levels \code{Ctrl}, \code{Neg. Ctrl}
-      \code{P1} - \code{P9}, \code{No Vehicle Ctrl}, and \code{Pos. Ctrl}}
+      \code{P1} - \code{P9}, \code{No Vehicle Ctrl}, and
+      \code{Pos. Ctrl}}
     \item{Conc..ug.ml.}{a numeric vector}
     \item{Detector}{a factor with levels \code{ProbeType 1} -
       \code{ProbeType 17}}
@@ -37,18 +39,12 @@
     \item{Threshold}{a numeric vector}
   }
 }
-\details{
-  TBA
-}
-\source{
-  Anonymized data.
-}
 \seealso{
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
 # same scale
-overplot( RQ ~ Conc..ug.ml. | Test.Substance,
+overplot(RQ ~ Conc..ug.ml. | Test.Substance,
          data=rtPCR,
          subset=Detector=="ProbeType 7" & Conc..ug.ml. > 0,
          same.scale=TRUE,
@@ -56,11 +52,10 @@ overplot( RQ ~ Conc..ug.ml. | Test.Substance,
          f=3/4,
          main="Detector=ProbeType 7",
          xlab="Concentration (ug/ml)",
-         ylab="Relative Gene Quantification"
-         )
+         ylab="Relative Gene Quantification")
 
-# different scales, but force lower limit to 0.01 
-overplot( RQ ~ Conc..ug.ml. | Test.Substance,
+# different scales, but force lower limit to 0.01
+overplot(RQ ~ Conc..ug.ml. | Test.Substance,
          data=rtPCR,
          subset=Detector=="ProbeType 7" & Conc..ug.ml. > 0,
          log="xy",
@@ -68,7 +63,6 @@ overplot( RQ ~ Conc..ug.ml. | Test.Substance,
          main="Detector=ProbeType 7",
          xlab="Concentration (ug/ml)",
          ylab="Relative Gene Quantification",
-         min.y=0.01
-         )
+         min.y=0.01)
 }
 \keyword{datasets}

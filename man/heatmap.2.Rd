@@ -15,92 +15,92 @@
 heatmap.2(x,
 
           # dendrogram control
-          Rowv = TRUE,
-          Colv = if(symm) "Rowv" else TRUE,
-          distfun = dist,
-          hclustfun = hclust,
-          dendrogram = c("both","row","column","none"),
-          reorderfun = function(d, w) reorder(d, w),
-          symm = FALSE,
+          Rowv=TRUE,
+          Colv=if(symm) "Rowv" else TRUE,
+          distfun=dist,
+          hclustfun=hclust,
+          dendrogram=c("both","row","column","none"),
+          reorderfun=function(d, w) reorder(d, w),
+          symm=FALSE,
 
           # data scaling
-          scale = c("none","row","column"),
-          na.rm = TRUE,
+          scale=c("none","row","column"),
+          na.rm=TRUE,
 
           # image plot
-          revC = identical(Colv, "Rowv"),
+          revC=identical(Colv, "Rowv"),
           add.expr,
 
           # mapping data to colors
           breaks,
-          symbreaks = any(x<0, na.rm=TRUE) || scale!="none",
+          symbreaks=any(x<0, na.rm=TRUE) || scale!="none",
 
           # colors
-          col = "heat.colors",
+          col="heat.colors",
 
           # block sepration
           colsep,
           rowsep,
-          sepcolor = "white",
-          sepwidth = c(0.05,0.05),
+          sepcolor="white",
+          sepwidth=c(0.05,0.05),
 
           # cell labeling
           cellnote,
-          notecex = 1.0,
-          notecol = "cyan",
-          na.color = par("bg"),
+          notecex=1.0,
+          notecol="cyan",
+          na.color=par("bg"),
 
           # level trace
-          trace = c("column","row","both","none"),
-          tracecol = "cyan",
-          hline = median(breaks),
-          vline = median(breaks),
-          linecol = tracecol,
+          trace=c("column","row","both","none"),
+          tracecol="cyan",
+          hline=median(breaks),
+          vline=median(breaks),
+          linecol=tracecol,
 
           # Row/Column Labeling
-          margins = c(5, 5),
+          margins=c(5, 5),
           ColSideColors,
           RowSideColors,
-          cexRow = 0.2 + 1/log10(nr),
-          cexCol = 0.2 + 1/log10(nc),
-          labRow = NULL,
-          labCol = NULL,
-          srtRow = NULL,
-          srtCol = NULL,
-          adjRow = c(0,NA),
-          adjCol = c(NA,0),
-          offsetRow = 0.5,
-          offsetCol = 0.5,
-          colRow = NULL,
-          colCol = NULL,
+          cexRow=0.2 + 1/log10(nr),
+          cexCol=0.2 + 1/log10(nc),
+          labRow=NULL,
+          labCol=NULL,
+          srtRow=NULL,
+          srtCol=NULL,
+          adjRow=c(0,NA),
+          adjCol=c(NA,0),
+          offsetRow=0.5,
+          offsetCol=0.5,
+          colRow=NULL,
+          colCol=NULL,
 
           # color key + density info
-          key = TRUE,
-          keysize = 1.5,
-          keygrid = 255,
-          density.info = c("histogram","density","none"),
-          denscol = tracecol,
-          symkey = any(x<0, na.rm=TRUE) || symbreaks,
-          densadj = 0.25,
-          key.title = NULL,
-          key.xlab = NULL,
-          key.ylab = NULL,
-          key.xtickfun = NULL,
-          key.ytickfun = NULL,
-          key.par = list(),
+          key=TRUE,
+          keysize=1.5,
+          keygrid=255,
+          density.info=c("histogram","density","none"),
+          denscol=tracecol,
+          symkey=any(x<0, na.rm=TRUE) || symbreaks,
+          densadj=0.25,
+          key.title=NULL,
+          key.xlab=NULL,
+          key.ylab=NULL,
+          key.xtickfun=NULL,
+          key.ytickfun=NULL,
+          key.par=list(),
 
           # plot labels
-          main = NULL,
-          xlab = NULL,
-          ylab = NULL,
+          main=NULL,
+          xlab=NULL,
+          ylab=NULL,
 
           # plot layout
-          lmat = NULL,
-          lhei = NULL,
-          lwid = NULL,
+          lmat=NULL,
+          lhei=NULL,
+          lwid=NULL,
 
           # extras
-          extrafun = NULL,
+          extrafun=NULL,
           \dots
          )
 }
@@ -141,7 +141,8 @@ heatmap.2(x,
   \item{scale}{character string indicating if the values should be
     centered and scaled in either the row direction or the column
     direction, or none. The default is \code{"none"}.}
-  \item{na.rm}{logical indicating whether \code{NA}'s should be removed.}
+  \item{na.rm}{logical indicating whether \code{NA}'s should be
+    removed.}
   % image plot
   \item{revC}{logical indicating if the column order should be
     \code{\link{rev}}ersed for plotting, such that e.g., for the
@@ -264,13 +265,12 @@ heatmap.2(x,
 
   If either is a vector (of 'weights') then the appropriate dendrogram
   is reordered according to the supplied values subject to the
-  constraints imposed by the dendrogram, by
-  \code{\link{reorder}(dd, Rowv)}, in the row case. If either is
-  missing, as by default, then the ordering of the corresponding
-  dendrogram is by the mean value of the rows/columns, i.e., in the case
-  of rows, \code{Rowv <- rowMeans(x, na.rm=na.rm)}. If either is
-  \code{\link{NULL}}, \emph{no reordering} will be done for the
-  corresponding side.
+  constraints imposed by the dendrogram, by \code{\link{reorder}(dd,
+  Rowv)}, in the row case. If either is missing, as by default, then the
+  ordering of the corresponding dendrogram is by the mean value of the
+  rows/columns, i.e., in the case of rows, \code{Rowv <- rowMeans(x,
+  na.rm=na.rm)}. If either is \code{\link{NULL}}, \emph{no reordering}
+  will be done for the corresponding side.
 
   If \code{scale="row"} (or \code{scale="col"}) the rows (columns) are
   scaled to have mean zero and standard deviation one. There is some
@@ -356,7 +356,7 @@ heatmap.2(x, Rowv=NULL,  dendrogram="both")  # generates a warning!
 heatmap.2(x, Colv=FALSE, dendrogram="both")  # generates a warning!
 
 ## Reorder dendrogram by branch means rather than sums
-heatmap.2(x, reorderfun=function(d, w) reorder(d, w, agglo.FUN = mean))
+heatmap.2(x, reorderfun=function(d, w) reorder(d, w, agglo.FUN=mean))
 
 ## plot a sub-cluster using the same color coding as for the full heatmap
 full <- heatmap.2(x)
@@ -368,14 +368,14 @@ heatmap.2(x, Colv=full$colDendrogram[[2]],
 
 ## Show effect of row and column label rotation
 heatmap.2(x, srtCol=NULL)
-heatmap.2(x, srtCol=0,   adjCol = c(0.5,1))
-heatmap.2(x, srtCol=45,  adjCol = c(1,1)  )
-heatmap.2(x, srtCol=135, adjCol = c(1,0)  )
-heatmap.2(x, srtCol=180, adjCol = c(0.5,0))
-heatmap.2(x, srtCol=225, adjCol = c(0,0)  )  # not very useful
-heatmap.2(x, srtCol=270, adjCol = c(0,0.5))
-heatmap.2(x, srtCol=315, adjCol = c(0,1)  )
-heatmap.2(x, srtCol=360, adjCol = c(0.5,1))
+heatmap.2(x, srtCol=0,   adjCol=c(0.5,1))
+heatmap.2(x, srtCol=45,  adjCol=c(1,1)  )
+heatmap.2(x, srtCol=135, adjCol=c(1,0)  )
+heatmap.2(x, srtCol=180, adjCol=c(0.5,0))
+heatmap.2(x, srtCol=225, adjCol=c(0,0)  )  # not very useful
+heatmap.2(x, srtCol=270, adjCol=c(0,0.5))
+heatmap.2(x, srtCol=315, adjCol=c(0,1)  )
+heatmap.2(x, srtCol=360, adjCol=c(0.5,1))
 
 heatmap.2(x, srtRow=45, adjRow=c(0,1))
 heatmap.2(x, srtRow=45, adjRow=c(0,1), srtCol=45, adjCol=c(1,1))
@@ -444,13 +444,11 @@ heatmap.2(x,
 
 heatmap.2(x,
           breaks=256,
-          keygrid=10
-         )
+          keygrid=10)
 
 heatmap.2(x,
           breaks=256,
-          keygrid=1001
-         )
+          keygrid=1001)
 
 ##
 ## Show effect of z-score scaling within columns, blue-red color scale
@@ -490,9 +488,6 @@ hv <- heatmap.2(x, col=cm.colors(255), scale="column",
                 tracecol="green", density="density", colRow=rc, colCol=cc,
                 srtCol=45, adjCol=c(0.5,1))
 
-
-
-%% want example using the `add.exp' argument!
 
 data(attitude)
 round(Ca <- cor(attitude), 2)
