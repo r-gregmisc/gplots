@@ -35,7 +35,7 @@ boxplot2(state.area ~ state.region)
 # n's at top
 boxplot2(state.area ~ state.region, top=TRUE)
 
-# small red text
+# Small red text
 boxplot2(state.area ~ state.region, shrink=0.8, textcolor="red")
 }
 \keyword{hplot}

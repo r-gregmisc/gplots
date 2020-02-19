@@ -6,7 +6,7 @@
 col2hex(cname)
 }
 \arguments{
-  \item{cname}{Color name(s)}
+  \item{cname}{color name(s).}
 }
 \value{
   Character vector giving the hex color code translation of the provided
@@ -19,6 +19,6 @@ col2hex(cname)
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-col2hex(c("red","yellow","lightgrey"))
+col2hex(c("red", "yellow", "lightgrey"))
 }
 \keyword{color}

@@ -24,33 +24,33 @@ lmplot2(x,
         max.n=5000)
 }
 \arguments{
-  \item{x}{lm object}
-  \item{which}{Numerical values between 1 and 5, indicating which plots
+  \item{x}{lm object.}
+  \item{which}{numerical values between 1 and 5, indicating which plots
     to be shown. The codes are:
-    \describe{
-      \item{1}{Fitted vs residuals}
-      \item{2}{Normal Q-Q}
-      \item{3}{Scale-Location}
-      \item{4}{Cook's distance}
-      \item{5}{Residuals vs. predictor}
+    \enumerate{
+      \item Fitted vs residuals
+      \item Normal Q-Q
+      \item Scale-Location
+      \item Cook's distance
+      \item Residuals vs. predictor
     }
   }
-  \item{caption}{Caption for each type of plot}
-  \item{panel}{function to draw on the existing plot}
-  \item{sub.caption}{SubCaption for the plots}
-  \item{main}{Main title of the plot}
-  \item{ask}{whether interactive graphics}
+  \item{caption}{caption for each type of plot.}
+  \item{panel}{function to draw on the existing plot.}
+  \item{sub.caption}{subcaption for the plots.}
+  \item{main}{main title of the plot.}
+  \item{ask}{whether interactive graphics.}
   \item{\dots}{parameters passed to \code{lmplot2}.}
   \item{id.n}{integer value, less than or equal to residuals of lm
-    object}
-  \item{labels.id}{Names of the residuals of the lm object}
-  \item{cex.id}{Parameter to control the height of text stringsx}
+    object.}
+  \item{labels.id}{names of the residuals of the lm object.}
+  \item{cex.id}{parameter to control the height of text strings.}
   \item{band}{logical vector indicating whether bandplot should also be
-    plotted}
+    plotted.}
   \item{rug}{logical vector indicating whether rug should be added to
-    the existing plot}
-  \item{width}{Fraction of the data to use for plot smooths}
-  \item{max.n}{Maximum number of points to display in plots}
+    the existing plot.}
+  \item{width}{fraction of the data to use for plot smooths.}
+  \item{max.n}{maximum number of points to display in plots.}
 }
 \note{
   This function replaces \code{plot.lm2}, which has been deprecated to

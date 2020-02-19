@@ -12,25 +12,25 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
      simplify=FALSE)
 }
 \arguments{
-  \item{data,x}{Either a list list containing vectors of names or
+  \item{data,x}{either a list list containing vectors of names or
     indices of group intersections, or a data frame containing boolean
-    indicators of group intersectionship (see below)}
-  \item{universe}{Subset of valid name/index elements. Values ignore
+    indicators of group intersectionship (see below).}
+  \item{universe}{subset of valid name/index elements. Values ignore
     values in code{data} not in this list will be ignored. Use \code{NA}
     to use all elements of \code{data} (the default).}
-  \item{small}{Character scaling of the smallest group counts}
-  \item{showSetLogicLabel}{Logical flag indicating whether the internal
-    group label should be displayed}
-  \item{simplify}{Logical flag indicating whether unobserved groups
+  \item{small}{character scaling of the smallest group counts.}
+  \item{showSetLogicLabel}{logical flag indicating whether the internal
+    group label should be displayed.}
+  \item{simplify}{logical flag indicating whether unobserved groups
     should be omitted.}
-  \item{show.plot}{Logical flag indicating whether the plot should be
+  \item{show.plot}{logical flag indicating whether the plot should be
     displayed. If false, simply returns the group count matrix.}
   \item{intersections}{Logical flag indicating if the returned object
     should have the attribute "individuals.in.intersections" featuring
     for every set a list of individuals that are assigned to it.}
-  \item{y}{Ignored}
-  \item{\dots}{Optional graphical parameters.}
-  \item{names}{Optional vector of group names.}
+  \item{y}{ignored.}
+  \item{\dots}{optional graphical parameters.}
+  \item{names}{optional vector of group names.}
 }
 \details{
   \code{data} should be either a named list of vectors containing
@@ -60,9 +60,9 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-## Example using a list of item names belonging to the specified group.
+# Example using a list of item names belonging to the specified group
 
-## construct some fake gene names..
+# Construct some fake gene names
 oneName <- function() paste(sample(LETTERS,5,replace=TRUE),collapse="")
 geneNames <- replicate(1000, oneName())
 
@@ -76,7 +76,7 @@ input
 tmp <- venn(input)
 attr(tmp, "intersections")
 
-## Example using a list of item indexes belonging to the specified group
+# List of item indexes belonging to the specified group
 GroupA.i <- which(geneNames \%in\% GroupA)
 GroupB.i <- which(geneNames \%in\% GroupB)
 GroupC.i <- which(geneNames \%in\% GroupC)
@@ -86,7 +86,7 @@ input.i
 
 venn(input.i)
 
-## Example using a data frame of indicator ('f'lag) columns
+# Data frame of indicator ('f'lag) columns
 GroupA.f <- geneNames \%in\% GroupA
 GroupB.f <- geneNames \%in\% GroupB
 GroupC.f <- geneNames \%in\% GroupC
@@ -95,41 +95,39 @@ input.df <- data.frame(A=GroupA.f, B=GroupB.f, C=GroupC.f, D=GroupD.f)
 head(input.df)
 venn(input.df)
 
-## smaller set to create empty groupings
+# Smaller set to create empty groupings
 small <- input.df[1:20,]
 
 venn(small, simplify=FALSE)  # with empty groupings
 venn(small, simplify=TRUE)   # without empty groupings
 
-## Capture group counts, but don't plot
+# Capture group counts, but don't plot
 tmp <- venn(input, show.plot=FALSE)
 tmp
 
-## Show internal binary group labels
+# Show internal binary group labels
 venn(input, showSetLogicLabel=TRUE)
 
-## Limit  universe
+# Limit universe
 tmp <- venn(input, universe=geneNames[1:100])
 tmp
 
-## Example to determine which elements are in A and B but not in
-## C and D using the 'intersections' attribute.
+# Determine which elements are in A and B but not in C and D
+# using the 'intersections' attribute
 tmp <- venn(input, intersection=TRUE)
 isect <- attr(tmp, "intersection")
 
 # Look at all of the subsets
 str(isect)
 
-# Extract and combine the subsets of interest..
+# Extract and combine the subsets of interest
 AandB <- unique(c(isect$A, isect$B, isect$'A:B'))
-
 # and look at the results
 str(AandB)
 
-##
-## The full set of elements of each intersection is provided in the
-## "interesections" attribute.
-##
+# The full set of elements of each intersection is provided in the
+# 'interesections' attribute.
+
 a <- venn(list(1:5,3:8), show.plot=FALSE)
 intersections <- attr(a, "intersections")
 print(intersections)

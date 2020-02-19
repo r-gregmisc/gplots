@@ -13,21 +13,21 @@ hist2d(x,y=NULL, nbins=200, same.scale=FALSE, na.rm=TRUE, show=TRUE,
   \item{x}{either a vector containing the x coordinates or a matrix with
     2 columns.}
   \item{y}{a vector contianing the y coordinates, not required if `x' is
-    matrix}
+    matrix.}
   \item{nbins}{number of bins in each dimension. May be a scalar or a 2
     element vector. Defaults to 200.}
   \item{same.scale}{use the same range for x and y. Defaults to FALSE.}
-  \item{na.rm}{Indicates whether missing values should be removed.
+  \item{na.rm}{indicates whether missing values should be removed.
     Defaults to TRUE.}
-  \item{show}{Indicates whether the histogram be displayed using
+  \item{show}{indicates whether the histogram be displayed using
     \code{image} once it has been computed. Defaults to TRUE.}
-  \item{col}{Colors for the histogram. Defaults to "black" for bins
+  \item{col}{colors for the histogram. Defaults to "black" for bins
     containing no elements, a set of 16 heat colors for other bins.}
-  \item{FUN}{Function used to summarize bin contents. Defaults to
+  \item{FUN}{function used to summarize bin contents. Defaults to
     \code{base::length}. Use, e.g., \code{mean} to calculate means for
     each bin instead of counts.}
-  \item{xlab,ylab}{(Optional) x and y axis labels}
-  \item{\dots}{Parameters passed to the image function.}
+  \item{xlab,ylab}{(optional) x and y axis labels.}
+  \item{\dots}{parameters passed to the image function.}
 }
 \details{
   This function creates a 2-dimensional histogram by cutting the x and y
@@ -51,38 +51,37 @@ hist2d(x,y=NULL, nbins=200, same.scale=FALSE, na.rm=TRUE, show=TRUE,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-## example data, bivariate normal, no correlation
+# Example data, bivariate normal, no correlation
 x <- rnorm(2000, sd=4)
 y <- rnorm(2000, sd=1)
 
-## separate scales for each axis, this looks circular
-hist2d(x,y)
+# Separate scales for each axis, this looks circular
+hist2d(x, y)
 
-## same scale for each axis, this looks oval
-hist2d(x,y, same.scale=TRUE)
+# Same scale for each axis, this looks oval
+hist2d(x, y, same.scale=TRUE)
 
-## use different ## bins in each dimension
-hist2d(x,y, same.scale=TRUE, nbins=c(100,200))
+# Use different ## bins in each dimension
+hist2d(x, y, same.scale=TRUE, nbins=c(100,200))
 
-## use the hist2d function to create an h2d object
-h2d <- hist2d(x,y,show=FALSE, same.scale=TRUE, nbins=c(20,30))
+# Use the hist2d function to create an h2d object
+h2d <- hist2d(x, y, show=FALSE, same.scale=TRUE, nbins=c(20,30))
 
-## show object summary
+# Show object summary
 h2d
 
-## object contents
+# Object contents
 str(h2d)
 
-## perspective plot
+# Perspective plot
 persp(h2d$x, h2d$y, h2d$counts, ticktype="detailed", theta=30, phi=30,
       expand=0.5, shade=0.5, col="cyan", ltheta=-30)
 
-## for contour (line) plot ...
-contour( h2d$x, h2d$y, h2d$counts, nlevels=4)
+# Contour plot
+contour(h2d$x, h2d$y, h2d$counts, nlevels=4)
 
-## for a filled contour plot ...
-filled.contour(h2d$x, h2d$y, h2d$counts, nlevels=4,
-               col=gray((4:0)/4))
+## Filled contour plot
+filled.contour(h2d$x, h2d$y, h2d$counts, nlevels=4, col=gray((4:0)/4))
 }
 \keyword{dplot}
 \keyword{hplot}

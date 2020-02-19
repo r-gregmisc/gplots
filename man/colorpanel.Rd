@@ -6,10 +6,10 @@
 \alias{redblue}
 \title{Smoothly Varying Colors}
 \description{
-  \code{colorpanel} generate a set of colors that varies smoothly.
-  \code{redgreen}, \code{greenred}, \code{bluered}, and \code{redblue}
-  generate red-black-green, green-black-red, red-white-blue, and
-  blue-white-red colorbars, respectively. colors
+  The \code{colorpanel} function generates a set of colors that varies
+  smoothly, while \code{redgreen}, \code{greenred}, \code{bluered}, and
+  \code{redblue} generate red-black-green, green-black-red,
+  red-white-blue, and blue-white-red color ranges, respectively.
 }
 \usage{
 colorpanel(n, low, mid, high)
@@ -19,9 +19,9 @@ bluered(n)
 redblue(n)
 }
 \arguments{
-  \item{n}{Desired number of color elements in the panel.}
-  \item{low, mid, high}{Colors to use for the lowest, middle, and
-    highest values. \code{mid} may be omitted.}
+  \item{n}{desired number of color elements in the panel.}
+  \item{low, mid, high}{colors to use for the lowest, middle, and
+    highest values (\code{mid} may be omitted).}
 }
 \details{
   The values for \code{low, mid, high} can be given as color names
@@ -52,13 +52,14 @@ showpanel <- function(col)
 
 par(mfrow=c(3,3))
 
-# two colors only:
+# Two colors
 showpanel(colorpanel(8, low="red", high="green"))
 
-# three colors
+# Three colors
 showpanel(colorpanel(8, "red", "black", "green"))
-# note the duplicatation of black at the center,
-# using an odd number of elements resolves this:
+
+# Note the duplicatation of black at the center,
+# using an odd number of elements resolves this
 showpanel(colorpanel(9, "red", "black", "green"))
 
 showpanel(greenred(64))

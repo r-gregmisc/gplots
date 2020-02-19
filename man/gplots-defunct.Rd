@@ -33,7 +33,7 @@ smartlegend(x=c("left", "center", "right"),
 \arguments{
   \item{ask, band, caption, cex.id, id.n, inset, labels.id, main, max.n,
     panel, rug, shrink, sub.caption, textcolor, top, which, width, x, y,
-    \dots}{see man page for the corresponding replacement function}
+    \dots}{see man page for the corresponding replacement function.}
 }
 \details{
   These functions are no longer available. Please refer to the manual page

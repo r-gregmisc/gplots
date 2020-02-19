@@ -42,7 +42,7 @@ plotmeans(formula, data=NULL, subset, na.action, bars=TRUE, p=0.95,
   \item{n.label}{a logical value indicating whether text giving the
     number of observations in each group should should be added to the
     plot.}
-  \item{text.n.label}{Prefix text for labeling observation counts.
+  \item{text.n.label}{prefix text for labeling observation counts.
     Defaults to "n=".}
   \item{digits}{number of significant digits to use when displaying mean
     or confidince limit values.}
@@ -59,15 +59,15 @@ plotmeans(formula, data=NULL, subset, na.action, bars=TRUE, p=0.95,
     color as "col".}
   \item{legends}{vector containing strings used to label groups along
     the x axis. Defaults to group names.}
-  \item{xaxt}{A character which specifies the axis type. Specifying
-          `"n"' causes an axis to be set up, but not plotted.}
+  \item{xaxt}{a character which specifies the axis type. Specifying
+    `"n"' causes an axis to be set up, but not plotted.}
   \item{use.t}{a logical value indicating whether the t distribution
     should be used to compute confidence intervals. If \code{TRUE}, the
     default, a t distribution will the correct number of degrees of
     freedom for each group be used. If \code{FALSE}, the a normal
     distribution will be used.}
-  \item{lwd}{Width of connecting lines}
-  \item{add}{Logical specifying whether to add to an existing plot
+  \item{lwd}{width of connecting lines.}
+  \item{add}{logical specifying whether to add to an existing plot
     (\code{add=TRUE}) or to generate a new plot (\code{add=FALSE}).}
   \item{\dots}{optional plotting parameters.}
 }
@@ -78,19 +78,19 @@ plotmeans(formula, data=NULL, subset, na.action, bars=TRUE, p=0.95,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-# show comparison with boxplot
+# Comparison with boxplot
 data(state)
 plotmeans(state.area ~ state.region)
 
-# show some color and mean labels
+# Color and mean labels
 plotmeans(state.area ~ state.region, mean.labels=TRUE, digits=-3,
           col="red", connect=FALSE)
 
-# show how to specify which means should be connected
+# Specify which means should be connected
 plotmeans(state.area ~ state.region, connect=list(1:2, 3:4),
           ccol="red", pch=7)
 
-# more complicated example showing how to show an interaction
+# More complicated example showing how to show an interaction
 data(esoph)
 par(las=2,                    # use perpendicular axis labels
     mar=c(10.1,4.1,4.1,2.1),  # create enough space for long x labels
@@ -105,7 +105,7 @@ plotmeans(ncases/ncontrols ~ interaction(agegp , alcgp, sep ="   "),
 abline(v=c(6.5, 12.5, 18.5), lty=2)
 grid()
 
-# add to a boxplot
+# Add to a boxplot
 boxplot(ncases/ncontrols ~ interaction(agegp , alcgp, sep ="   "),
         data=esoph, xlab="Age Group and Alcohol Consumption",
         ylab="# Cases / # Controls",

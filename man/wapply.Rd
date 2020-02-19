@@ -13,19 +13,19 @@ wapply(x, y, fun=mean, method="range", width, n=50, drop.na=TRUE,
        pts, \dots)
 }
 \arguments{
-  \item{x}{vector of x values for (x,y) pairs}
-  \item{y}{vector of y values for (x,y) pairs}
-  \item{fun}{function to be applied}
+  \item{x}{vector of x values for (x,y) pairs.}
+  \item{y}{vector of y values for (x,y) pairs.}
+  \item{fun}{function to be applied.}
   \item{method}{method of defining an x-neighborhood. One of "width",
     "nobs", "range", or "fraction". See details.}
   \item{width}{width of an x-neighborhood. See details.}
-  \item{n}{Number of equally spaced points at which to compute local
+  \item{n}{number of equally spaced points at which to compute local
     estimates. See details.}
   \item{drop.na}{should points which result in missing values \code{NA}
     be omitted from the return value. Defaults to true.}
   \item{pts}{\code{x} locations at which to compute the local mean when
     using the "width" or "range" methods. Ignored otherwise.}
-  \item{\dots}{arguments to be passed to \code{fun}}
+  \item{\dots}{arguments to be passed to \code{fun}.}
 }
 \details{
   Two basic techniques are available for determining what points fall
@@ -60,7 +60,7 @@ wapply(x, y, fun=mean, method="range", width, n=50, drop.na=TRUE,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-# show local mean and inner 2-sd interval to help diagnose changing mean
+# Local mean and inner 2-sd interval to help diagnose changing mean
 # or variance structure
 x <- 1:1000
 y <- rnorm(1000, mean=1, sd=1 + x/1000)
@@ -75,12 +75,12 @@ lines(wapply(x, y, CL,sd=-1), col="blue")
 lines(wapply(x, y, CL,sd= 2), col="green")
 lines(wapply(x, y, CL,sd=-2), col="green")
 
-# show local mean and inner 2-sd interval to help diagnose changing mean
+# Local mean and inner 2-sd interval to help diagnose changing mean
 # or variance structure
 x <- 1:1000
 y <- rnorm(1000, mean=x/1000, sd=1)
 
-plot(x,y)
+plot(x, y)
 lines(wapply(x, y, mean), col="red")
 
 CL <- function(x,sd) mean(x) + sd*sqrt(var(x))

@@ -56,17 +56,17 @@ ooplot(data, \dots)
     See below for details.}
   \item{kmglim}{logical. If \code{FALSE} the conversion to SI units is
     not performed. Default is \code{TRUE}.}
-
   \item{type}{a string indicating the preferred format of the plot,
     choices are:
     \tabular{ll}{
-    xyplot \tab plot where y is plotted against the x-value.\cr
-    linear \tab plot where y values are plotted against equidistant
-    x-values.\cr
-    barplot \tab plot where y values are represented as bars against
-    equidistant x-values.\cr
-    stackplot \tab plot where y values are stacked for identical
-    x-values and bars are equidistant.}
+      xyplot \tab plot where y is plotted against the x-value.\cr
+      linear \tab plot where y values are plotted against equidistant
+      x-values.\cr
+      barplot \tab plot where y values are represented as bars against
+      equidistant x-values.\cr
+      stackplot \tab plot where y values are stacked for identical
+      x-values and bars are equidistant.
+    }
   }
   \item{col}{a vector of colors for the bars or bar components.}
   \item{prcol}{the color to be used for the plot region.}
@@ -91,31 +91,32 @@ ooplot(data, \dots)
   \item{cex.axis, cex.names, cex.values}{character scaling factor for
     numeric axis labels, names, and displayed values, respectively.}
   \item{inside}{logical. If \code{TRUE}, the lines which divide adjacent
-    (non-stacked!) bars will be drawn. Only applies when \code{space =
-    0} (which it partly is when \code{beside = TRUE}).}
+    (non-stacked!) bars will be drawn. Only applies when
+    \code{space = 0} (which it partly is when \code{beside = TRUE}).}
   \item{plot}{logical. If \code{FALSE}, nothing is plotted.}
   \item{axis.lty}{the graphics parameter \code{lty} applied to the axis
     and tick marks of the categorical (default horzontal) axis. Note
     that by default the axis is suppressed.}
   \item{plot.ci}{logical. If \code{TRUE}, confidence intervals are
     plotted over the bars. Note that if a stacked bar plot is generated,
-    confidence intervals will not be plotted even if \code{plot.ci =
-    TRUE}}
-  \item{ci.l,ci.u}{The confidence intervals (ci.l = lower bound, ci.u =
+    confidence intervals will not be plotted even if
+    \code{plot.ci = TRUE}}
+  \item{ci.l,ci.u}{the confidence intervals (ci.l = lower bound, ci.u =
     upper bound) to be plotted if \code{plot.ci} = \code{TRUE}. Values
     must have the same dim structure as \code{height}.}
-  \item{ci.color}{the color for the confidence interval line segments}
-  \item{ci.lty}{the line type for the confidence interval line segments}
+  \item{ci.color}{the color for the confidence interval line segments.}
+  \item{ci.lty}{the line type for the confidence interval line
+    segments.}
   \item{ci.lwd}{the line width for the confidence interval line
-    segments}
+    segments.}
   \item{plot.grid}{if \code{TRUE} a lined grid will be plotted behind
-    the bars}
-  \item{grid.inc}{the number of grid increments to be plotted}
-  \item{grid.lty}{the line type for the grid}
-  \item{grid.lwd}{the line width for the grid}
-  \item{grid.col}{the line color for the grid}
+    the bars.}
+  \item{grid.inc}{the number of grid increments to be plotted.}
+  \item{grid.lty}{the line type for the grid.}
+  \item{grid.lwd}{the line width for the grid.}
+  \item{grid.col}{the line color for the grid.}
   \item{add}{logical, if \code{TRUE} add barplot to current plot.}
-  \item{by.row}{Logical value. If \code{TRUE} the data matrix is
+  \item{by.row}{logical value. If \code{TRUE} the data matrix is
     organized with variables along rows rather than down colums.}
   \item{\dots}{further graphical parameters (\code{\link{par}}) are
     passed to \code{\link{plot.window}()}, \code{\link{title}()} and
@@ -162,7 +163,7 @@ data(VADeaths, package="datasets")
 
 VADeaths <- cbind(Age=c(50,55,60,65,70), VADeaths)
 
-mp <- ooplot(VADeaths) # default
+mp <- ooplot(VADeaths)                         # default
 mp <- ooplot(VADeaths, type="xyplot")          # same as default
 mp <- ooplot(VADeaths, type="linear")          # linear scale
 mp <- ooplot(VADeaths, type="linear", log="y") # log scale on y axis
@@ -178,20 +179,20 @@ ooplot(VADeaths,
 title(main="Death Rates in Virginia", font.main=4)
 
 
-## Capability demo
+# Capability demo
 test1 <- data.frame(x=c(0,1,2,3,4), lin=c(0,1,2,3,4))
 test2 <- data.frame(x=c(0,1,2,3,4), par=c(0,1,4,9,16))
 test3 <- data.frame(x=c(-2,-1,0,1,2), y2=c(4,1,0,1,4))
-## single line test example
+# Single line test example
 test1f <- test1
-## two column example
+# Two columns
 test2f <- merge(test1, test2, by.x="x", all=TRUE, sort=TRUE)
-## three column example
+# Three columns
 test3f <- merge(test2f, test3, by.x="x", all=TRUE, sort=TRUE)
-## subset, single row, example
+# Subset single row
 test5r <- test3f[5,]
 
-## xyplot, linear, barplot, stackbar
+# Scatterplot, linear, barplot, stackbar
 mat <- matrix(c(1:16), 4, 4, byrow=TRUE)
 layout(mat)
 
@@ -219,7 +220,7 @@ ooplot(test2f, type="stackbar", col=c("red","blue"))
 ooplot(test3f, type="stackbar", col=c("red","blue","green"))
 ooplot(test5r, type="stackbar", col=c("red","blue","green"))
 
-# restore default layout (1 plot/page)
+# Restore default layout (1 plot/page)
 layout(1)
 }
 \keyword{hplot}

@@ -25,40 +25,40 @@ textplot(object, halign="center", valign="center", cex, \dots)
          col.rownames=par("col"), col.colnames=par("col"), \dots)
 }
 \arguments{
-  \item{object}{Object to be displayed.}
-  \item{halign}{Alignment in the x direction, one of "center", "left",
+  \item{object}{object to be displayed.}
+  \item{halign}{alignment in the x direction, one of "center", "left",
     or "right".}
-  \item{valign}{Alignment in the y direction, one of "center", "top",
-    or "bottom"}
-  \item{cex}{Character size, see \code{\link{par}} for details. If
+  \item{valign}{alignment in the y direction, one of "center", "top",
+    or "bottom".}
+  \item{cex}{character size, see \code{\link{par}} for details. If
     unset, the code will attempt to use the largest value which allows
     the entire object to be displayed.}
-  \item{fixed.width}{Logical value indicating whether to emulate a
+  \item{fixed.width}{logical value indicating whether to emulate a
     fixed-width font by aligning characters in each row of text. This is
     usually necessary for text-formatted tables display properly.
     Defaults to 'TRUE'.}
-  \item{cspace}{Space between characters as a multiple of the width of
+  \item{cspace}{space between characters as a multiple of the width of
     the letter 'W'. This only applies when \code{fixed.width==TRUE}.}
-  \item{lspace}{Line spacing. This only applies when
+  \item{lspace}{line spacing. This only applies when
     \code{fixed.width==TRUE}.}
-  \item{mar}{Figure margins, see the documentation for \code{par}.}
+  \item{mar}{figure margins, see the documentation for \code{par}.}
   \item{rmar, cmar}{Space between rows or columns, in fractions of the
     size of the letter 'M'.}
-  \item{show.rownames, show.colnames}{Logical value indicating whether
+  \item{show.rownames, show.colnames}{logical value indicating whether
     row or column names will be displayed.}
-  \item{hadj,vadj}{Vertical and horizontal location of elements within
+  \item{hadj,vadj}{vertical and horizontal location of elements within
     matrix cells. These have the same meaning as the \code{adj} graphics
     parameter (see \code{\link{par}}).}
-  \item{col.data}{Colors for data elements. If a single value is
+  \item{col.data}{colors for data elements. If a single value is
     provided, all data elements will be the same color. If a matrix
     matching the dimensions of the data is provided, each data element
     will receive the specified color.}
-  \item{col.rownames, col.colnames}{Colors for row names and column
+  \item{col.rownames, col.colnames}{colors for row names and column
     names, respectively. Either may be specified as a scalar or a vector
     of appropriate length.}
-  \item{tab.width}{Width of a single tab stop, in characters}
-  \item{\dots}{Optional arguments passed to the text plotting command or
-    specialied object methods}
+  \item{tab.width}{width of a single tab stop, in characters.}
+  \item{\dots}{optional arguments passed to the text plotting command or
+    specialied object methods.}
 }
 \details{
   A new plot is created and the object is displayed using the largest
@@ -81,18 +81,16 @@ textplot(object, halign="center", valign="center", cex, \dots)
 }
 \examples{
 \dontrun{
-### simple examples
-# show R version information
+# R version information
 textplot(version)
 
-# show the alphabet as a single string
+# Alphabet as a single string
 textplot(paste(letters[1:26], collapse=" "))
 
-# show the alphabet as a matrix
+# Alphabet as a matrix
 textplot(matrix(letters[1:26], ncol=2))
 
-### Make a nice 4 way display with two plots and two text summaries
-
+### 4-way display with two plots and two text summaries
 data(iris)
 par(mfrow=c(2,2))
 plot(Sepal.Length ~ Species, data=iris, border="blue", col="cyan",
@@ -112,25 +110,25 @@ title("Regression of Sepal Length by Species")
 
 par(mfrow=c(1,1))
 
-### Show how to control text color
+# Text color
 cols <- c("red", "green", "magenta", "forestgreen")
 mat <- cbind(name=cols, t(col2rgb(cols)), hex=col2hex(cols))
 
 textplot(mat,
          col.data=matrix(cols, nrow=length(cols), byrow=FALSE, ncol=5))
 
-### Show how to manually tune the character size
+
 data(iris)
 reg <- lm(Sepal.Length ~ Species, data=iris)
 text <- capture.output(summary(reg))
 
-# do the plot and capture the character size used
-textplot(text, valign="top")
+# Show plot and capture the character size used
+cex <- textplot(text, valign="top")
 
-# see what size was used
+# See what size was used
 cex
 
-# now redo the plot at 80\% size
+# Now redo the plot at 80\% size
 textplot(text, valign="top", cex=cex*0.80)
 }
 }

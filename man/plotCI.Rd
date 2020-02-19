@@ -32,9 +32,9 @@ plotCI(x, y=NULL, uiw, liw=uiw, ui, li, err='y', ylim=NULL, xlim=NULL,
     bars. Default is "black".}
   \item{xlim, ylim}{range of x/y values to include in the plotting
     area.}
-  \item{type}{point/line type; passed to \code{\link{points}}}
+  \item{type}{point/line type; passed to \code{\link{points}}.}
   \item{barcol}{color of the error bars. Defaults to the same value as
-    \code{col}}
+    \code{col}.}
   \item{pt.bg}{background color of points (use \code{pch=21,
     pt.bg=par("bg")} to get open points superimposed on error bars).}
   \item{sfrac}{width of "crossbar" at the end of error bar as a fraction
@@ -56,7 +56,7 @@ plotCI(x, y=NULL, uiw, liw=uiw, ui, li, err='y', ylim=NULL, xlim=NULL,
     smaller than \code{minbar} will be replaced with \code{minbar}.}
   \item{maxbar}{maximum allowed value for bar ends. If specified, values
     larger than \code{maxbar} will be replaced with \code{maxbar}.}
-  \item{\dots}{optional plotting parameters}
+  \item{\dots}{optional plotting parameters.}
   \item{xlab}{label for x axis.}
   \item{ylab}{label for y axis.}
 }
@@ -75,41 +75,41 @@ plotCI(x, y=NULL, uiw, liw=uiw, ui, li, err='y', ylim=NULL, xlim=NULL,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-  # plot means and
-  data(state)
-  tmp   <- split(state.area, state.region)
-  means <- sapply(tmp, mean)
-  stdev <- sqrt(sapply(tmp, var))
-  n     <- sapply(tmp,length)
-  ciw   <- qt(0.975, n) * stdev / sqrt(n)
+# Plot means and error bars
+data(state)
+tmp   <- split(state.area, state.region)
+means <- sapply(tmp, mean)
+stdev <- sqrt(sapply(tmp, var))
+n     <- sapply(tmp, length)
+ciw   <- qt(0.975, n) * stdev / sqrt(n)
 
-  # plain
-  plotCI(x=means, uiw=ciw)
+# Plain
+plotCI(x=means, uiw=ciw)
 
-  # prettier
-  plotCI(x=means, uiw=ciw, col="black", barcol="blue", lwd=1)
+# Prettier
+plotCI(x=means, uiw=ciw, col="black", barcol="blue", lwd=1)
 
-  # give mean values
-  plotCI(x=means, uiw=ciw, col="black", barcol="blue",
-         labels=round(means,-3), xaxt="n", xlim=c(0,5))
-  axis(side=1, at=1:4, labels=names(tmp), cex=0.7)
+# Show mean values
+plotCI(x=means, uiw=ciw, col="black", barcol="blue",
+       labels=round(means,-3), xaxt="n", xlim=c(0,5))
+axis(side=1, at=1:4, labels=names(tmp), cex=0.7)
 
-  # better yet, just use plotmeans ...
-  plotmeans(state.area ~ state.region)
+# Alternatively, use plotmeans ...
+plotmeans(state.area ~ state.region)
 
 \dontshow{
 ## Just for testing
-  plotCI(x=means, uiw=NA)
-  plotCI(x=means, uiw=NULL)
-  plotCI(x=means, uiw=ciw)
-  plotCI(x=means, uiw=ciw, liw=NULL)
-  plotCI(x=means, uiw=ciw, liw=NA)
-  plotCI(x=means, liw=ciw, ciw=NULL)
-  plotCI(x=means, liw=ciw, ciw=NA)
-  ciw.na <- ciw
-  ciw.na[3] <- NA
-  plotCI(x=means, uiw=ciw.na, liw=ciw)
-  plotCI(x=means, liw=ciw.na, uiw=ciw)
+plotCI(x=means, uiw=NA)
+plotCI(x=means, uiw=NULL)
+plotCI(x=means, uiw=ciw)
+plotCI(x=means, uiw=ciw, liw=NULL)
+plotCI(x=means, uiw=ciw, liw=NA)
+plotCI(x=means, liw=ciw, ciw=NULL)
+plotCI(x=means, liw=ciw, ciw=NA)
+ciw.na <- ciw
+ciw.na[3] <- NA
+plotCI(x=means, uiw=ciw.na, liw=ciw)
+plotCI(x=means, liw=ciw.na, uiw=ciw)
 }
 }
 \keyword{hplot}

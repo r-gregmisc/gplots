@@ -41,42 +41,42 @@ balloonplot(x, \dots)
             \dots)
 }
 \arguments{
-  \item{x}{A table object, or either a vector or a list of several
+  \item{x}{a table object, or either a vector or a list of several
     categorical vectors containing grouping variables for the first (x)
     margin of the plotted matrix.}
-  \item{y}{Vector or list of vectors for grouping variables for the
+  \item{y}{vector or list of vectors for grouping variables for the
     second (y) dimension of the plotted matrix.}
-  \item{z}{Vector of values for the size of the dots in the plotted
+  \item{z}{vector of values for the size of the dots in the plotted
     matrix.}
-  \item{xlab}{Text label for the x dimension. This will be displayed on
+  \item{xlab}{text label for the x dimension. This will be displayed on
     the x axis and in the plot title.}
-  \item{ylab}{Text label for the y dimension. This will be displayed on
+  \item{ylab}{text label for the y dimension. This will be displayed on
     the y axis and in the plot title.}
-  \item{zlab}{Text label for the dot size. This will be included in the
+  \item{zlab}{text label for the dot size. This will be included in the
     plot title.}
-  \item{dotsize}{Maximum dot size. You may need to adjust this value for
+  \item{dotsize}{maximum dot size. You may need to adjust this value for
     different plot devices and layouts.}
-  \item{dotchar}{Plotting symbol or character used for dots. See the
+  \item{dotchar}{plotting symbol or character used for dots. See the
     help page for the \code{points} function for symbol codes.}
-  \item{dotcolor}{Scalar or vector specifying the color(s) of the dots
+  \item{dotcolor}{scalar or vector specifying the color(s) of the dots
     in the plot.}
-  \item{text.size, text.color}{Character size and color for row and
+  \item{text.size, text.color}{character size and color for row and
     column headers.}
-  \item{main}{Plot title text.}
-  \item{label}{Boolean flag indicating whether the actual value of the
+  \item{main}{plot title text.}
+  \item{label}{boolean flag indicating whether the actual value of the
     elements should be shown on the plot.}
-  \item{label.digits}{Number of digits used in formatting value labels.}
-  \item{label.size, label.color}{Character size and color for value
+  \item{label.digits}{number of digits used in formatting value labels.}
+  \item{label.size, label.color}{character size and color for value
     labels.}
-  \item{scale.method}{Method of scaling the sizes of the dot, either
+  \item{scale.method}{method of scaling the sizes of the dot, either
     "volume" or "diameter". See below.}
-  \item{scale.range}{Method for scaling original data to compute circle
+  \item{scale.range}{method for scaling original data to compute circle
     diameter. \code{scale.range="absolute"} scales the data
     relative to 0 (i.e, maps [0,max(z)] --> [0,1]), while
     \code{scale.range="relative"} scales the data relative to min(z)
     (i.e. maps [min(z), max(z)] --> [0,1]).}
-  \item{rowsrt, colsrt}{Angle of rotation for row and column labels.}
-  \item{rowmar, colmar}{Space allocated for row and column labels. Each
+  \item{rowsrt, colsrt}{angle of rotation for row and column labels.}
+  \item{rowmar, colmar}{space allocated for row and column labels. Each
     unit is the width/height of one cell in the table.}
   \item{show.zeros}{boolean. If \code{FALSE}, entries containing zero
     will be left blank in the plotted matrix. If \code{TRUE}, zeros will
@@ -97,7 +97,7 @@ balloonplot(x, \dots)
   \item{fun}{function to be used to combine data elements with the same
     levels of the grouping variables \code{x} and \code{y}. Defaults to
     \code{sum}.}
-  \item{\dots}{Additional arguments passed to \code{balloonplot.default}
+  \item{\dots}{additional arguments passed to \code{balloonplot.default}
     or \code{plot}, as appropriate.}
 }
 \details{

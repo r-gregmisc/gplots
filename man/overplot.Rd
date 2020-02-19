@@ -15,14 +15,14 @@ overplot(formula, data=parent.frame(), same.scale=FALSE, xlab, ylab,
          subset, plot=TRUE, groups, main, f=2/3, \dots)
 }
 \arguments{
-  \item{formula}{Formula describing the x and y variables. It should be
+  \item{formula}{.ormula describing the x and y variables. It should be
     of the form x ~ y|z. The conditioning variable (z) should be a
     factor.}
-  \item{same.scale}{Logical value indicating whether the plot region
+  \item{same.scale}{logical value indicating whether the plot region
     should have the same range for all plots. Defaults to \code{FALSE}.}
-  \item{xlab, ylab, xlim, ylim, main}{Standard plotting parameters. See
-    \code{\link{plot}} for details}
-  \item{min.y, max.y}{Scalar or vector values used to specify the y
+  \item{xlab, ylab, xlim, ylim, main}{standard plotting parameters. See
+    \code{\link{plot}} for details.}
+  \item{min.y, max.y}{scalar or vector values used to specify the y
     plotting limits for individual plots. If a single scalar value is
     provided, it will be used for all plots. These parameters can be
     used specify one end of the individual plot ranges, while allowing
@@ -33,11 +33,11 @@ overplot(formula, data=parent.frame(), same.scale=FALSE, xlab, ylab,
   \item{panel}{a plotting function to be called to draw the individual
     plots. Defaults to \code{overplot.panel}, which plots the points and
     a \code{lowess} smooth.}
-  \item{plot}{Logical value indicating whether to draw the plot.}
+  \item{plot}{logical value indicating whether to draw the plot.}
   \item{groups}{(optional) character vector giving the names of levels
     of the conditioning variable to plot. Defaults to all levels of the
     conditioning variable.}
-  \item{f}{Smoothing parameter for \code{lowess}}
+  \item{f}{smoothing parameter for \code{lowess}.}
   \item{data, subset, \dots}{parameters passed to \code{model.frame} to
     obtain the data to be plotted from the formula.}
 }
@@ -60,7 +60,7 @@ overplot(formula, data=parent.frame(), same.scale=FALSE, xlab, ylab,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-# same scale
+# Same scale
 overplot(RQ ~ Conc..ug.ml. | Test.Substance,
          data=rtPCR,
          subset=Detector=="ProbeType 1" & Conc..ug.ml. > 0,
@@ -71,7 +71,7 @@ overplot(RQ ~ Conc..ug.ml. | Test.Substance,
          xlab="Concentration (ug/ml)",
          ylab="Relative Gene Quantification")
 
-# different scales, but force lower limit to 0.01
+# Different scales, but force lower limit to 0.01
 overplot(RQ ~ Conc..ug.ml. | Test.Substance,
          data=rtPCR,
          subset=Detector=="ProbeType 8" & Conc..ug.ml. > 0,

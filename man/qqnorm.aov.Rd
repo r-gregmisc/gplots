@@ -12,15 +12,15 @@
        ylab="Effects", \dots)
 }
 \arguments{
-  \item{y}{A model object inheriting from \code{aov}}
-   \item{full}{Full or half normal plot (half is default)}
-   \item{label}{If \code{TRUE}, function allows interactive labelling of
-     points in plot, using the mouse}
-   \item{omit}{Numeric or character vector of effects to omit, the
-     intercept is always omitted}
-   \item{xlab}{Horizontal axix label}
-   \item{ylab}{Vertical axis label}
-   \item{\dots}{Further arguments to be given to the plot function}
+  \item{y}{a model object inheriting from \code{aov}.}
+   \item{full}{full or half normal plot (half is default).}
+   \item{label}{if \code{TRUE}, function allows interactive labelling of
+     points in plot, using the mouse.}
+   \item{omit}{numeric or character vector of effects to omit, the
+     intercept is always omitted.}
+   \item{xlab}{horizontal axix label.}
+   \item{ylab}{vertical axis label.}
+   \item{\dots}{further arguments to be given to the plot function.}
 }
 \details{
    Produces a (half) normal plot of the effects from an AOV model. The
@@ -30,8 +30,6 @@
    a straight line, other effects can be judged against this as a
    background. Heavily used by Box, Hunter & Hunter, who attribute the
    idea to Daniel.
-
-   This is a simpler implementation than the one in S-Plus.
 }
 \value{
   If \code{label=TRUE}, the vector of points identified, else nothing of
@@ -57,7 +55,7 @@ data(npk)
 npk.aov <- aov(yield ~ block + N*P*K, npk)
 qqnorm(npk.aov)
 
-## interactive labeling of points. Click mouse on points to show label.
+# Interactive labeling of points. Click mouse on points to show label
 if(dev.interactive()) qqnorm(npk.aov, omit=2:6, label=TRUE)
 }
 \keyword{hplot}

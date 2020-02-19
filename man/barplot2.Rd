@@ -96,32 +96,33 @@
   \item{plot.ci}{logical. If \code{TRUE}, confidence intervals are
     plotted over the bars. Note that if a stacked bar plot is generated,
     confidence intervals will not be plotted even if \code{plot.ci =
-    TRUE}}
-  \item{ci.l, ci.u}{The confidence intervals (ci.l = lower bound, ci.u =
+    TRUE}.}
+  \item{ci.l, ci.u}{the confidence intervals (ci.l = lower bound, ci.u =
     upper bound) to be plotted if \code{plot.ci} = \code{TRUE}. Values
     must have the same dim structure as \code{height}.}
-  \item{ci.color}{the color for the confidence interval line segments}
-  \item{ci.lty}{the line type for the confidence interval line segments}
+  \item{ci.color}{the color for the confidence interval line segments.}
+  \item{ci.lty}{the line type for the confidence interval line
+    segments.}
   \item{ci.lwd}{the line width for the confidence interval line
-    segments}
+    segments.}
   \item{ci.width}{length of lines used for the "t" at the end of
     confidence interval line segments, as a multple of \code{width}.
     Defaults to 0.5.}
-  \item{plot.grid}{if \code{TRUE} a lined grid will be plotted behind
-    the bars}
-  \item{grid.inc}{the number of grid increments to be plotted}
-  \item{grid.lty}{the line type for the grid}
-  \item{grid.lwd}{the line width for the grid}
-  \item{grid.col}{the line color for the grid}
+  \item{plot.grid}{if \code{TRUE} a line grid will be plotted behind the
+    bars.}
+  \item{grid.inc}{the number of grid increments to be plotted.}
+  \item{grid.lty}{the line type for the grid.}
+  \item{grid.lwd}{the line width for the grid.}
+  \item{grid.col}{the line color for the grid.}
   \item{add}{logical, if \code{TRUE} add barplot to current plot.}
   \item{panel.first}{An expression to be evaluated after the plot region
     coordinates have been set up, but prior to the drawing of the bars
     and other plot region contents. This can be useful to add additional
     plot region content behind the bars. This will also work if
-    \code{add} = \code{TRUE}}
-  \item{panel.last}{An expression to be evaluated after the bars have
+    \code{add} = \code{TRUE}.}
+  \item{panel.last}{an expression to be evaluated after the bars have
     been drawn, but prior to the addition of confidence intervals, a
-    legend and the axis annotation}
+    legend and the axis annotation.}
   \item{\dots}{further graphical parameters (\code{\link{par}}) are
     passed to \code{\link{plot.window}()}, \code{\link{title}()} and
     \code{\link{axis}}.}
@@ -159,7 +160,7 @@
 tN <- table(Ni <- rpois(100, lambda=5))
 r <- barplot2(tN, col='gray')
 
-#- type="h" plotting *is* `bar'plot
+# type="h" plotting *is* `bar'plot
 lines(r, tN, type='h', col='red', lwd=2)
 
 barplot2(tN, space=1.5, axisnames=FALSE,
@@ -178,7 +179,7 @@ barplot2(VADeaths, beside=TRUE,
          legend=rownames(VADeaths), ylim=c(0, 100))
 title(main="Death Rates in Virginia", font.main=4)
 
-# Example with confidence intervals and grid
+# Confidence intervals and grid
 hh <- t(VADeaths)[, 5:1]
 mybarcol <- "gray20"
 ci.l <- hh * 0.85
@@ -195,17 +196,17 @@ mtext(side=1, at=colMeans(mp), line=-2,
       text=paste("Mean", formatC(colMeans(hh))), col="red")
 box()
 
-# Example with horizontal bars, grid and logarithmic x axis
+# Horizontal bars, grid and logarithmic x axis
 barplot2(1:10 , log="x", plot.grid=TRUE, grid.inc=10, xlim=c(0.5, 20),
          horiz=TRUE, cex.axis=0.9, prcol="gray95")
 box()
 
-# Bar shading example
+# Bar shading
 barplot2(VADeaths, angle=15 + 10 * 1:5, density=20, col="black",
         legend=rownames(VADeaths))
 title(main=list("Death Rates in Virginia", font=4))
 
-# border:
+# Border
 barplot2(VADeaths, border="dark blue")
 }
 \keyword{hplot}

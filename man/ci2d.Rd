@@ -17,28 +17,28 @@ ci2d(x, y=NULL, nbins=51, method=c("bkde2D","hist2d"), bandwidth,
   \item{x}{either a vector containing the x coordinates or a matrix with
     2 columns.}
   \item{y}{a vector contianing the y coordinates, not required if `x' is
-    matrix}
+    matrix.}
   \item{nbins}{number of bins in each dimension. May be a scalar or a 2
     element vector. Defaults to 51.}
-  \item{method}{One of "bkde2D" (for KernSmooth::bdke2d) or "hist2d"
+  \item{method}{one of "bkde2D" (for KernSmooth::bdke2d) or "hist2d"
     (for gplots::hist2d) specifyting the name of the method to create
     the 2-d density summarizing the data. Defaults to "bkde2D".}
-  \item{bandwidth}{Bandwidth to use for \code{KernSmooth::bkde2D}. See
-    below for default value. }
-  \item{factor}{Numeric scaling factor for bandwidth. Useful for
+  \item{bandwidth}{bandwidth to use for \code{KernSmooth::bkde2D}. See
+    below for default value.}
+  \item{factor}{numeric scaling factor for bandwidth. Useful for
     exploring effect of changing the bandwidth. Defaults to 1.0.}
   \item{ci.levels}{Confidence level(s) to use for plotting data.
-    Defaults to \code{c(0.5, 0.75, 0.9, 0.95, 0.975)}}
-  \item{show}{Plot type to be displayed. One of "filled.contour",
+    Defaults to \code{c(0.5, 0.75, 0.9, 0.95, 0.975)}.}
+  \item{show}{plot type to be displayed. One of "filled.contour",
     "contour", "image", or "none". Defaults to "filled.contour".}
-  \item{show.points}{Boolean indicating whether original data values
+  \item{show.points}{boolean indicating whether original data values
     should be plotted. Defaults to \code{TRUE}.}
-  \item{pch}{Point type for plots. See \code{points} for details.}
-  \item{points.col}{Point color for plotting original data. Defaiults to
+  \item{pch}{point type for plots. See \code{points} for details.}
+  \item{points.col}{point color for plotting original data. Defaults to
     "red".}
-  \item{col}{Colors to use for plots.}
-  \item{xlab, ylab}{Axis labels}
-  \item{\dots}{Additional arguments passed to \code{KernSmooth::bkde2D}
+  \item{col}{colors to use for plots.}
+  \item{xlab, ylab}{axis labels}
+  \item{\dots}{additional arguments passed to \code{KernSmooth::bkde2D}
     or \code{gplots::hist2d}.}
 }
 \details{
@@ -82,9 +82,7 @@ ci2d(x, y=NULL, nbins=51, method=c("bkde2D","hist2d"), bandwidth,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-####
-## Basic usage
-####
+# 1  Basic usage
 data(geyser, package="MASS")
 
 x <- geyser$duration
@@ -94,18 +92,16 @@ y <- geyser$waiting
 ci2d(x, y)                   # filled contour plot
 ci2d(x, y, show.points=TRUE) # show original data
 
-
-# image plot
+# Image plot
 ci2d(x, y, show="image")
 ci2d(x, y, show="image", show.points=TRUE)
 
-# contour plot
+# Contour plot
 ci2d(x, y, show="contour", col="black")
 ci2d(x, y, show="contour", col="black", show.points=TRUE)
 
-####
-## Control Axis scales
-####
+
+# 2  Control axis scales
 x <- rnorm(2000, sd=4)
 y <- rnorm(2000, sd=1)
 
@@ -119,19 +115,18 @@ ci2d(x, y, method="hist2d", nbins=25)
 ci2d(x, y, range.x=list(c(-20,20), c(-20,20)))
 ci2d(x, y, method="hist2d", same.scale=TRUE, nbins=25)  # hist2d
 
-####
-## Control smoothing and binning
-####
+
+# 3  Control smoothing and binning
 x <- rnorm(2000, sd=4)
 y <- rnorm(2000, mean=x, sd=2)
 
 # Default 2-d confidence intervals based on binned kernel density estimate
 ci2d(x, y)
 
-# change the smoother bandwidth
+# Change the smoother bandwidth
 ci2d(x, y, bandwidth=c(sd(x)/8, sd(y)/8))
 
-# change the smoother number of bins
+# Change the smoother number of bins
 ci2d(x, y, nbins=10)
 ci2d(x, y)
 ci2d(x, y, nbins=100)
@@ -139,62 +134,58 @@ ci2d(x, y, nbins=100)
 # Default 2-d confidence intervals based on 2d histogram
 ci2d(x, y, method="hist2d", show.points=TRUE)
 
-# change the number of histogram bins
+# Change the number of histogram bins
 ci2d(x, y, nbin=10, method="hist2d", show.points=TRUE )
 ci2d(x, y, nbin=25, method="hist2d", show.points=TRUE )
 
-####
-## Perform plotting manually
-####
+
+# 4  Perform plotting manually
 data(geyser, package="MASS")
 
-# let ci2d handle plotting contours...
+# Let ci2d handle plotting contours...
 ci2d(geyser$duration, geyser$waiting, show="contour", col="black")
 
-# call contour() directly, show the 90 percent CI, and the mean point
+# Call contour() directly, show the 90 percent CI, and the mean point
 est <- ci2d(geyser$duration, geyser$waiting, show="none")
 contour(est$x, est$y, est$cumDensity, xlab="duration", ylab="waiting",
         levels=0.90, lwd=4, lty=2)
 points(mean(geyser$duration), mean(geyser$waiting), col="red", pch="X")
 
 
-####
-## Extract confidence region values
-###
+# 5  Extract confidence region values
 data(geyser, package="MASS")
 
-## Empirical 90 percent confidence limits
+# Empirical 90 percent confidence limits
 quantile(geyser$duration, c(0.05, 0.95))
 quantile(geyser$waiting, c(0.05, 0.95))
 
-## Bivariate 90 percent confidence region
+# Bivariate 90 percent confidence region
 est <- ci2d(geyser$duration, geyser$waiting, show="none")
-names(est$contours) ## show available contours
+names(est$contours)  # show available contours
 
-ci.90 <- est$contours[names(est$contours)=="0.9"]  # get region(s)
+ci.90 <- est$contours[names(est$contours)=="0.9"]        # get region(s)
 ci.90 <- rbind(ci.90[[1]], NA, ci.90[[2]], NA, ci.90[[3]])  # join them
 
 print(ci.90)                # show full contour
 range(ci.90$x, na.rm=TRUE)  # range for duration
 range(ci.90$y, na.rm=TRUE)  # range for waiting
 
-####
-## Visually compare confidence regions
-####
+
+# 6  Visually compare confidence regions
 data(geyser, package="MASS")
 
-## Bivariate smoothed 90 percent confidence region
+# Bivariate smoothed 90 percent confidence region
 est <- ci2d(geyser$duration, geyser$waiting, show="none")
 names(est$contours) ## show available contours
 
-ci.90 <- est$contours[names(est$contours)=="0.9"]         # get region(s)
-ci.90 <- rbind(ci.90[[1]],NA, ci.90[[2]], NA, ci.90[[3]]) # join them
+ci.90 <- est$contours[names(est$contours)=="0.9"]        # get region(s)
+ci.90 <- rbind(ci.90[[1]],NA, ci.90[[2]], NA, ci.90[[3]])  # join them
 
 plot(waiting ~ duration, data=geyser,
      main="Comparison of 90 percent confidence regions")
 polygon(ci.90, col="green", border="green", density=10)
 
-## Univariate Normal-Theory 90 percent confidence region
+# Univariate Normal-Theory 90 percent confidence region
 mean.x <- mean(geyser$duration)
 mean.y <- mean(geyser$waiting)
 sd.x <- sd(geyser$duration)
@@ -216,22 +207,21 @@ plotCI(mean.x, mean.y, li=ci.y[1], ui=ci.y[2], barcol="blue",
 #      col="blue")
 
 
-## Empirical univariate 90 percent confidence region
+# Empirical univariate 90 percent confidence region
 box <- cbind(x=quantile(geyser$duration, c(0.05, 0.95)),
              y=quantile(geyser$waiting, c(0.05, 0.95)))
 
 rect(box[1,1], box[1,2], box[2,1], box[2,2], border="red", density=5,
      angle=-45, col="red")
 
-## now a nice legend
+# Now a nice legend
 legend("topright", legend=c("       Region type",
        "Univariate Normal Theory", "Univarite Empirical",
        "Smoothed Bivariate"), lwd=c(NA,1,1,1),
        col=c("black","blue","red","green"), lty=c(NA,1,1,1))
 
-####
-## Test with a large number of points
-####
+
+# 7  Test with a large number of points
 \dontrun{
 x <- rnorm(60000, sd=1)
 y <- c(rnorm(40000, mean=x, sd=1),

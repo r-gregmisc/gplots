@@ -9,9 +9,9 @@
 residplot(model, formula, \dots)
 }
 \arguments{
-  \item{model}{Undocumented}
-  \item{formula}{Undocumented}
-  \item{\dots}{arguments to be passed to \code{fun}}
+  \item{model}{undocumented.}
+  \item{formula}{undocumented.}
+  \item{\dots}{undocumented.}
 }
 \details{
   These functions are undocumented. Some are internal and not intended

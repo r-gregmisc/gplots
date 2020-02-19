@@ -50,30 +50,29 @@ y <- round(rnorm(length(x),x))
 prepar <- par("mfrow")
 par(mfrow=c(1,3))
 
-# standard x-y plot: noverlapping points are hidden
+# Standard x-y plot: noverlapping points are hidden
 plot(x, y)
 title("Standard Plot")
 
-# 'spaced' plot: overlapping points are spread out and visible
+# Spaced plot: overlapping points are spread out and visible
 plot(space(x, y))
 title("Plot with 'space'")
 
 
-# 'spaced' plot: overlapping points are spread out along y and visible
+# Spaced plot: overlapping points are spread out along y and visible
 plot(space(x, y, direction='y'))
 title("Plot with 'space', direction='y' ")
 
 
-# 'sunflower' plot, another approach, overlapping points are
-# indicated via petals
-sunflowerplot(x,y)
+# Sunflower plot, overlapping points are indicated via petals
+sunflowerplot(x, y)
 title("Sunflower Plot")
 
 \testonly{
-# check that missign values correctly handled
-x <- c(x,NA)
-y <- c(y,NA)
-plot(space(x,y))
+# Check that missign values correctly handled
+x <- c(x, NA)
+y <- c(y, NA)
+plot(space(x, y))
 }
 
 par(mfrow=prepar)

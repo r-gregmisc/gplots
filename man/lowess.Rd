@@ -56,7 +56,7 @@ plotLowess(formula, data=parent.frame(), \dots, subset=parent.frame(),
   \item{delta}{values of \code{x} which lie within \code{delta} of each
     other replaced by a single value in the output from \code{lowess}.}
   \item{\dots}{parameters for methods.}
-  \item{col.lowess, lty.lowess}{color and line type for plotted line}
+  \item{col.lowess, lty.lowess}{color and line type for plotted line.}
 }
 \references{
   Cleveland, W. S. (1979)
@@ -82,23 +82,21 @@ lines(lowess(cars$speed, cars$dist), col=2)
 lines(lowess(cars$speed, cars$dist, f=.2), col=3)
 legend(5, 120, c(paste("f=", c("2/3", ".2"))), lty=1, col=2:3)
 
-# formula method: plot, then calculate the lowess smoother,
-#                 then add smooth to the plot
+# Formula method: plot, calculate lowess smoother, add smooth to plot
 plot(dist ~ speed, data=cars, main="lowess(cars)")
 lines(lowess(dist ~ speed, data=cars), col=2, lty=2)
 lines(lowess(dist ~ speed, data=cars, f=.2), col=3) # smaller bandwith
 legend(5, 120, c(paste("f=", c("2/3", ".2"))), lty=1, col=2:3)
 
-# formula method: calculate lowess() smoother, then call plot()
-#                  on the lowess object
+# Formula method: calculate lowess smoother, plot lowess object
 lw <- lowess(dist ~ speed, data=cars)
-plot(lw, main="lowess(cars)"  )
+plot(lw, main="lowess(cars)")
 
-# formula method: calculate and plot in a single command
+# Formula method: calculate and plot in a single command
 plotLowess(dist ~ speed, data=cars, main="lowess(cars)")
 
 \dontshow{
-# test non-standard evaluation
+# Test non-standard evaluation
 with(cars, plotLowess(dist ~ speed, main="lowess(cars)"))
 with(cars, plot(lowess(dist ~ speed, main="lowess(cars)")))
 

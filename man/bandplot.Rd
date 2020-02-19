@@ -22,8 +22,8 @@ bandplot(x,\dots)
 \arguments{
   \item{x}{either formula providing a single dependent variable (y) and
     an single independent variable (x) to use as coordinates in the
-    scatterplot or a numeric vector of x locations}
-  \item{y}{numeric vector of y locations}
+    scatterplot or a numeric vector of x locations.}
+  \item{y}{numeric vector of y locations.}
   \item{data}{an optional data.frame, list, or environment containing
     the variables used in the model (and in \code{subset}). If not found
     in data, the variables are taken from environment(formula),
@@ -35,17 +35,17 @@ bandplot(x,\dots)
     options, and is na.fail if that is unset. The factory-fresh default
     is na.omit. Another possible value is NULL, no action. Value
     na.exclude can be useful.}
-  \item{\dots}{Additional plotting parameters}
-  \item{xlab, ylab}{x and y axis labels}
-  \item{add}{Boolean indicating whether the local mean and standard
+  \item{\dots}{additional plotting parameters.}
+  \item{xlab, ylab}{x and y axis labels.}
+  \item{add}{boolean indicating whether the local mean and standard
     deviation lines should be added to an existing plot. Defaults to
     FALSE.}
-  \item{sd}{Vector of multiples of the standard devation that should be
+  \item{sd}{vector of multiples of the standard devation that should be
     plotted. \code{0} gives the mean, \code{-1} gives the mean minus
     one standard deviation, etc. Defaults to -2:2.}
-  \item{sd.col,sd.lwd,sd.lty}{Color, line width, and line type of each
+  \item{sd.col,sd.lwd,sd.lty}{color, line width, and line type of each
     plotted line.}
-  \item{method, width, n}{Parameters controlling the smoothing. See the
+  \item{method, width, n}{parameters controlling the smoothing. See the
     help page for \code{\link{wapply}} for details.}
 }
 \details{
@@ -69,34 +69,34 @@ bandplot(x,\dots)
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-# fixed mean, changing variance
+# Fixed mean, changing variance
 x <- 1:1000
 y <- rnorm(1000, mean=1, sd=1 + x/1000 )
 bandplot(x,y)
 bandplot(y~x)
 
-# fixed varance, changing mean
+# Fixed varance, changing mean
 x <- 1:1000
 y <- rnorm(1000, mean=x/1000, sd=1)
 bandplot(x,y)
 
-# changing mean and variance
+# Changing mean and variance
 x <- abs(rnorm(500))
 y <- rnorm(500, mean=2*x, sd=2+2*x)
 
-# the changing mean and dispersion are hard to see whith the points alone:
+# The changing mean and dispersion are hard to see whith the points alone:
 plot(x,y )
 
-# regression picks up the mean trend, but not the change in variance
+# Regression picks up the mean trend, but not the change in variance
 reg <- lm(y~x)
 summary(reg)
 abline(reg=reg, col="blue", lwd=2)
 
-# using bandplot on the original data helps to show the mean and
+# Using bandplot on the original data helps to show the mean and
 # variance trend
 bandplot(y ~ x)
 
-# using bandplot on the residuals helps to see that regression removes
+# Using bandplot on the residuals helps to see that regression removes
 # the mean trend but leaves the trend in variability
 bandplot(predict(reg),resid(reg))
 }

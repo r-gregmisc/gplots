@@ -6,8 +6,8 @@
 sinkplot(operation = c("start", "plot", "cancel"), \dots)
 }
 \arguments{
-  \item{operation}{See below}
-  \item{\dots}{Plot arguments. (Ignored unless
+  \item{operation}{see below.}
+  \item{\dots}{plot arguments. (Ignored unless
     \code{operation}="plot").}
 }
 \details{
@@ -40,18 +40,18 @@ sinkplot(operation = c("start", "plot", "cancel"), \dots)
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-   set.seed(12456)
-   x <- factor(sample( LETTERS[1:5], 50, replace=TRUE))
-   y <- rnorm(50, mean=as.numeric(x), sd=1)
+set.seed(12456)
+x <- factor(sample( LETTERS[1:5], 50, replace=TRUE))
+y <- rnorm(50, mean=as.numeric(x), sd=1)
 
-   ## construct a figure showing a box plot of the data, followed by an
-   ## analysis of variance table for the data
-   layout(cbind(1:2), heights=c(2,1))
+# Construct a figure showing a box plot of the data, followed by an
+# analysis of variance table for the data
+layout(cbind(1:2), heights=c(2,1))
 
-   boxplot(y~x, col="darkgreen")
+boxplot(y~x, col="darkgreen")
 
-   sinkplot()
-   anova(lm(y~x))
-   sinkplot("plot",col="darkgreen")
+sinkplot()
+anova(lm(y~x))
+sinkplot("plot", col="darkgreen")
 }
 \keyword{hplot}
