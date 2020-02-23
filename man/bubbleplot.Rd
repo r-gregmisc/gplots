@@ -16,7 +16,8 @@ bubbleplot(x, \dots)
            rev=FALSE, type="p", ylim=NULL, xlab=NULL, ylab=NULL,
            pch=c(16,1), cex.points=1, col="black", bg=par("bg"), \dots)
 
-\method{bubbleplot}{formula}(formula, data, subset, na.action=NULL, \dots)
+\method{bubbleplot}{formula}(formula, data, subset, na.action=NULL,
+           \dots)
 }
 \arguments{
   \item{x}{a vector of values for the horizontal axis. Can also be a
@@ -77,7 +78,8 @@ bubbleplot(Catch~Age+Year, data=catch.d, rev=TRUE, las=1)
 bubbleplot(catch.d)
 bubbleplot(Orange)
 # Visualize tree transverse section at breast height
-bubbleplot(Orange, pow=1, cex=2, pch=21, col="darkred", bg="peru", lwd=1.5)
+bubbleplot(Orange, pow=1, cex=2, pch=21,
+           col="darkred", bg="peru", lwd=1.5)
 
 # 3  Matrix or table
 bubbleplot(catch.m)

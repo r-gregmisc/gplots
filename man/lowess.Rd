@@ -6,20 +6,15 @@
 \alias{plotLowess}
 \title{Scatterplot Smoothing}
 \description{
-  The \code{lowess} function performs the computations for the
-  \emph{LOWESS} smoother (see the reference below). \code{lowess}
-  returns a an object containing components \code{x} and \code{y} which
-  give the coordinates of the smooth. The smooth can then be added to a
-  plot of the original points with the function \code{lines}.
+  This function augments the base \code{\link[stats]{lowess}} function
+  by adding \code{formula} and \code{plot} methods.
 
-  Alternatively, \code{plot} can be called directly on the object
-  returned from \code{lowess} and the 'lowess' method for \code{plot}
-  will generate a scatterplot of the original data with a \code{lowess}
-  line superimposed.
+  The \code{plot} method can be called directly on the object
+  returned from \code{lowess} to draw a scatterplot of the original data
+  with a smooth line superimposed.
 
-  Finally, the \code{plotLowess} function both calculates the
-  \code{lowess} smooth and plots the original data with a \code{lowess}
-  smooth.
+  The \code{plotLowess} function both calculates the \code{lowess}
+  smooth and plots the original data with a smooth line.
 }
 \usage{
 lowess(x, \dots)
@@ -28,20 +23,19 @@ lowess(x, \dots)
        delta=0.01*diff(range(x)), \dots)
 
 \method{lowess}{formula}(formula,data=parent.frame(), \dots, subset,
-       f=2/3, iter=3L, delta=.01*diff(range(mf[-response])))
+       f=2/3, iter=3L, delta=0.01*diff(range(mf[-response])))
 
 \method{plot}{lowess}(x, y, \dots, col.lowess="red", lty.lowess=2)
 
 plotLowess(formula, data=parent.frame(), \dots, subset=parent.frame(),
            col.lowess="red", lty.lowess=2)
 }
-\alias{lowess}
 \arguments{
   \item{formula}{formula providing a single dependent variable (y) and a
     single independent variable (x) to use as coordinates in the
     scatterplot.}
-  \item{data}{a data.frame (or list) from which the variables in
-    `formula' should be taken.}
+  \item{data}{a \code{data.frame} or list from which the variables in
+    \code{formula} should be taken.}
   \item{subset}{an optional vector specifying a subset of observations
     to be used in the fitting process.}
   \item{x, y}{vectors giving the coordinates of the points in the
@@ -58,34 +52,26 @@ plotLowess(formula, data=parent.frame(), \dots, subset=parent.frame(),
   \item{\dots}{parameters for methods.}
   \item{col.lowess, lty.lowess}{color and line type for plotted line.}
 }
-\references{
-  Cleveland, W. S. (1979)
-  Robust locally weighted regression and smoothing scatterplots.
-  \emph{J. Amer. Statist. Assoc.} \bold{74}, 829--836.
-
-  Cleveland, W. S. (1981)
-  LOWESS: A program for smoothing scatterplots by robust locally weighted
-  regression. \emph{The American Statistician}, \bold{35}, 54.
-}
 \seealso{
-  \code{\link{loess}}, a newer formula based version of \code{lowess}
-  (with different defaults!).
+  The base \code{\link{lowess}} help page provides further details about
+  the smoothing algorithm.
+
+  \code{\link{loess}} is a newer smoothing algorithm with different
+  defaults.
 
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-data(cars)
-
 # x,y method
 plot(cars$speed, cars$dist, main="lowess(cars)")
 lines(lowess(cars$speed, cars$dist), col=2)
-lines(lowess(cars$speed, cars$dist, f=.2), col=3)
+lines(lowess(cars$speed, cars$dist, f=0.2), col=3)
 legend(5, 120, c(paste("f=", c("2/3", ".2"))), lty=1, col=2:3)
 
 # Formula method: plot, calculate lowess smoother, add smooth to plot
 plot(dist ~ speed, data=cars, main="lowess(cars)")
 lines(lowess(dist ~ speed, data=cars), col=2, lty=2)
-lines(lowess(dist ~ speed, data=cars, f=.2), col=3) # smaller bandwith
+lines(lowess(dist ~ speed, data=cars, f=0.2), col=3) # smaller bandwith
 legend(5, 120, c(paste("f=", c("2/3", ".2"))), lty=1, col=2:3)
 
 # Formula method: calculate lowess smoother, plot lowess object

@@ -16,19 +16,13 @@ boxplot2(\dots, top=FALSE, shrink=1, textcolor=NULL)
   \item{shrink}{value to shrink character size (cex) when annotating.}
   \item{textcolor}{text color.}
 }
-\author{ Gregory R. Warnes \email{greg@warnes.net}}
-\note{
-  This function replaces \code{boxplot.n}, which has been deprecated
-  avoid potential problems with S3 method dispatching.
-}
+\author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link{boxplot}}, \code{\link{text}}.
 
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-data(state)
-
 # n's at bottom
 boxplot2(state.area ~ state.region)
 

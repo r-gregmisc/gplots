@@ -6,19 +6,19 @@
 space(x, y, s=1/50, na.rm=TRUE, direction="x")
 }
 \arguments{
-  \item{x}{numeric vector of x coordonates.}
-  \item{y}{numeric vector of x coordonates.}
-  \item{s}{either a single numeric value or 2 element vector specifying
+  \item{x}{numeric vector of x coordinates.}
+  \item{y}{numeric vector of y coordinates.}
+  \item{s}{either a single numeric value or 2-element vector specifying
     the minimum distance between points in the x and y dimensions as a
-    fraction of the x and y range. Defaults to 1/50.}
+    fraction of the x and y range. Defaults to \code{1/50}.}
   \item{na.rm}{logical indicating whether pairs where one or both
-    elements are missing should be removed. Defaults to TRUE.}
+    elements are missing should be removed. Defaults to \code{TRUE}.}
   \item{direction}{"x" or "y", indicating which direction points should
     be moved to accomplish spacine.}
 }
 \details{
   In an x-y plot where at least one variable has discrete levels several
-  points may be plotted at or very near the same coordonates. This makes
+  points may be plotted at or very near the same coordinates. This makes
   it difficult to guage the number of points in a specific region. A
   common method of resolving this problem is to 'jitter' the points by
   adding random noise.
@@ -33,11 +33,11 @@ space(x, y, s=1/50, na.rm=TRUE, direction="x")
   \code{\link{sunflowerplot}} function.
 }
 \value{
-  list with two components
+  List with two components
   \item{x}{(modified) x location for each input point}
   \item{y}{y location of each input point}
 }
-\author{Gregory R. Warnes \email{greg@warnes.net}}
+\author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link{jitter}}, \code{\link{sunflowerplot}}.
 

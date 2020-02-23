@@ -26,22 +26,24 @@ plotCI(x, y=NULL, uiw, liw=uiw, ui, li, err='y', ylim=NULL, xlim=NULL,
   \item{li}{lower end of error bars. Defaults to \code{y - liw} or
     \code{x - liw} depedning on \code{err}. Set to \code{NULL} or
     \code{NA} to omit lower bars.}
-  \item{err}{direction for error bars. Set to "y" for vertical bars. Set
-    to "x" for horizontal bars. Defaults to "y".}
+  \item{err}{direction for error bars. Set to \code{"y"} for vertical
+    bars. Set to \code{"x"} for horizontal bars. Defaults to
+    \code{"y"}.}
   \item{col}{color of plotting character used center marker of error
-    bars. Default is "black".}
-  \item{xlim, ylim}{range of x/y values to include in the plotting
+    bars. Default is \code{"black"}.}
+  \item{xlim, ylim}{range of x and y values to include in the plotting
     area.}
-  \item{type}{point/line type; passed to \code{\link{points}}.}
+  \item{type}{point or line type, passed to \code{\link{points}}.}
   \item{barcol}{color of the error bars. Defaults to the same value as
     \code{col}.}
-  \item{pt.bg}{background color of points (use \code{pch=21,
-    pt.bg=par("bg")} to get open points superimposed on error bars).}
-  \item{sfrac}{width of "crossbar" at the end of error bar as a fraction
-    of the x plotting region. Defaults to 0.01.}
+  \item{pt.bg}{background color of points (use
+    \code{pch=21, pt.bg=par("bg")} to get open points superimposed on
+    error bars).}
+  \item{sfrac}{width of crossbar at the end of error bar as a fraction
+    of the x plotting region. Defaults to \code{0.01}.}
   \item{gap}{space left between the center of the error bar and the
     lines marking the error bar in units of the height (width) of the
-    letter "O". Defaults to 1.0}
+    letter "O". Defaults to \code{1.0}.}
   \item{lwd}{width of bar lines.}
   \item{lty}{line type of bar lines.}
   \item{labels}{either a logical value indicating whether the circles
@@ -61,13 +63,8 @@ plotCI(x, y=NULL, uiw, liw=uiw, ui, li, err='y', ylim=NULL, xlim=NULL,
   \item{ylab}{label for y axis.}
 }
 \author{
-  Original version by Bill Venables
-  \email{wvenable@attunga.stats.adelaide.edu.au} posted to r-help on
-  Sep. 20, 1997. Enhanced version posted to r-help by Ben Bolker
-  \email{ben@zoo.ufl.edu} on Apr. 16, 2001. This version was modified
-  and extended by Gregory R. Warnes \email{greg@warnes.net}. Additional
-  changes suggested by Martin Maechler
-  \email{maechler@stat.math.ethz.ch} integrated on July 29, 2004.
+  Original version by Bill Venables, later revisions by Ben Bolker,
+  Gregory R. Warnes, and Martin Maechler.
 }
 \seealso{
   \code{\link{plotmeans}} provides an enhanced wrapper to \code{plotCI}.
@@ -76,7 +73,6 @@ plotCI(x, y=NULL, uiw, liw=uiw, ui, li, err='y', ylim=NULL, xlim=NULL,
 }
 \examples{
 # Plot means and error bars
-data(state)
 tmp   <- split(state.area, state.region)
 means <- sapply(tmp, mean)
 stdev <- sqrt(sapply(tmp, var))
@@ -98,7 +94,7 @@ axis(side=1, at=1:4, labels=names(tmp), cex=0.7)
 plotmeans(state.area ~ state.region)
 
 \dontshow{
-## Just for testing
+# Just for testing
 plotCI(x=means, uiw=NA)
 plotCI(x=means, uiw=NULL)
 plotCI(x=means, uiw=ciw)

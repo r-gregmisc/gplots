@@ -25,20 +25,19 @@ redblue(n)
 }
 \details{
   The values for \code{low, mid, high} can be given as color names
-  ('red'), plot color index (2=red), and HTML-style RGB,
-  ("\#FF0000"=red).
+  (\code{"red"}), index (2=red), or RGB values (\code{"\#FF0000"}=red).
 
   If \code{mid} is supplied, then the returned color panel will consist
-  of \code{n - floor(n/2)} HTML-style RGB elements which vary smoothly
-  between \code{low} and \code{mid}, then between \code{mid} and
-  \code{high}. Note that if \code{n} is even, the color \code{mid} will
-  occur twice at the center of the sequence.
+  of \code{n - floor(n/2)} RGB elements which vary smoothly between
+  \code{low} and \code{mid}, then between \code{mid} and \code{high}.
+  Note that if \code{n} is even, the color \code{mid} will occur twice
+  at the center of the sequence.
 
   If \code{mid} is omitted, the color panel will vary smoothly beween
   \code{low} and \code{high}.
 }
-\value{Vector of HTML-style RGB colors.}
-\author{ Gregory R. Warnes \email{greg@warnes.net} }
+\value{Vector of RGB colors.}
+\author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link{colors}}.
 

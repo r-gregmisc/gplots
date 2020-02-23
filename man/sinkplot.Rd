@@ -3,12 +3,11 @@
 \title{Plot Standard Text Output}
 \description{Divert R standard text output to a graphics device.}
 \usage{
-sinkplot(operation = c("start", "plot", "cancel"), \dots)
+sinkplot(operation=c("start", "plot", "cancel"), \dots)
 }
 \arguments{
   \item{operation}{see below.}
-  \item{\dots}{plot arguments. (Ignored unless
-    \code{operation}="plot").}
+  \item{\dots}{plot arguments (ignored unless \code{operation}="plot").}
 }
 \details{
   This function allows the printed output of R commands to be captured
@@ -33,7 +32,7 @@ sinkplot(operation = c("start", "plot", "cancel"), \dots)
   \email{kwright@eskimo.com} in the R-devel newlist posting
   \url{https://stat.ethz.ch/pipermail/r-devel/2004-January/028483.html}.
 }
-\author{Gregory R. Warnes \email{greg@warnes.net}}
+\author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link[utils]{capture.output}}, \code{\link{textplot}}.
 
@@ -41,7 +40,7 @@ sinkplot(operation = c("start", "plot", "cancel"), \dots)
 }
 \examples{
 set.seed(12456)
-x <- factor(sample( LETTERS[1:5], 50, replace=TRUE))
+x <- factor(sample(LETTERS[1:5], 50, replace=TRUE))
 y <- rnorm(50, mean=as.numeric(x), sd=1)
 
 # Construct a figure showing a box plot of the data, followed by an

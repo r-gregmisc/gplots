@@ -12,7 +12,7 @@ col2hex(cname)
   Character vector giving the hex color code translation of the provided
   color names.
 }
-\author{Gregory R. Warnes}
+\author{Gregory R. Warnes.}
 \seealso{
   \code{\link{col2rgb}}, \code{\link{colors}}, \code{\link{rgb}}.
 

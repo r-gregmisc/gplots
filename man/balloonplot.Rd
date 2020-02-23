@@ -41,9 +41,9 @@ balloonplot(x, \dots)
             \dots)
 }
 \arguments{
-  \item{x}{a table object, or either a vector or a list of several
-    categorical vectors containing grouping variables for the first (x)
-    margin of the plotted matrix.}
+  \item{x}{a \code{table} object, or either a vector or a list of
+    several categorical vectors containing grouping variables for the
+    first (x) margin of the plotted matrix.}
   \item{y}{vector or list of vectors for grouping variables for the
     second (y) dimension of the plotted matrix.}
   \item{z}{vector of values for the size of the dots in the plotted
@@ -69,7 +69,7 @@ balloonplot(x, \dots)
   \item{label.size, label.color}{character size and color for value
     labels.}
   \item{scale.method}{method of scaling the sizes of the dot, either
-    "volume" or "diameter". See below.}
+    \code{"volume"} or \code{"diameter"}. See below.}
   \item{scale.range}{method for scaling original data to compute circle
     diameter. \code{scale.range="absolute"} scales the data
     relative to 0 (i.e, maps [0,max(z)] --> [0,1]), while
@@ -106,11 +106,10 @@ balloonplot(x, \dots)
   value of \code{z}. When \code{scale.method="volume"} the volume of the
   dot is proportional to the relative size of \code{z}. When
   \code{scale.method="diameter"}, the diameter of the dot is
-  proportional to the the relative size of \code{z}. The "volume" method
-  is default because the "diameter" method visually exaggerates
-  differences.
+  proportional to the the relative size of \code{z}. The \code{"volume"}
+  method is default because the \code{"diameter"} method visually
+  exaggerates differences.
 }
-\value{Nothing of interest.}
 \note{
   \code{z} is expected to be non-negative. The function will still
   operate correctly if there are negative values of \code{z}, but the
@@ -119,8 +118,8 @@ balloonplot(x, \dots)
 \references{
   Jain, N. and Warnes, G. R. (2006) Balloon Plot: Graphical tool for
   displaying tabular data.
-  \href{https://cran.r-project.org/doc/Rnews/Rnews_2006-2.pdf#page=35}{\emph{R
-  News}, \bold{6}(2), 35--38}.
+  \href{https://cran.r-project.org/doc/Rnews/Rnews_2006-2.pdf#page=35}{
+    \emph{R News}, \bold{6}(2), 35--38}.
 
   Function inspired by question posed on R-help by Ramon Alonso-Allende
   \email{allende@cnb.uam.es}.}
@@ -152,8 +151,9 @@ balloonplot(data$Car, data$Color, data$Value)
 
 
 # Show margin label rotation & space expansion, using some long labels
-levels(data$Car) <- c("BMW: High End, German","Renault: Medium End, French",
-  "Mercedes: High End, German", "Seat: Imaginary, Unknown Producer")
+levels(data$Car) <- c("BMW: High End, German",
+  "Renault: Medium End, French", "Mercedes: High End, German",
+  "Seat: Imaginary, Unknown Producer")
 
 # Generate balloon plot with default scaling
 balloonplot(data$Car, data$Color, data$Value, colmar=3, colsrt=90)
@@ -166,11 +166,8 @@ tab <- table(xnames, ynames)
 
 balloonplot(tab)
 
-# Example of multiple classification variabls using the Titanic data
-library(datasets)
-data(Titanic)
-
-dframe <- as.data.frame(Titanic) # convert to 1 entry per row format
+# Example of multiple classification variables using the Titanic data
+dframe <- as.data.frame(Titanic)  # convert to 1 entry per row format
 attach(dframe)
 balloonplot(x=Class, y=list(Survived, Age, Sex), z=Freq, sort=TRUE)
 
@@ -181,8 +178,7 @@ Colors[,,,"No"] <- "grey"
 colors <- as.character(as.data.frame(Colors)$Freq)
 
 balloonplot(x=list(Age,Sex),
-            y=list(Class=Class,
-                   Survived=relevel(Survived,"Yes")),
+            y=list(Class=Class, Survived=relevel(Survived,"Yes")),
             z=Freq,
             zlab="Number of Passengers",
             sort=TRUE,

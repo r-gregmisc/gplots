@@ -33,10 +33,10 @@ smartlegend(x=c("left", "center", "right"),
 \arguments{
   \item{ask, band, caption, cex.id, id.n, inset, labels.id, main, max.n,
     panel, rug, shrink, sub.caption, textcolor, top, which, width, x, y,
-    \dots}{see man page for the corresponding replacement function.}
+    \dots}{see help page for the corresponding replacement function.}
 }
 \details{
-  These functions are no longer available. Please refer to the manual page
+  These functions are no longer available. Please refer to the help page
   for the replacement function:
   \itemize{
     \item \code{boxplot.n} has been replaced by \code{\link{boxplot2}}
@@ -46,7 +46,7 @@ smartlegend(x=c("left", "center", "right"),
       \code{\link[graphics]{legend}}.
   }
 }
-\author{Gregory R. Warnes \email{greg@warnes.net}}
+\author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link{boxplot2}}, \code{\link{lmplot2}},
   \code{\link[graphics]{legend}}, \code{\link[base]{Defunct}}.

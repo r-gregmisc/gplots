@@ -16,15 +16,17 @@ wapply(x, y, fun=mean, method="range", width, n=50, drop.na=TRUE,
   \item{x}{vector of x values for (x,y) pairs.}
   \item{y}{vector of y values for (x,y) pairs.}
   \item{fun}{function to be applied.}
-  \item{method}{method of defining an x-neighborhood. One of "width",
-    "nobs", "range", or "fraction". See details.}
+  \item{method}{method of defining an x-neighborhood. One of
+    \code{"width"}, \code{"nobs"}, \code{"range"}, or
+    \code{"fraction"}.}
   \item{width}{width of an x-neighborhood. See details.}
   \item{n}{number of equally spaced points at which to compute local
     estimates. See details.}
   \item{drop.na}{should points which result in missing values \code{NA}
-    be omitted from the return value. Defaults to true.}
+    be omitted from the return value. Defaults to \code{TRUE}.}
   \item{pts}{\code{x} locations at which to compute the local mean when
-    using the "width" or "range" methods. Ignored otherwise.}
+    using the \code{"width"} or \code{"range"} methods. Ignored
+    otherwise.}
   \item{\dots}{arguments to be passed to \code{fun}.}
 }
 \details{
@@ -43,19 +45,20 @@ wapply(x, y, fun=mean, method="range", width, n=50, drop.na=TRUE,
   (x,y) pairs are sorted by the x-values and the nearest k/2 points with
   higher x values and the k/2 nearest points with lower x values are
   included in the window. When \code{method="nobs"}, k equals
-  \code{width} (actually 2*floor(\code{width}/2) ). When
+  \code{width} (actually \code{2*floor(width/2)}). When
   \code{method="fraction"}, \code{width} specifies what fraction of the
   total number of points should be included. The actual number of points
-  included in each window will be floor(n*frac/2)*2. Regardless of the
-  value of \code{pts}, the function \code{fun} will be evaluated at all
-  x locations.
+  included in each window will be \code{floor(n*frac/2)*2}. Regardless
+  of the value of \code{pts}, the function \code{fun} will be evaluated
+  at all x locations.
 }
 \value{
   Returns a list with components
   \item{x}{x location}
-  \item{y}{Result of applying \code{fun} to the window about each x location}
+  \item{y}{Result of applying \code{fun} to the window about each x
+  location}
 }
-\author{Gregory R. Warnes \email{greg@warnes.net}}
+\author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link{gplots-package}} gives an overview of the package.
 }
@@ -85,8 +88,8 @@ lines(wapply(x, y, mean), col="red")
 
 CL <- function(x,sd) mean(x) + sd*sqrt(var(x))
 
-lines(wapply(x, y, CL, sd= 1, method="fraction", width=1/20), col="blue")
-lines(wapply(x, y, CL, sd=-1, method="fraction", width=1/20), col="blue")
+lines(wapply(x, y, CL, sd= 1, method="fraction", width=0.1), col="blue")
+lines(wapply(x, y, CL, sd=-1, method="fraction", width=0.1), col="blue")
 lines(wapply(x, y, CL, sd= 2, method="nobs", width=250), col="green")
 lines(wapply(x, y, CL, sd=-2, method="nobs", width=250), col="green")
 }

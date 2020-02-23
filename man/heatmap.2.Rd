@@ -4,7 +4,7 @@
 \description{
   A heat map is a false color image (basically
   \code{\link{image}(t(x))}) with a dendrogram added to the left side
-  and/or to the top.  Typically, reordering of the rows and columns
+  and/or to the top. Typically, reordering of the rows and columns
   according to some set of values (row or column means) within the
   restrictions imposed by the dendrogram is carried out.
 
@@ -156,7 +156,7 @@ heatmap.2(x,
   \item{symbreaks}{logical indicating whether breaks should be made
     symmetric about 0. Defaults to \code{TRUE} if the data includes
     negative values, and to \code{FALSE} otherwise.}
-  \item{col}{colors used for the image. Defaults to heat colors
+  \item{col}{colors used for the image. Defaults to
     (\code{heat.colors}).}
   % block separation
   \item{colsep, rowsep, sepcolor}{(optional) vector of integers
@@ -174,7 +174,7 @@ heatmap.2(x,
   \item{notecex}{(optional) numeric scaling factor for \code{cellnote}
     items.}
   \item{notecol}{(optional) character string specifying the color for
-    \code{cellnote} text. Defaults to "cyan".}
+    \code{cellnote} text. Defaults to \code{"cyan"}.}
   \item{na.color}{color to use for missing value (\code{NA}). Defaults
     to the plot background color.}
   % level trace
@@ -234,7 +234,7 @@ heatmap.2(x,
   \item{densadj}{numeric scaling value for tuning the kernel width when
     a density plot is drawn on the color key. See the \code{adjust}
     parameter for the \code{density} function for details. Defaults to
-    0.25.}
+    \code{0.25}.}
   \item{key.title}{main title of the color key. If set to \code{NA} no
     title will be plotted.}
   \item{key.xlab}{x axis label of the color key. If set to \code{NA} no
@@ -336,32 +336,38 @@ heatmap.2(x,
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-data(mtcars)
 x <- as.matrix(mtcars)
-rc <- rainbow(nrow(x), start=0, end=.3)
-cc <- rainbow(ncol(x), start=0, end=.3)
+rc <- rainbow(nrow(x), start=0, end=0.3)
+cc <- rainbow(ncol(x), start=0, end=0.3)
 
 # 1  Effect of row and column dendrogram options
-heatmap.2(x)                     # default - dendrogram plotted and reordering done
-heatmap.2(x, dendrogram="none")  # no dendrogram plotted, but reordering done
-heatmap.2(x, dendrogram="row")   # row dendrogram plotted and row reordering done
-heatmap.2(x, dendrogram="col")   # col dendrogram plotted and col reordering done
+# Default - dendrogram plotted and reordering done
+heatmap.2(x)
+# No dendrogram plotted, but reordering done
+heatmap.2(x, dendrogram="none")
+# Row dendrogram plotted and row reordering done
+heatmap.2(x, dendrogram="row")
+# Col dendrogram plotted and col reordering done
+heatmap.2(x, dendrogram="col")
+# Default - dendrogram plotted and reordering done
+heatmap.2(x, keysize=2)
 
-heatmap.2(x, keysize=2)          # default - dendrogram plotted and reordering done
-
-heatmap.2(x, Rowv=FALSE, dendrogram="both")  # generates a warning!
-heatmap.2(x, Rowv=NULL,  dendrogram="both")  # generates a warning!
-heatmap.2(x, Colv=FALSE, dendrogram="both")  # generates a warning!
+heatmap.2(x, Rowv=FALSE, dendrogram="both")  # generates a warning
+heatmap.2(x, Rowv=NULL,  dendrogram="both")  # generates a warning
+heatmap.2(x, Colv=FALSE, dendrogram="both")  # generates a warning
 
 # Reorder dendrogram by branch means rather than sums
 heatmap.2(x, reorderfun=function(d, w) reorder(d, w, agglo.FUN=mean))
 
 # Plot a sub-cluster using the same color coding as for the full heatmap
 full <- heatmap.2(x)
-heatmap.2(x, Colv=full$colDendrogram[[2]], breaks=full$breaks)  # column subset
-heatmap.2(x, Rowv=full$rowDendrogram[[1]], breaks=full$breaks)  # row subset
+# Column subset
+heatmap.2(x, Colv=full$colDendrogram[[2]], breaks=full$breaks)
+# Row subset
+heatmap.2(x, Rowv=full$rowDendrogram[[1]], breaks=full$breaks)
+# Both
 heatmap.2(x, Colv=full$colDendrogram[[2]],
-             Rowv=full$rowDendrogram[[1]], breaks=full$breaks)  # both
+             Rowv=full$rowDendrogram[[1]], breaks=full$breaks)
 
 
 # 2  Effect of row and column label rotation
@@ -393,7 +399,7 @@ heatmap.2(x, srtRow=0, srtCol=90, offsetRow=-1, offsetCol=-1)
 
 
 # 3  Use 'extrafun' to replace the 'key' with a scatterplot
-lmat <- rbind( c(5,3,4), c(2,1,4))
+lmat <- rbind(c(5,3,4), c(2,1,4))
 lhei <- c(1.5, 4)
 lwid <- c(1.5, 4, 0.75)
 
@@ -403,7 +409,8 @@ myplot <- function() {
             plot(mpg ~ hp, data=x)
           }
 
-heatmap.2(x, lmat=lmat, lhei=lhei, lwid=lwid, key=FALSE, extrafun=myplot)
+heatmap.2(x, lmat=lmat, lhei=lhei, lwid=lwid, key=FALSE,
+          extrafun=myplot)
 
 
 # 4  Customize the color key
@@ -454,12 +461,11 @@ names(hv)
 hv$colorTable
 
 # Extract the range associated with white
-hv$colorTable[hv$colorTable[,"color"]=="#FFFFFF",]
+whiteBin <- hv$colorTable[hv$colorTable[,"color"]=="#FFFFFF",]
 
 # Determine the original data values that map to white
-whiteBin <- unlist(hv$colorTable[hv$colorTable[,"color"]=="#FFFFFF",1:2])
-rbind(whiteBin[1] * hv$colSDs + hv$colMeans,
-      whiteBin[2] * hv$colSDs + hv$colMeans)
+rbind(whiteBin$low * hv$colSDs + hv$colMeans,
+      whiteBin$high * hv$colSDs + hv$colMeans)
 
 
 # 5  A more decorative heatmap, with z-score scaling along columns
@@ -475,12 +481,11 @@ hv <- heatmap.2(x, col=cm.colors(255), scale="column",
                 RowSideColors=rc, ColSideColors=cc, margin=c(5, 10),
                 xlab="specification variables", ylab= "Car Models",
                 main="heatmap(<Mtcars data>, ..., scale=\"column\")",
-                tracecol="green", density="density", colRow=rc, colCol=cc,
-                srtCol=45, adjCol=c(0.5,1))
+                tracecol="green", density="density", colRow=rc,
+                colCol=cc, srtCol=45, adjCol=c(0.5,1))
 
 
 # 6  Reorder and color key location
-data(attitude)
 round(Ca <- cor(attitude), 2)
 symnum(Ca)  # simple graphic
 
@@ -498,7 +503,6 @@ heatmap.2(x, lmat=rbind(c(0,3,4), c(2,1,0)), lwid=c(1.5, 4, 2))
 
 
 # 7  For variable clustering, rather use distance based on cor()
-data(USJudgeRatings)
 symnum(cU <- cor(USJudgeRatings))
 
 hU <- heatmap.2(cU, Rowv=FALSE, symm=TRUE, col=topo.colors(16),
@@ -516,8 +520,7 @@ heatmap.2(cU, Rowv=FALSE, symm=TRUE, col=rev(heat.colors(16)),
 
 # 8  Genechip data examples
 \dontrun{
-library(affy)
-data(SpikeIn)
+data(SpikeIn, package="affy")
 pms <- SpikeIn@pm
 
 # Just the data, scaled across rows

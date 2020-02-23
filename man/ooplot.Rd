@@ -3,9 +3,9 @@
 \alias{ooplot}
 \title{OpenOffice Plot}
 \description{
-  An extension of barplot2. Creates bar- and line-plots mimicking the
-  style of OpenOffice plots.  This utility can plot the values next to
-  each point or bar as well as confidence intervals.
+  An extension of barplot2. Creates bar plots and line plots mimicking
+  the style of OpenOffice plots. This utility can plot the values next
+  to each point or bar as well as confidence intervals.
 }
 \usage{
 ooplot(data, \dots)
@@ -28,21 +28,21 @@ ooplot(data, \dots)
     plot. The first column of \code{data} is taken as the axis against
     which all the other values are plotted. The first column of
     \code{data} may not be sparse.}
-  \item{width}{optional vector of barwidths. Re-cycled to the number of
+  \item{width}{optional vector of barwidths. Recycled to the number of
     bars drawn. A single value will have no visible effect.}
   \item{space}{the amount of space left before each bar. May be given
     as a single number or one number per bar. If \code{type} is
     \code{stackbar}, \code{space} may be specified by two numbers, where
     the first is the space between bars in the same group, and the
     second the space between groups. Defaults to \code{c(0,1)} if
-    \code{type} is a \code{stackbar}, and to 0.2 otherwise.}
+    \code{type} is a \code{stackbar}, and to \code{0.2} otherwise.}
   \item{names.arg}{a vector of names to be plotted below each bar or
     group of bars. If this argument is omitted, then the names are taken
     from the row names of \code{data}.}
   \item{legend.text}{a vector of text used to construct a legend for the
-    plot, or a logical indicating whether a legend should be included;
-    if \code{legend.text} is true, the row names of \code{data} will be
-    used as labels if they are non-null.}
+    plot, or a logical indicating whether a legend should be included.
+    If \code{legend.text} is \code{TRUE}, the row names of \code{data}
+    will be used as labels if they are non-null.}
   \item{horiz}{a logical value. If \code{FALSE}, the bars are drawn
     vertically with the first bar to the left. If \code{TRUE}, the bars
     are drawn horizontally with the first at the bottom.}
@@ -52,8 +52,8 @@ ooplot(data, \dots)
     values of \code{density} also inhibit the drawing of shading lines.}
   \item{angle}{the slope of shading lines, given as an angle in degrees
     (counter-clockwise), for the bars or bar components.}
-  \item{kmg}{the set of SI units to convert, defaults to "fpnumkMGTP".
-    See below for details.}
+  \item{kmg}{the set of SI units to convert, defaults to
+    \code{"fpnumkMGTP"}. See below for details.}
   \item{kmglim}{logical. If \code{FALSE} the conversion to SI units is
     not performed. Default is \code{TRUE}.}
   \item{type}{a string indicating the preferred format of the plot,
@@ -77,11 +77,11 @@ ooplot(data, \dots)
   \item{xlim}{limits for the x axis.}
   \item{ylim}{limits for the y axis.}
   \item{xpd}{logical. Should bars be allowed to go outside region?}
-  \item{log}{a character string which contains `"x"' if the x axis is to
-    be logarithmic, `"y"' if the y axis is to be logarithmic and `"xy"'
-    or `"yx"' if both axes are to be logarithmic.}
+  \item{log}{a character string which contains \code{"x"} if the x axis
+    is to be logarithmic, \code{"y"} if the y axis is to be logarithmic
+    and \code{"xy"} or \code{"yx"} if both axes are to be logarithmic.}
   \item{axes}{logical. If \code{TRUE}, a vertical (or horizontal, if
-    \code{horiz} is true) axis is drawn.}
+    \code{horiz} is \code{TRUE}) axis is drawn.}
   \item{axisnames}{logical. If \code{TRUE}, and if there are
     \code{names.arg} (see above), the other axis is drawn (with
     \code{lty=0}) and labeled.}
@@ -91,19 +91,19 @@ ooplot(data, \dots)
   \item{cex.axis, cex.names, cex.values}{character scaling factor for
     numeric axis labels, names, and displayed values, respectively.}
   \item{inside}{logical. If \code{TRUE}, the lines which divide adjacent
-    (non-stacked!) bars will be drawn. Only applies when
-    \code{space = 0} (which it partly is when \code{beside = TRUE}).}
+    (non-stacked) bars will be drawn. Only applies when \code{space = 0}
+    (which it partly is when \code{beside = TRUE}).}
   \item{plot}{logical. If \code{FALSE}, nothing is plotted.}
   \item{axis.lty}{the graphics parameter \code{lty} applied to the axis
-    and tick marks of the categorical (default horzontal) axis. Note
+    and tick marks of the categorical (default horizontal) axis. Note
     that by default the axis is suppressed.}
   \item{plot.ci}{logical. If \code{TRUE}, confidence intervals are
     plotted over the bars. Note that if a stacked bar plot is generated,
     confidence intervals will not be plotted even if
     \code{plot.ci = TRUE}}
-  \item{ci.l,ci.u}{the confidence intervals (ci.l = lower bound, ci.u =
-    upper bound) to be plotted if \code{plot.ci} = \code{TRUE}. Values
-    must have the same dim structure as \code{height}.}
+  \item{ci.l, ci.u}{the confidence intervals (ci.l = lower bound,
+    ci.u = upper bound) to be plotted if \code{plot.ci} = \code{TRUE}.
+    Values must have the same dim structure as \code{height}.}
   \item{ci.color}{the color for the confidence interval line segments.}
   \item{ci.lty}{the line type for the confidence interval line
     segments.}
@@ -137,17 +137,17 @@ ooplot(data, \dots)
     n \tab nano = 1E-09\cr
     p \tab pico = 1E-12\cr
     f \tab femto= 1E-15}
-  with the default being "fpnumkMGTP" (all of these units). For example,
-  if the largest value plotted is 1243000, it would be presented as
-  1.234M.
+  with the default being \code{"fpnumkMGTP"} (all of these units). For
+  example, if the largest value plotted is 1243000, it would be
+  presented as \code{1.234M}.
 }
 \value{
   A numeric vector (or matrix, when \code{beside = TRUE}), say
   \code{mp}, giving the coordinates of \emph{all} the bar midpoints
   drawn, useful for adding to the graph.
 
-  If \code{beside} is true, use \code{colMeans(mp)} for the midpoints of
-  each \emph{group} of bars, see example.
+  If \code{beside} is \code{TRUE}, use \code{colMeans(mp)} for the
+  midpoints of each \emph{group} of bars.
 }
 \author{
   Lodewijk Bonebakker \email{bonebakker@comcast.net} with modifications
@@ -159,8 +159,6 @@ ooplot(data, \dots)
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-data(VADeaths, package="datasets")
-
 VADeaths <- cbind(Age=c(50,55,60,65,70), VADeaths)
 
 mp <- ooplot(VADeaths)                         # default

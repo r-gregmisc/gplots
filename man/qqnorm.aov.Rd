@@ -41,17 +41,15 @@
    Daniel, C (1976): Applications of Statistics to Industrial
    Experimentation. Wiley.\cr
    Daniel, C (1959): Use of half-normal plot in interpreting factorial
-   two-level experiments. \emph{Technometrics.}\bold{1}, 149.
+   two-level experiments. \emph{Technometrics} \bold{1}, 149.
 }
-\author{Kjetil Halvorsen \email{kjetil@entelnet.bo}}
+\author{Kjetil Halvorsen \email{kjetil@entelnet.bo}.}
 \seealso{
   \code{\link{qqnorm}}.
 
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-library(MASS)
-data(npk)
 npk.aov <- aov(yield ~ block + N*P*K, npk)
 qqnorm(npk.aov)
 

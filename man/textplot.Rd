@@ -26,21 +26,21 @@ textplot(object, halign="center", valign="center", cex, \dots)
 }
 \arguments{
   \item{object}{object to be displayed.}
-  \item{halign}{alignment in the x direction, one of "center", "left",
-    or "right".}
-  \item{valign}{alignment in the y direction, one of "center", "top",
-    or "bottom".}
+  \item{halign}{alignment in the x direction, one of \code{"center"},
+    \code{"left"}, or \code{"right"}.}
+  \item{valign}{alignment in the y direction, one of \code{"center"},
+    \code{"top"}, or \code{"bottom"}.}
   \item{cex}{character size, see \code{\link{par}} for details. If
     unset, the code will attempt to use the largest value which allows
     the entire object to be displayed.}
   \item{fixed.width}{logical value indicating whether to emulate a
     fixed-width font by aligning characters in each row of text. This is
     usually necessary for text-formatted tables display properly.
-    Defaults to 'TRUE'.}
+    Defaults to \code{TRUE}.}
   \item{cspace}{space between characters as a multiple of the width of
-    the letter 'W'. This only applies when \code{fixed.width==TRUE}.}
+    the letter 'W'. This only applies when \code{fixed.width=TRUE}.}
   \item{lspace}{line spacing. This only applies when
-    \code{fixed.width==TRUE}.}
+    \code{fixed.width=TRUE}.}
   \item{mar}{figure margins, see the documentation for \code{par}.}
   \item{rmar, cmar}{Space between rows or columns, in fractions of the
     size of the letter 'M'.}
@@ -72,7 +72,7 @@ textplot(object, halign="center", valign="center", cex, \dots)
   column labels will be displayed in a bold font.
 }
 \value{The character scaling factor (\code{cex}) used.}
-\author{Gregory R. Warnes \email{greg@warnes.net}}
+\author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link{plot}}, \code{\link{text}},
   \code{\link[utils]{capture.output}}, \code{\link{sinkplot}}.
@@ -90,16 +90,15 @@ textplot(paste(letters[1:26], collapse=" "))
 # Alphabet as a matrix
 textplot(matrix(letters[1:26], ncol=2))
 
-### 4-way display with two plots and two text summaries
-data(iris)
+# 4-way display with two plots and two text summaries
 par(mfrow=c(2,2))
 plot(Sepal.Length ~ Species, data=iris, border="blue", col="cyan",
      main="Boxplot of Sepal Length by Species")
 plotmeans(Sepal.Length ~ Species, data=iris, barwidth=2, connect=FALSE,
-          main="Means and 95\% Confidence Intervals\nof Sepal Length by Species")
+          main="Means and 95% Confidence Intervals")
 
-info <- sapply(split(iris$Sepal.Length, iris$Species),
-               function(x) round(c(Mean=mean(x), SD=sd(x), N=length(x)),2))
+info2 <- sapply(split(iris$Sepal.Length, iris$Species), function(x)
+                round(c(Mean=mean(x), SD=sd(x), N=length(x)),2))
 
 textplot(info, valign="top")
 title("Sepal Length by Species")
@@ -117,8 +116,7 @@ mat <- cbind(name=cols, t(col2rgb(cols)), hex=col2hex(cols))
 textplot(mat,
          col.data=matrix(cols, nrow=length(cols), byrow=FALSE, ncol=5))
 
-
-data(iris)
+# Capture summary output
 reg <- lm(Sepal.Length ~ Species, data=iris)
 text <- capture.output(summary(reg))
 

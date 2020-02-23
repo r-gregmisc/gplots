@@ -13,7 +13,7 @@ rich.colors(n, palette="temperature", alpha=1.0, rgb=FALSE, plot=FALSE)
   \item{palette}{palette to use: \code{"temperature"} contains
     blue-green-yellow-red, and \code{"blues"} contains
     black-blue-white.}
-  \item{alpha}{alpha transparency, from 0 (fully transparent)  to 1
+  \item{alpha}{alpha transparency, from 0 (fully transparent) to 1
     (opaque).}
   \item{rgb}{if \code{TRUE} then a matrix of RGBA values is included as
     an attribute.}

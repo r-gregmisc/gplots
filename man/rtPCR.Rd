@@ -6,7 +6,7 @@
   rtPCR data for experiments investigating a variety of markers for
   characterizing teratogenicity.
 }
-\usage{data(rtPCR)}
+\usage{rtPCR}
 \format{
   A data frame with 1672 observations on the following 21 variables.
   \describe{
@@ -43,7 +43,7 @@
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
-# same scale
+# Same scale
 overplot(RQ ~ Conc..ug.ml. | Test.Substance,
          data=rtPCR,
          subset=Detector=="ProbeType 7" & Conc..ug.ml. > 0,
@@ -54,7 +54,7 @@ overplot(RQ ~ Conc..ug.ml. | Test.Substance,
          xlab="Concentration (ug/ml)",
          ylab="Relative Gene Quantification")
 
-# different scales, but force lower limit to 0.01
+# Different scales, but force lower limit to 0.01
 overplot(RQ ~ Conc..ug.ml. | Test.Substance,
          data=rtPCR,
          subset=Detector=="ProbeType 7" & Conc..ug.ml. > 0,

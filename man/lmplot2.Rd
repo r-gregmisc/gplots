@@ -24,9 +24,9 @@ lmplot2(x,
         max.n=5000)
 }
 \arguments{
-  \item{x}{lm object.}
+  \item{x}{\code{lm} object.}
   \item{which}{numerical values between 1 and 5, indicating which plots
-    to be shown. The codes are:
+    to show. The codes are:
     \enumerate{
       \item Fitted vs residuals
       \item Normal Q-Q
@@ -39,11 +39,11 @@ lmplot2(x,
   \item{panel}{function to draw on the existing plot.}
   \item{sub.caption}{subcaption for the plots.}
   \item{main}{main title of the plot.}
-  \item{ask}{whether interactive graphics.}
+  \item{ask}{whether to ask the user before each plot.}
   \item{\dots}{parameters passed to \code{lmplot2}.}
-  \item{id.n}{integer value, less than or equal to residuals of lm
-    object.}
-  \item{labels.id}{names of the residuals of the lm object.}
+  \item{id.n}{integer value, less than or equal to residuals of
+    \code{lm} object.}
+  \item{labels.id}{names of the residuals of the \code{lm} object.}
   \item{cex.id}{parameter to control the height of text strings.}
   \item{band}{logical vector indicating whether bandplot should also be
     plotted.}
@@ -58,7 +58,7 @@ lmplot2(x,
 }
 \author{
   Gregory R. Warnes \email{greg@warnes.net} and Nitin Jain
-  \email{nitin.jain@pfizer.com}}
+  \email{nitin.jain@pfizer.com}.}
 \seealso{
   \code{\link[stats]{plot.lm}}.
 

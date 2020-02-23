@@ -12,9 +12,9 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
      simplify=FALSE)
 }
 \arguments{
-  \item{data,x}{either a list list containing vectors of names or
-    indices of group intersections, or a data frame containing boolean
-    indicators of group intersectionship (see below).}
+  \item{data,x}{either a list containing vectors of names or indices of
+     group intersections, or a data frame containing boolean indicators
+     of group intersectionship (see below).}
   \item{universe}{subset of valid name/index elements. Values ignore
     values in code{data} not in this list will be ignored. Use \code{NA}
     to use all elements of \code{data} (the default).}
@@ -24,21 +24,22 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
   \item{simplify}{logical flag indicating whether unobserved groups
     should be omitted.}
   \item{show.plot}{logical flag indicating whether the plot should be
-    displayed. If false, simply returns the group count matrix.}
+    displayed. If \code{FALSE}, simply returns the group count matrix.}
   \item{intersections}{Logical flag indicating if the returned object
-    should have the attribute "individuals.in.intersections" featuring
-    for every set a list of individuals that are assigned to it.}
+    should have the attribute \code{"individuals.in.intersections"}
+    featuring for every set a list of individuals that are assigned to
+    it.}
   \item{y}{ignored.}
   \item{\dots}{optional graphical parameters.}
   \item{names}{optional vector of group names.}
 }
 \details{
   \code{data} should be either a named list of vectors containing
-  character string names ("GeneAABBB", "GeneBBBCY", .., "GeneXXZZ") or
-  indexes of group intersections (1, 2, .., N), or a data frame
-  containing indicator variables (TRUE, FALSE, TRUE, ..) for group
-  intersectionship. Group names will be taken from the component list
-  element or column names.
+  character string names (\code{"GeneAABBB"}, \code{"GeneBBBCY"}, ..,
+  \code{"GeneXXZZ"}) or indexes of group intersections (1, 2, .., N), or
+  a data frame containing indicator variables (\code{TRUE},
+  \code{FALSE}, \code{TRUE}, ..) for group intersectionship. Group names
+  will be taken from the component list element or column names.
 }
 \value{
   Invisibly returns an object of class "venn", containing:
@@ -53,8 +54,8 @@ venn(data, universe=NA, small=0.7, showSetLogicLabel=FALSE,
   }
 }
 \author{
-  Steffen Moeller \email{steffen\_moeller@gmx.de}, with cleanup and
-  packaging by Gregory R. Warnes \email{greg@warnes.net}.
+  Steffen Moeller \email{steffen_moeller@gmx.de}, minor edits by Gregory
+  R. Warnes \email{greg@warnes.net}.
 }
 \seealso{
   \code{\link{gplots-package}} gives an overview of the package.

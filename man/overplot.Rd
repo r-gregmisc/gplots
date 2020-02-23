@@ -15,9 +15,9 @@ overplot(formula, data=parent.frame(), same.scale=FALSE, xlab, ylab,
          subset, plot=TRUE, groups, main, f=2/3, \dots)
 }
 \arguments{
-  \item{formula}{.ormula describing the x and y variables. It should be
-    of the form x ~ y|z. The conditioning variable (z) should be a
-    factor.}
+  \item{formula}{formula describing the x and y variables. It should be
+    of the form \code{x ~ y | z}. The conditioning variable (\code{z})
+    should be a factor.}
   \item{same.scale}{logical value indicating whether the plot region
     should have the same range for all plots. Defaults to \code{FALSE}.}
   \item{xlab, ylab, xlim, ylim, main}{standard plotting parameters. See
@@ -28,8 +28,9 @@ overplot(formula, data=parent.frame(), same.scale=FALSE, xlab, ylab,
     used specify one end of the individual plot ranges, while allowing
     the other end to vary with the data. E.g. to force 0 to always be
     within the plot region.}
-  \item{log}{character string '', 'x', 'y', or 'xy', indicating which
-    axes should be plotted on a log scale. Defaults to '' (neither).}
+  \item{log}{character string \code{""}, \code{"x"}, \code{"y"}, or
+    \code{"xy"}, indicating which axes should be plotted on a log scale.
+    Defaults to \code{""} (neither).}
   \item{panel}{a plotting function to be called to draw the individual
     plots. Defaults to \code{overplot.panel}, which plots the points and
     a \code{lowess} smooth.}
@@ -49,10 +50,10 @@ overplot(formula, data=parent.frame(), same.scale=FALSE, xlab, ylab,
     plot(x ~ y, data=tmp[[z]])}
 
   except that all of the plots are shown on the same plotting region and
-  varying scales for each value of z are handled nicely.
+  varying scales for each value of \code{z} are handled nicely.
 }
 \value{A copy of the data split by the conditioning variable.}
-\author{Gregory R. Warnes \email{greg@warnes.net}}
+\author{Gregory R. Warnes \email{greg@warnes.net}.}
 \seealso{
   \code{\link{interaction.plot}},
   \code{\link{coplot}} for alternative visualizations of 3-way data.
