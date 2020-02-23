@@ -5,7 +5,6 @@ export(angleAxis, balloonplot, bandplot, barplot2, bluered, boxplot2,
        rich.colors, sinkplot, smartlegend, space, textplot, venn, wapply)
 
 importFrom(caTools, runmean, runsd)
-importFrom(gdata, nobs, reorder.factor)
 importFrom(graphics, abline, arrows, axis, axTicks, barplot, contour,
            filled.contour, grid, hist, identify, image, layout, legend,
            lines, matlines, matpoints, mtext, panel.smooth, par, plot,
