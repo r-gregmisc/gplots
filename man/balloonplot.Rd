@@ -171,7 +171,7 @@ dframe <- as.data.frame(Titanic)  # convert to 1 entry per row format
 attach(dframe)
 balloonplot(x=Class, y=list(Survived, Age, Sex), z=Freq, sort=TRUE)
 
-# Colorize: surviors lightblue, non-survivors grey
+# Colorize: survivors lightblue, non-survivors grey
 Colors <- Titanic
 Colors[,,,"Yes"] <- "skyblue"
 Colors[,,,"No"] <- "grey"
