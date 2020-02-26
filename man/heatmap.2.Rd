@@ -2,8 +2,8 @@
 \alias{heatmap.2}
 \title{Enhanced Heat Map}
 \description{
-  A heat map is a false color image (basically
-  \code{\link{image}(t(x))}) with a dendrogram added to the left side
+  A heat map is a false color image, basically
+  \code{\link{image}(t(x))}, with a dendrogram added to the left side
   and/or to the top. Typically, reordering of the rows and columns
   according to some set of values (row or column means) within the
   restrictions imposed by the dendrogram is carried out.
