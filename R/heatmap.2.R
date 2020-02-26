@@ -141,8 +141,15 @@ heatmap.2 <- function (x,
 
   if(!inherits(Rowv, "dendrogram")) {
     ## Check if Rowv and dendrogram arguments are consistent
-    if(((is.logical(Rowv) && !isTRUE(Rowv)) || is.null(Rowv))
-       && dendrogram %in% c("both","row"))
+    if (
+          (
+             ( is.logical(Rowv) && !isTRUE(Rowv) )
+              ||
+             ( is.null(Rowv) )
+          )
+          &&
+          ( dendrogram %in% c("both","row") )
+       )
       {
         warning("Discrepancy: Rowv is FALSE, while dendrogram is `",
                 dendrogram, "'. Omitting row dendogram.")
@@ -156,8 +163,14 @@ heatmap.2 <- function (x,
 
   if(!inherits(Colv, "dendrogram")) {
     ## Check if Colv and dendrogram arguments are consistent
-    if(((is.logical(Colv) && !isTRUE(Colv)) || is.null(Colv))
-       && dendrogram %in% c("both","column"))
+    if (
+         (
+           (is.logical(Colv) && !isTRUE(Colv) )
+             ||
+            (is.null(Colv))
+         )
+         &&
+         ( dendrogram %in% c("both","column")) )
       {
         warning("Discrepancy: Colv is FALSE, while dendrogram is `",
                 dendrogram, "'. Omitting column dendogram.")
