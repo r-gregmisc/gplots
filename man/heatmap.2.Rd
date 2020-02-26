@@ -135,8 +135,8 @@ heatmap.2(x,
     reordering the row and column dendrograms. The default uses
     \code{\link{stats}{reorder.dendrogram}}.}
   \item{symm}{logical indicating if \code{x} should be treated
-    \emph{symm}etrically. Can only be true when \code{x} is a square
-    matrix.}
+    \emph{symm}etrically. \code{symm=TRUE} is only valid when \code{x}
+    is a square matrix.}
   % data scaling
   \item{scale}{character string indicating if the values should be
     centered and scaled in either the row direction or the column
@@ -178,7 +178,7 @@ heatmap.2(x,
   \item{na.color}{color to use for missing value (\code{NA}). Defaults
     to the plot background color.}
   % level trace
-  \item{trace}{character string indicating whether a solid trace line
+  \item{trace}{character string indicating whether a solid "trace" line
     should be drawn across \code{"row"}s or down \code{"column"}s,
     \code{"both"} or \code{"none"}. The distance of the line from the
     center of each color-cell is proportional to the size of the
@@ -195,7 +195,7 @@ heatmap.2(x,
     \code{tracecol}.}
   % Row/Column Labeling
   \item{margins}{numeric vector of length 2 containing the margins (see
-    \code{\link{par}(mar = *)}) for column and row names, respectively.}
+    \code{\link{par}(mar)}) for column and row names, respectively.}
   \item{ColSideColors}{(optional) character vector of length
     \code{ncol(x)} containing the color names for a horizontal side bar
     that may be used to annotate the columns of \code{x}.}
@@ -243,10 +243,10 @@ heatmap.2(x,
     label will be plotted.}
   \item{key.xtickfun}{function computing tick location and labels for
     the x axis of the color key. Returns a named list containing
-    parameters that can be passed to \code{axis}.}
+    parameters that can be passed to \code{axis}. See examples.}
   \item{key.ytickfun}{function computing tick location and labels for
     the y axis of the color key. Returns a named list containing
-    parameters that can be passed to \code{axis}.}
+    parameters that can be passed to \code{axis}. See examples.}
   \item{key.par}{graphical parameters for the color key. Named list that
     can be passed to \code{par}.}
   % plot labels
@@ -276,9 +276,10 @@ heatmap.2(x,
   scaled to have mean zero and standard deviation one. There is some
   empirical evidence from genomic plotting that this is useful.
 
-  The default colors range from red to white (\code{heat.colors}) and
-  are not pretty. Consider using enhancements such as the
-  \pkg{RColorBrewer} package to select better colors.
+  The default colors range from red to white (\code{heat.colors}), which
+  can cause problems for red-green colorblind individuals and are not
+  particularly attractive. Consider using better color palettes such as
+  those provided by the \pkg{RColorBrewer} package.
 
   By default four components will be displayed in the plot. At the top
   left is the color key, top right is the column dendrogram, bottom left
