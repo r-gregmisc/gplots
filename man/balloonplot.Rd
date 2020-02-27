@@ -127,8 +127,8 @@ balloonplot(x, \dots)
 \seealso{
   \code{\link{plot.table}}.
 
-  \code{\link{bubbleplot}} provides an alternative interface and style
-  of plot.
+  \code{\link{bubbleplot}} provides an alternative interface and visual
+  style based on scatterplots instead of tables.
 
   \code{\link{gplots-package}} gives an overview of the package.
 }
