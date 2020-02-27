@@ -16,8 +16,7 @@ bubbleplot(x, \dots)
            rev=FALSE, type="p", ylim=NULL, xlab=NULL, ylab=NULL,
            pch=c(16,1), cex.points=1, col="black", bg=par("bg"), \dots)
 
-\method{bubbleplot}{formula}(formula, data, subset, na.action=NULL,
-           \dots)
+\method{bubbleplot}{formula}(formula, data, subset, na.action=NULL, \dots)
 }
 \arguments{
   \item{x}{a vector of values for the horizontal axis. Can also be a

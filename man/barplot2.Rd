@@ -135,7 +135,7 @@
   If \code{beside} is \code{TRUE}, use \code{colMeans(mp)} for the
   midpoints of each \emph{group} of bars, see example.
 }
-\author{Marc Schwartz \email{marc\_schwartz@comcast.net}.}
+\author{Marc Schwartz (\email{marc_schwartz@comcast.net}).}
 \note{
   If there are \code{NA} values in \code{height} and
   \code{beside = FALSE}, values after the \code{NA} will not be plotted

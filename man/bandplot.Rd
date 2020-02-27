@@ -54,7 +54,7 @@ bandplot(x,\dots)
   The local mean and standard deviation are calculated by calling
   \code{wapply}. By default, \code{bandplot} calls \code{wapply} to
   smooth using intervals that include the nearest 1/5 of the data. See
-  the documentation of that function for details on the algorithm.
+  the documentation of \code{wapply} for details on the algorithm.
 }
 \value{
   Invisibly returns a list containing the x,y points plotted for each

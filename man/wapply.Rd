@@ -88,8 +88,8 @@ lines(wapply(x, y, mean), col="red")
 
 CL <- function(x,sd) mean(x) + sd*sqrt(var(x))
 
-lines(wapply(x, y, CL, sd= 1, method="fraction", width=0.1), col="blue")
-lines(wapply(x, y, CL, sd=-1, method="fraction", width=0.1), col="blue")
+lines(wapply(x, y, CL, sd= 1, method="fraction", width=1/20), col="blue")
+lines(wapply(x, y, CL, sd=-1, method="fraction", width=1/20), col="blue")
 lines(wapply(x, y, CL, sd= 2, method="nobs", width=250), col="green")
 lines(wapply(x, y, CL, sd=-2, method="nobs", width=250), col="green")
 }
