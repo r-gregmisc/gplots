@@ -10,7 +10,8 @@ New Features:
 
 * Added argument 'add' to plotmeans().
 
-* New example datasets catch.d, catch.m, and catch.r.
+* New example dataset catch.d containing catch at age for the 2015 Icelandic
+  saithe fishery assessment, and catch.r containing model residuals.
 
 Other Changes:
 

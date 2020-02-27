@@ -1,34 +1,41 @@
 \name{catch.d}
 \alias{catch.d}
+\alias{catch.r}
 \docType{data}
-\title{Catch at Age Data Frame}
-\description{Catch-at-age table as a long data frame.}
-\usage{catch.d}
+\title{Catch at Age and Residuals}
+\description{Catch-at-age observated data and model residuals.}
+\usage{
+catch.d
+catch.r
+}
 \format{
   Data frame containing three columns:
   \tabular{ll}{
     \code{Year}  \tab year\cr
     \code{Age}   \tab age\cr
-    \code{Catch} \tab catch (thousands of individuals)
+    and\cr
+    \code{Catch} \tab catch (thousands of individuals)\cr
+    or\cr
+    \code{Resid} \tab standardized residual
   }
 }
 \details{
-  The data are from Table 8.2 in the ICES (2015) assessment of Icelandic
-  saithe.
+  The data are from Tables 8.2 and 8.6 in the ICES (2015) assessment of
+  Icelandic saithe.
 }
 \source{
   ICES (2015) Report of the North-Western Working Group (NWWG).
-  \emph{ICES CM 2015/ACOM:07}, pp. 240--241.
+  \emph{ICES CM 2015/ACOM:07}, pp. 240--246.
 }
 \seealso{
-  \code{\link{catch.m}} is the same data in a wide \code{matrix}.
-
-  \code{\link{catch.r}} are standardized residuals from a stock
-  assessment model fit.
+  \code{\link{bubbleplot}}.
 
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
+catch.t <- xtabs(Catch~Year+Age, catch.d)
+catch.m <- as.matrix(as.data.frame(unclass(catch.t)))
+
 # 1  Formula
 bubbleplot(Catch~Age+Year, data=catch.d)
 # Use rev=TRUE to get same layout as crosstab matrix:
@@ -40,7 +47,6 @@ bubbleplot(catch.d)
 
 # 3  Matrix or table
 bubbleplot(catch.m)
-catch.t <- xtabs(Catch~Year+Age, catch.d)
 bubbleplot(catch.t)
 
 # 4  Positive and negative values

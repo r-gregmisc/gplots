@@ -68,6 +68,9 @@ bubbleplot(x, \dots)
   \code{\link{gplots-package}} gives an overview of the package.
 }
 \examples{
+catch.t <- xtabs(Catch~Year+Age, catch.d)              # example table
+catch.m <- as.matrix(as.data.frame(unclass(catch.t)))  # example matrix
+
 # 1  Formula
 bubbleplot(Catch~Age+Year, data=catch.d)
 # Use rev=TRUE to get same layout as crosstab matrix:
@@ -83,7 +86,6 @@ bubbleplot(Orange, pow=1, cex=2, pch=21,
 
 # 3  Matrix or table
 bubbleplot(catch.m)
-catch.t <- xtabs(Catch~Year+Age, catch.d)
 bubbleplot(catch.t)
 
 # 4  Positive and negative values
