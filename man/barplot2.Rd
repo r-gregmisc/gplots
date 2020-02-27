@@ -3,10 +3,9 @@
 \alias{barplot2.default}
 \title{Enhanced Bar Plots}
 \description{
-  An enhancement of the standard \code{barplot} function. Creates a bar
-  plot with vertical or horizontal bars. Can plot confidence intervals
-  for each bar, a line grid behind the bars, specify plot area color and
-  logarithmic axes may be used.}
+  An enhancement of the standard \code{barplot} function, allowing
+  addition of confidence intervals and/or a background grid.
+}
 \usage{
 \method{barplot2}{default}(height, width=1, space=NULL, names.arg=NULL,
          legend.text=NULL, beside=FALSE, horiz=FALSE, density=NULL,

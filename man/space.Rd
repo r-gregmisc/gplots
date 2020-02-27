@@ -1,6 +1,6 @@
 \name{space}
 \alias{space}
-\title{Spaced Scatterplot}
+\title{Space Scatterplot Points}
 \description{Space points in an x-y plot so they don't overlap.}
 \usage{
 space(x, y, s=1/50, na.rm=TRUE, direction="x")

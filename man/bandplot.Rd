@@ -4,8 +4,8 @@
 \alias{bandplot.default}
 \title{Smoothed Mean and Standard Deviation}
 \description{
-  Plot x-y points with curves for locally smoothed mean and standard
-  deviation.
+  Plot x-y points along with locally smoothed mean and standard
+  deviation curves.
 }
 \usage{
 bandplot(x,\dots)
