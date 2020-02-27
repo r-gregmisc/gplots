@@ -115,14 +115,14 @@
   \item{grid.lwd}{the line width for the grid.}
   \item{grid.col}{the line color for the grid.}
   \item{add}{logical, if \code{TRUE} add barplot to current plot.}
-  \item{panel.first}{an expression to be evaluated after the plot region
+  \item{panel.first}{expression to be evaluated after the plot region
     coordinates have been set up, but prior to the drawing of the bars
     and other plot region contents. This can be useful to draw
     additional plot region content behind the bars. This will also work
     if \code{add} = \code{TRUE}.}
-  \item{panel.last}{an expression to be evaluated after the bars have
-    been drawn, but prior to the addition of confidence intervals,
-    legend and axis annotation.}
+  \item{panel.last}{expression to be evaluated after the bars have been
+    drawn, but prior to the addition of confidence intervals, legend and
+    axis annotation.}
   \item{\dots}{further graphical parameters (\code{\link{par}}) are
     passed to \code{\link{plot.window}}, \code{\link{title}} and
     \code{\link{axis}}.}

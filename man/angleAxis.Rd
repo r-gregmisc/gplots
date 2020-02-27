@@ -14,7 +14,7 @@ angleAxis(side, labels, at=1:length(labels), srt=45, adj, xpd=TRUE,
     tickpoints.}
   \item{at}{the points at which tick-marks are to be drawn. Non-finite
     (\code{Inf}, \code{NaN} or \code{NA}) values are omitted.}
-  \item{srt}{the string rotation in degrees. Defaults to 45 degrees
+  \item{srt}{string rotation in degrees. Defaults to 45 degrees
     (clockwise).}
   \item{adj}{text justification. A value of 0 produces left-justified
     text, 0.5 centered text and 1 right-justified text. For
