@@ -1,8 +1,18 @@
 export(angleAxis, balloonplot, bandplot, barplot2, bluered, boxplot2,
-       bubbleplot, ci2d, col2hex, colorpanel, greenred, heatmap.2, hist2d,
-       lmplot2, lowess, ooplot, overplot, panel.overplot, plot.venn, plotCI,
+       bubbleplot, ci2d, col2hex, colorpanel,
+       drawVennPolyominoes.colouring.featureCount,
+       drawVennPolyominoes.colouring.pValue,
+       drawVennPolyominoes.fields.labels.binary,
+       drawVennPolyominoes.fields.labels.letter,
+       greenred, heatmap.2, hist2d,
+       lmplot2, lowess, ooplot, overplot, panel.overplot,
+       plot.venn, plot.venn.graph, plot.venn.polyominoes, plotCI,
        plotLowess, plotmeans, qqnorm.aov, redblue, redgreen, residplot,
-       rich.colors, sinkplot, smartlegend, space, textplot, venn, wapply)
+       rich.colors, sinkplot, smartlegend, space, textplot, venn,
+       venn.graph.colouring, venn.graph.simplify, venn.observed2expected,
+       wapply)
+
+
 
 importFrom(caTools, runmean, runsd)
 importFrom(graphics, abline, arrows, axis, axTicks, barplot, contour,
