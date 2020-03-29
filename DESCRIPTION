@@ -1,6 +1,6 @@
 Package: gplots
 Version: 3.1.0
-Date: 2020-02-24
+Date: 2020-03-29
 Title: Various R Programming Tools for Plotting Data
 Authors@R: c(person("Gregory", "Warnes", role=c("aut","cre"),
                email="greg@warnes.net"),
@@ -18,8 +18,8 @@ Authors@R: c(person("Gregory", "Warnes", role=c("aut","cre"),
              person("Bill", "Venables", role="aut"))
 Depends: R (>= 3.0)
 Imports: graphics, grDevices, KernSmooth, stats, utils,
-  caTools, gtools
-Suggests: MASS, nlme
+  caTools, gtools, igraph
+Suggests: MASS, nlme, RColorBrewer
 LazyData: yes
 Description: Various R programming tools for plotting data, including: local
   smoothing, enhanced versions of standard plots, manipulating colors,
