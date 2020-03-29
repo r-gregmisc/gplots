@@ -20,7 +20,11 @@ plot.venn <- function(x, y, ...,
 
   if (is.list(type)) {
       for (type.iterator in type) {
-          plot.venn(x=x,y=y,small=small,showSetLogicLabel=showSetLogicLabel,simplify=simplify,type=type.iterator)
+          plot.venn(x=x,y=y,
+		    small=small,
+		    showSetLogicLabel=showSetLogicLabel,
+		    simplify=simplify,
+		    type=type.iterator)
       }
   }
 
