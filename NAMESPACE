@@ -12,8 +12,6 @@ export(angleAxis, balloonplot, bandplot, barplot2, bluered, boxplot2,
        venn.graph.colouring, venn.graph.simplify, venn.observed2expected,
        wapply)
 
-
-
 importFrom(caTools, runmean, runsd)
 importFrom(graphics, abline, arrows, axis, axTicks, barplot, contour,
            filled.contour, grid, hist, identify, image, layout, legend,
@@ -23,6 +21,8 @@ importFrom(graphics, abline, arrows, axis, axTicks, barplot, contour,
 importFrom(grDevices, col2rgb, contourLines, dev.flush, dev.hold,
            dev.interactive, heat.colors, rgb, topo.colors)
 importFrom(gtools, invalid, odd)
+importFrom(igraph, add_edges, graph.empty, plot.igraph, set_vertex_attr,
+           V)
 importFrom(KernSmooth, bkde2D, dpik)
 importFrom(stats, as.dendrogram, cooks.distance, density, deviance,
            df.residual, dist, dnorm, effects, expand.model.frame,

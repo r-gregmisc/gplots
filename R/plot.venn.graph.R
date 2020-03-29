@@ -8,9 +8,6 @@ plot.venn.graph<-function(data,
 {
   if (is.null(data)) stop("drawVennDiagram: is.null(data)")
 
-  require(igraph)
-  requireNamespace("igraph")
-
   g<-NULL
   if ("igraph"==class(data)) {
     if (!is.null(col.function)) {
