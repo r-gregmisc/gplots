@@ -410,7 +410,6 @@ drawVennPolyominoes <- function(data,col.bg="lightgray",
     if(is.null(attr(data,"p.values"))){
       col.function=rainbow
     } else {
-      require("RColorBrewer")
       col.function=colorRampPalette(c("green","white","red"))
     }
   }
