@@ -1,7 +1,7 @@
 \name{ci2d}
 \alias{ci2d}
 \alias{print.ci2d}
-\title{Two-Dimensional Confidence Regions}
+\title{Two-Dimensional Empirical Confidence Regions}
 \description{
   Create 2-dimensional empirical confidence regions from provided data.
 }

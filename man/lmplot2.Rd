@@ -39,7 +39,8 @@ lmplot2(x,
   \item{panel}{function to draw on the existing plot.}
   \item{sub.caption}{subcaption for the plots.}
   \item{main}{main title of the plot.}
-  \item{ask}{whether to ask the user before each plot.}
+  \item{ask}{logical indicating whether to prompt the user before
+    drawing each plot.}
   \item{\dots}{parameters passed to \code{lmplot2}.}
   \item{id.n}{integer value, less than or equal to residuals of
     \code{lm} object.}
@@ -56,9 +57,7 @@ lmplot2(x,
   This function replaces \code{plot.lm2}, which has been deprecated to
   avoid potential problems with S3 method dispatching.
 }
-\author{
-  Gregory R. Warnes \email{greg@warnes.net} and Nitin Jain
-  \email{nitin.jain@pfizer.com}.}
+\author{Gregory R. Warnes \email{greg@warnes.net} and Nitin Jain.}
 \seealso{
   \code{\link[stats]{plot.lm}}.
 

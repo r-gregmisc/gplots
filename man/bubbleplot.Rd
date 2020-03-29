@@ -16,31 +16,28 @@ bubbleplot(x, \dots)
            rev=FALSE, type="p", ylim=NULL, xlab=NULL, ylab=NULL,
            pch=c(16,1), cex.points=1, col="black", bg=par("bg"), \dots)
 
-\method{bubbleplot}{formula}(formula, data, subset, na.action=NULL,
-           \dots)
+\method{bubbleplot}{formula}(formula, data, subset, na.action=NULL, \dots)
 }
 \arguments{
   \item{x}{a vector of values for the horizontal axis. Can also be a
     2-dimensional matrix or table (x values in column names and y values
-    in rows), or a data frame containing \code{x}, \code{y}, and
-    \code{z} in that order.}
+    in row names), or a data frame containing \code{x}, \code{y}, and
+    \code{z} in that order. If the data frame contains column names
+    \code{x}, \code{y}, and \code{z} then they will be used for
+    plotting.}
   \item{\dots}{passed to \code{plot} and \code{points}.}
   \item{y}{a vector of values for the vertical axis.}
   \item{z}{a vector of values determining the bubble sizes.}
-  \item{std}{whether to standardize \code{z} by dividing with
-    \code{mean(z)}.}
-  \item{pow}{a power coefficient for the bubble sizes (\code{0.5} is the
-    square root).}
+  \item{std}{whether to standardize the \code{z} values.}
+  \item{pow}{a power coefficient for the bubble sizes.}
   \item{add}{whether to add bubbles to an existing plot.}
   \item{rev}{whether to reverse the y axis.}
   \item{type}{passed to \code{points}.}
   \item{ylim}{passed to \code{plot}.}
-  \item{xlab}{passed to \code{plot}.}
-  \item{ylab}{passed to \code{plot}.}
+  \item{xlab, ylab}{passed to \code{plot}.}
   \item{pch}{passed to \code{points}.}
   \item{cex.points}{scales all bubble sizes.}
-  \item{col}{passed to \code{points}.}
-  \item{bg}{passed to \code{points}.}
+  \item{col, bg}{passed to \code{points}.}
   \item{formula}{has the form \code{z ~ x + y}, where \code{z}
     determines the bubble sizes and \code{x} and \code{y} determine
     bubble locations.}
@@ -48,10 +45,18 @@ bubbleplot(x, \dots)
   \item{subset}{a logical vector specifying which data to plot.}
   \item{na.action}{how \code{NA} values are handled.}
 }
-\note{
+\details{
+  The \code{std} standardization sets \code{z = abs(z) / mean(abs(z))}.
+
+  The \code{pow = 0.5} (square root) is a good default, where a \code{z}
+  value of 2 has twice the area of 1. See example #2 below for an
+  exception, where the \code{z} value is tree circumference and
+  therefore proportional to the tree diameter.
+
   The \code{pch}, \code{col}, and \code{bg} arguments can be be vectors
-  of length 2, where negative \code{z} values are drawn in
-  \code{pch[2]}, \code{col[2]}, and \code{bg[2]}.
+  of length 2, where positive \code{z} values are drawn with
+  \code{pch[1]}, \code{col[1]}, \code{bg[1]} and negative \code{z}
+  values are drawn with \code{pch[2]}, \code{col[2]}, and \code{bg[2]}.
 }
 \author{Arni Magnusson.}
 \seealso{
@@ -62,8 +67,8 @@ bubbleplot(x, \dots)
   negative \code{z} values or have convenience features such as
   \code{pow} and \code{rev}.
 
-  \code{\link{balloonplot}} provides an alternative interface and style
-  of plot.
+  \code{\link{balloonplot}} provides an alternative interface and visual
+  style based on tables instead of scatterplots.
 
   \code{\link{gplots-package}} gives an overview of the package.
 }

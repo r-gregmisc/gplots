@@ -3,7 +3,6 @@ bubbleplot <- function(x, ...)
   UseMethod("bubbleplot")
 }
 
-
 bubbleplot.default <- function(x, y, z, std=TRUE, pow=0.5, add=FALSE, rev=FALSE,
                                type="p", ylim=NULL, xlab=NULL, ylab=NULL,
                                pch=c(16,1), cex.points=1, col="black",
@@ -27,13 +26,23 @@ bubbleplot.default <- function(x, y, z, std=TRUE, pow=0.5, add=FALSE, rev=FALSE,
 
   if(is.list(x))  # data.frame or list
   {
+    xyz <- all(c("x","y","z") %in% names(x))  # colnames include x,y,z
     if(is.null(xlab))
-      xlab <- names(x)[1]
+      xlab <- if(xyz) "x" else names(x)[1]
     if(is.null(ylab))
-      ylab <- names(x)[2]
-    y <- x[[2]]
-    z <- x[[3]]
-    x <- x[[1]]
+      ylab <- if(xyz) "y" else names(x)[2]
+    if(xyz)
+    {
+      y <- x$y
+      z <- x$z
+      x <- x$x
+    }
+    else
+    {
+      y <- x[[2]]
+      z <- x[[3]]
+      x <- x[[1]]
+    }
   }
 
   if(is.null(xlab))

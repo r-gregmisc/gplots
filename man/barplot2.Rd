@@ -3,10 +3,9 @@
 \alias{barplot2.default}
 \title{Enhanced Bar Plots}
 \description{
-  An enhancement of the standard \code{barplot} function. Creates a bar
-  plot with vertical or horizontal bars. Can plot confidence intervals
-  for each bar, a line grid behind the bars, specify plot area color and
-  logarithmic axes may be used.}
+  An enhancement of the standard \code{barplot} function, allowing
+  addition of confidence intervals and/or a background grid.
+}
 \usage{
 \method{barplot2}{default}(height, width=1, space=NULL, names.arg=NULL,
          legend.text=NULL, beside=FALSE, horiz=FALSE, density=NULL,
@@ -116,14 +115,14 @@
   \item{grid.lwd}{the line width for the grid.}
   \item{grid.col}{the line color for the grid.}
   \item{add}{logical, if \code{TRUE} add barplot to current plot.}
-  \item{panel.first}{an expression to be evaluated after the plot region
+  \item{panel.first}{expression to be evaluated after the plot region
     coordinates have been set up, but prior to the drawing of the bars
     and other plot region contents. This can be useful to draw
     additional plot region content behind the bars. This will also work
     if \code{add} = \code{TRUE}.}
-  \item{panel.last}{an expression to be evaluated after the bars have
-    been drawn, but prior to the addition of confidence intervals,
-    legend and axis annotation.}
+  \item{panel.last}{expression to be evaluated after the bars have been
+    drawn, but prior to the addition of confidence intervals, legend and
+    axis annotation.}
   \item{\dots}{further graphical parameters (\code{\link{par}}) are
     passed to \code{\link{plot.window}}, \code{\link{title}} and
     \code{\link{axis}}.}
@@ -136,7 +135,7 @@
   If \code{beside} is \code{TRUE}, use \code{colMeans(mp)} for the
   midpoints of each \emph{group} of bars, see example.
 }
-\author{Marc Schwartz \email{marc\_schwartz@comcast.net}.}
+\author{Marc Schwartz (\email{marc_schwartz@comcast.net}).}
 \note{
   If there are \code{NA} values in \code{height} and
   \code{beside = FALSE}, values after the \code{NA} will not be plotted

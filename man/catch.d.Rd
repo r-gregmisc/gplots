@@ -3,7 +3,10 @@
 \alias{catch.r}
 \docType{data}
 \title{Catch at Age and Residuals}
-\description{Catch-at-age observated data and model residuals.}
+\description{
+  Catch-at-age observed data and model residuals from Icelandic saithe
+  assessment.
+}
 \usage{
 catch.d
 catch.r
@@ -20,15 +23,15 @@ catch.r
   }
 }
 \details{
-  The data are from Tables 8.2 and 8.6 in the ICES (2015) assessment of
-  Icelandic saithe.
+  The data are from Tables 8.2 and 8.6 in the ICES (2015) fish stock
+  assessment of Icelandic saithe.
 }
 \source{
   ICES (2015) Report of the North-Western Working Group (NWWG).
   \emph{ICES CM 2015/ACOM:07}, pp. 240--246.
 }
 \seealso{
-  \code{\link{bubbleplot}}.
+  \code{\link{bubbleplot}} is an effective way to visualize these data.
 
   \code{\link{gplots-package}} gives an overview of the package.
 }
