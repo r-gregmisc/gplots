@@ -18,8 +18,9 @@ importFrom(graphics, abline, arrows, axis, axTicks, barplot, contour,
            lines, matlines, matpoints, mtext, panel.smooth, par, plot,
            plot.default, plot.new, plot.window, points, polygon, rect,
            segments, strheight, strwidth, text, title, xinch, yinch)
-importFrom(grDevices, col2rgb, contourLines, dev.flush, dev.hold,
-           dev.interactive, heat.colors, rgb, topo.colors)
+importFrom(grDevices, colorRampPalette, col2rgb, contourLines,
+           dev.flush, dev.hold, dev.interactive, heat.colors, rainbow,
+           rgb, topo.colors)
 importFrom(gtools, invalid, odd)
 importFrom(igraph, add_edges, graph.empty, plot.igraph, set_vertex_attr,
            V)
@@ -29,7 +30,7 @@ importFrom(stats, as.dendrogram, cooks.distance, density, deviance,
            fitted, hclust, is.leaf, lm.influence, median, model.frame,
            na.omit, order.dendrogram, ppoints, predict, qnorm, qqline,
            qqnorm, qt, reorder, residuals, sd, var, weights)
-importFrom(utils, str, type.convert)
+importFrom(utils, head, str, type.convert)
 
 S3method(balloonplot, default)
 S3method(balloonplot, table)
