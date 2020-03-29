@@ -167,7 +167,7 @@ getVennCounts.list<-function(l, universe=NA, verbose=FALSE, intersections=TRUE, 
     result.table
 }
 
-venn <- function(data,
+venn <- function(x,
                  universe=NA,
                  small=0.7,
                  showSetLogicLabel=FALSE,
@@ -181,7 +181,7 @@ venn <- function(data,
                  ...
                  )
 {
-    counts <- getVennCounts(data,
+    counts <- getVennCounts(x,
                             universe=universe,
                             intersections=intersections,
                             permute=FALSE)
@@ -201,7 +201,7 @@ venn <- function(data,
         } else if (0== i%%2) {
           cat(".")
         }
-        perm[,,i] <- getVennCounts(l=data,intersections=FALSE,permute=TRUE,verbose=FALSE)
+        perm[,,i] <- getVennCounts(l=x,intersections=FALSE,permute=TRUE,verbose=FALSE)
       }
       p.values <- sapply(names(counts[,"num"]),function(X) {
         v<-perm[X,"num",]
@@ -239,7 +239,7 @@ venn <- function(data,
 
     # use VennMemberNames to properly label and order the 'intersection' table
     if (intersections) {
-        attr(counts, "intersections") <- vennMembers(l=data,
+        attr(counts, "intersections") <- vennMembers(l=x,
                                                      universe=universe,
                                                      set.names=names)
     }
