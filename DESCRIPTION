@@ -1,6 +1,6 @@
 Package: gplots
 Version: 3.1.0
-Date: 2020-02-24
+Date: 2020-03-29
 Title: Various R Programming Tools for Plotting Data
 Authors@R: c(person("Gregory", "Warnes", role=c("aut","cre"),
                email="greg@warnes.net"),
