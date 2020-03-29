@@ -28,13 +28,8 @@ bubbleplot(x, \dots)
   \item{\dots}{passed to \code{plot} and \code{points}.}
   \item{y}{a vector of values for the vertical axis.}
   \item{z}{a vector of values determining the bubble sizes.}
-  \item{std}{whether to standardize
-    \code{z = abs(z) / mean(abs(z))}.}
-  \item{pow}{a power coefficient for the bubble sizes. The
-    \code{pow = 0.5} (square root) is a good default, where a \code{z}
-    value of 2 has twice the area of 1. See example #2 below for an
-    exception, where the \code{z} value is tree circumference and
-    therefore proportional to the tree diameter.}
+  \item{std}{whether to standardize the \code{z} values.}
+  \item{pow}{a power coefficient for the bubble sizes.}
   \item{add}{whether to add bubbles to an existing plot.}
   \item{rev}{whether to reverse the y axis.}
   \item{type}{passed to \code{points}.}
@@ -50,7 +45,14 @@ bubbleplot(x, \dots)
   \item{subset}{a logical vector specifying which data to plot.}
   \item{na.action}{how \code{NA} values are handled.}
 }
-\note{
+\details{
+  The \code{std} standardization sets \code{z = abs(z) / mean(abs(z))}.
+
+  The \code{pow = 0.5} (square root) is a good default, where a \code{z}
+  value of 2 has twice the area of 1. See example #2 below for an
+  exception, where the \code{z} value is tree circumference and
+  therefore proportional to the tree diameter.
+
   The \code{pch}, \code{col}, and \code{bg} arguments can be be vectors
   of length 2, where positive \code{z} values are drawn with
   \code{pch[1]}, \code{col[1]}, \code{bg[1]} and negative \code{z}
