@@ -13,7 +13,7 @@ plot.venn <- function(x, y, ...,
                       debug=F
                      )
 {
-  if (!is.matrix(x)) stop("Please have a true matrix passed to the 'plot.venn' method.")
+  if (!is.matrix(x)) stop("'x' should be a matrix.")
   if (is.logical(type)) {
       if (!isTRUE(type)) return;
   }
