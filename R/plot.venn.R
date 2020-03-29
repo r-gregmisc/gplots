@@ -52,7 +52,7 @@ plot.venn <- function(x, y, ...,
      if (simplify) {
        # simplification should possibly go here
      }
-     r <- plot.venn.graph(data=x, col=col, debug=debug)
+     r <- plot.venn.graph(x, col=col, debug=debug)
   }
   else if (!is.logical(type)) {
     stop(paste("Do not know how to plot Venn diagrams of type '",type,"'.",sep=""))

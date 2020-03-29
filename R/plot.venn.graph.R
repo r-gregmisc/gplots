@@ -1,21 +1,21 @@
 # Authors: Steffen Moeller and Sarah Fischer
 #          University of Rostock, Germany, 2017
-plot.venn.graph<-function(data,
+plot.venn.graph<-function(x,
                           col=NULL,
                           col.scheme=rainbow,
                           col.function=NULL,
                           add=FALSE, debug=FALSE, ...)
 {
-  if (is.null(data)) stop("drawVennDiagram: is.null(data)")
+  if (is.null(x)) stop("drawVennDiagram: is.null(x)")
 
   g<-NULL
-  if ("igraph"==class(data)) {
+  if ("igraph"==class(x)) {
     if (!is.null(col.function)) {
       warning("plot.venn.graph: submit object returned from venn() for colouring with col.function, not the graph")
     }
-    g <- data
+    g <- x
   } else {
-    g <- venn.graph.colouring(data, col=col, col.scheme=col.scheme, col.function=col.function, ...)
+    g <- venn.graph.colouring(x, col=col, col.scheme=col.scheme, col.function=col.function, ...)
   }
 
   if (is.null(V(g)$size))      V(g)$size <- 20
@@ -27,10 +27,10 @@ plot.venn.graph<-function(data,
   } 
   igraph::plot.igraph(g, add=add, ...)
 
-  if ("igraph" == class(data)) {
+  if ("igraph" == class(x)) {
     invisible(g)
   } else {
-    attr(data,"graph") <- g
-    invisible(data)
+    attr(x,"graph") <- g
+    invisible(x)
   }
 }
