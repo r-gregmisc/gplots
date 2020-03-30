@@ -1,3 +1,9 @@
+%% Revision 2.2 2020/03/26
+%% - updated function with vectorInput according to current version 
+%%   of grpahics::barplot
+%% - Added order and decr arguments (logical; default = FALSE) to order
+%%   bars according to their values while keeping colors.
+
 %% Revision 2.1 2005/06/06
 %% - Modified default behavior with 0's and NA's in
 %%   'height' so that these values are not plotted.
@@ -88,7 +94,8 @@
         ci.color = "black", ci.lty = "solid", ci.lwd = 1, ci.width = 0.5,
         plot.grid = FALSE, grid.inc = NULL,
         grid.lty = "dotted", grid.lwd = 1, grid.col = "black",
-        add = FALSE, panel.first = NULL, panel.last = NULL, \dots)
+        add = FALSE, panel.first = NULL, panel.last = NULL, 
+        order = FALSE, decr = TRUE, \dots)
 }
 \arguments{
   \item{height}{either a vector or matrix of values describing the
@@ -197,6 +204,10 @@
   \item{\dots}{further graphical parameters (\code{\link{par}}) are
     passed to \code{\link{plot.window}()}, \code{\link{title}()} and
     \code{\link{axis}}.}
+  \item{order}{logical. If \code{TRUE}, bars of the barplot from a matrix
+    are ordered according to their value (only if \code{beside = FALSE}).}
+  \item{decr}{logical. If \code{TRUE}, bars are ordered by decreasing order,
+    and by inincresaing order otherwise (only if \code{order = TRUE}).}
 }
 \description{
   An enhancement of the standard barplot() function. Creates a bar plot
@@ -284,5 +295,25 @@ title(main = list("Death Rates in Virginia", font = 4))
 # border :
 barplot2(VADeaths, border = "dark blue") % lwd = 2 << not passed
 %notyet barplot(VADeaths, inside = FALSE, main = "barplot(*, inside=FALSE)")
+
+# example with ordered bars
+set.seed(1234)
+dataset <- matrix(sample(1:20, 104/2, replace = TRUE), ncol = 13)
+myCol <- c("#1B9E77", "#D95F02", "#7570B3", "#E7298A")
+barplot2(
+  height = dataset, 
+  col = myCol, 
+  names.arg = 
+  LETTERS[1:13])
+barplot2(
+  height = dataset, 
+  col = myCol, 
+  names.arg = LETTERS[1:13], 
+  order = TRUE, decr = TRUE)
+barplot2(
+  height = dataset, 
+  col = myCol, 
+  names.arg = LETTERS[1:13], 
+  order = TRUE, decr = FALSE)
 }
 \keyword{hplot}
