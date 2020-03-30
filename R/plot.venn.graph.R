@@ -6,7 +6,7 @@ plot.venn.graph<-function(x,
                           col.function=NULL,
                           add=FALSE, debug=FALSE, ...)
 {
-  if (is.null(x)) stop("drawVennDiagram: is.null(x)")
+  if (is.null(x)) stop("plot.venn.graph: is.null(x)")
 
   g<-NULL
   if ("igraph"==class(x)) {
@@ -18,8 +18,8 @@ plot.venn.graph<-function(x,
     g <- venn.graph.colouring(x, col=col, col.scheme=col.scheme, col.function=col.function, ...)
   }
 
-  if (is.null(V(g)$size))      V(g)$size <- 20
-  if (is.null(V(g)$label.cex)) V(g)$label.cex=0.7
+  if (is.null(igraph::V(g)$size))      igraph::V(g)$size <- 20
+  if (is.null(igraph::V(g)$label.cex)) igraph::V(g)$label.cex=0.7
 
   if ("igraph" != class(g)) {
     cat("plot.venn.graph: class(g) == ",class(g),"\n",sep="")

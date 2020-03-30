@@ -22,8 +22,8 @@ importFrom(grDevices, colorRampPalette, col2rgb, contourLines,
            dev.flush, dev.hold, dev.interactive, heat.colors, rainbow,
            rgb, topo.colors)
 importFrom(gtools, invalid, odd)
-importFrom(igraph, add_edges, graph.empty, plot.igraph, set_vertex_attr,
-           V)
+importFrom(igraph, add_edges, delete.vertices, graph.empty, plot.igraph,
+           set_vertex_attr, V)
 importFrom(KernSmooth, bkde2D, dpik)
 importFrom(stats, as.dendrogram, cooks.distance, density, deviance,
            df.residual, dist, dnorm, effects, expand.model.frame,

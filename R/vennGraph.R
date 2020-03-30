@@ -112,7 +112,7 @@ venn.graph.colouring <- function(data,
     attr(data,"graph") <- g
   }
   if (!is.null(col) && !is.null(col.function)) {
-    warning(paste("drawVennGraph: conflict between homogeneous colouring",
+    warning(paste("venn.graph.colouring: conflict between homogeneous colouring",
                   "with 'col' and individualised colours with 'col.function'.",
                   "Not colouring."))
     return(data)
@@ -120,11 +120,11 @@ venn.graph.colouring <- function(data,
   
   if (!is.null(col)) igraph::V(g)$color <- col
   if (!is.null(col.function)) {
-    if (is.null(V(g)$rowname)) {
+    if (is.null(igraph::V(g)$rowname)) {
        stop("venn.graph.colouring: Expecting binary rownames as graph attributes")
     }
-    igraph::V(g)$color <- rep(NA,length(V(g)))
-    col.scheme.res <- col.scheme(min(32,length(V(g)))) # more colours than a human interprets
+    igraph::V(g)$color <- rep(NA,length(igraph::V(g)))
+    col.scheme.res <- col.scheme(min(32,length(igraph::V(g)))) # more colours than a human interprets
     if (debug) {cat("col.scheme.res="); print(col.scheme.res)}
     col.function.res <- sapply(igraph::V(g)$rowname,col.function,data=data)
     col.function.maxmin <- max(col.function.res)-min(col.function.res)
@@ -165,14 +165,14 @@ venn.graph.simplify <- function(graph,simplification=NULL,verbose=F,...)
          warning("venn.graph.simplify: Nodes have no rowname attribute, cannot filter out universe")
        } else {
          if (verbose) cat("venn.graph.simplify: removing 0 (bottom) node")
-         graph <- delete.vertices(graph,which(grepl(V(graph)$rowname,pattern="^0*$")))
+         graph <- igraph::delete.vertices(graph,which(grepl(V(graph)$rowname,pattern="^0*$")))
        }
     } else if ("minNum1"==simplification) {
        if (is.null(V(graph)$num)) {
          warning("venn.graph.simplify: Nodes have no num attribute, cannot filter for abundance")
        } else {
          if (verbose) cat("venn.graph.simplify: removing nodes with zero value")
-         graph <- delete.vertices(graph,which(V(graph)$num<1))
+         graph <- igraph::delete.vertices(graph,which(igraph::V(graph)$num<1))
        }
     }
   } else if (is.logical(simplification)) {

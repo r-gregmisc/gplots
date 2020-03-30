@@ -3,6 +3,7 @@
 \alias{plot.venn}
 \alias{plot.venn.graph}
 \alias{plot.venn.polyominoes}
+\alias{drawVennPolyominoes}
 \title{Venn Diagram}
 \description{Plot a Venn diagrams for up to 5 sets.}
 \usage{
@@ -14,20 +15,29 @@ venn(x, universe=NA, small=0.7, showSetLogicLabel=FALSE,
      simplify=FALSE, type = "regular",
      col = NA, density = NULL, border = NULL, angle = NA, lty = par("lty"),
      debug=F)
-\method{plot}{venn.graph}(x,
+plot.venn.graph(x,
      col=NULL, col.scheme=rainbow, col.function=NULL,
      add=FALSE, debug=FALSE, \dots)
-\method{plot}{venn.polyominoes}(x,y,\dots,
+plot.venn.polyominoes(x,y,\dots,
      col.bg="gray", col.scheme=rainbow,
      col.function=drawVennPolyominoes.colouring.featureCount,
      fields.label.function=drawVennPolyominoes.fields.labels.binary,
      fields.value.function=drawVennPolyominoes.fields.values.direct,
      cex.label=0.5,cex.value=0.9, debug=F)
+drawVennPolyominoes(data,col.bg="lightgray",
+     col.scheme=NULL,
+     col.function=NULL,
+     fields.label.function=drawVennPolyominoes.fields.labels.binary,
+     fields.value.function=drawVennPolyominoes.fields.values.direct,
+     cex.label=0.5,cex.value=0.9, add=F, h=400,
+     debug=F)
 }
 \arguments{
   \item{x}{either a list containing vectors of names or indices of
      group intersections, or a data frame containing boolean indicators
      of group intersectionship (see below).}
+  \item{data}{resturn value of venn(), i.e. a matrix representation of
+     the Venn diagram}
   \item{universe}{subset of valid name/index elements. Values ignore
     values in code{data} not in this list will be ignored. Use \code{NA}
     to use all elements of \code{data} (the default).}
@@ -77,6 +87,7 @@ venn(x, universe=NA, small=0.7, showSetLogicLabel=FALSE,
     value itself or something derived like a P value}
   \item{fields.label.function}{function that knows how to label a box
     in a polyominoe}
+  \item{h}{height}
 }
 \details{
   \code{data} should be either a named list of vectors containing
@@ -104,7 +115,7 @@ venn(x, universe=NA, small=0.7, showSetLogicLabel=FALSE,
 }
 \seealso{
   \code{\link{gplots-package}} gives an overview of the package.
-  \code{\link{polygon}} for a better understanding of angle, border, density, col and lty arguments.
+  \code{\link[graphics]{polygon}} for a better understanding of angle, border, density, col and lty arguments.
 }
 \examples{
 # Example using a list of item names belonging to the specified group

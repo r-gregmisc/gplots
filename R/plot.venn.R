@@ -422,11 +422,11 @@ drawVennDiagram <-function(data,
     r <- drawVennPolyominoes(data, add=F, h=h, debug=debug)
   }
   else if ( "graph"==type && numCircles <= 7) {
-    r <- drawVennGraph(data, add=F, simplify=simplify, debug=debug)
+    r <- plot.venn.graph(x=data, add=F, simplify=simplify, debug=debug)
   }
   else {
     warning("For more than 7 dimensions get the graph attribute and manually simplify it.")
-    r <- drawVennGraph(data, add=F, simplify=simplify, debug=debug)
+    r <- plot.venn.graph(x=data, add=F, simplify=simplify, debug=debug)
   }
   r
 }
