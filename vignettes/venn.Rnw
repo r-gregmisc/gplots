@@ -246,8 +246,8 @@ col.pastel.entry <- function(n) {
 }
 
 par("mfrow"=c(1,2))
-plot.venn.polyominoes(venn(m[,1,drop=F],show.plot=F),col.scheme=col.pastel.entry)
-plot.venn.polyominoes(venn(m[,1:2],     show.plot=F),col.scheme=col.pastel.entry,
+plotVennPolyominoes(venn(m[,1,drop=F],show.plot=F),col.scheme=col.pastel.entry)
+plotVennPolyominoes(venn(m[,1:2],     show.plot=F),col.scheme=col.pastel.entry,
     fields.label.function=drawVennPolyominoes.fields.labels.letter)
 par("mfrow"=c(1,1))
 @
@@ -267,7 +267,7 @@ par("mfrow"=c(1,1))
 By default, the regular {\tt venn()} routine also plots the diagram. This
 is prevented by setting the show.plot attribute to FALSE. It then only returns
 a Venn data object that can then be interpreted by the
-plot.venn.polyominoes function. The use of the mfrow parameter to arrange
+plotVennPolyominoes function. The use of the mfrow parameter to arrange
 multiple plots in a single figure will distort the diagram. Instead,
 use for instancen {\it layout()}. More elegantly, {\tt venn()} is instructed
 to perform the plot in Figure \ref{fig:polyominoes:34}.
@@ -276,8 +276,8 @@ to perform the plot in Figure \ref{fig:polyominoes:34}.
 \begin{centering}
 <<fig=TRUE,echo=TRUE>>=
 nf <- layout(matrix(c(1,2),nrow=1),respect=TRUE)
-plot.venn.polyominoes(venn(m[,1:3],show.plot=FALSE),col.scheme=col.pastel.entry)
-plot.venn.polyominoes(venn(m[,1:4],show.plot=FALSE),col.scheme=rainbow)
+plotVennPolyominoes(venn(m[,1:3],show.plot=FALSE),col.scheme=col.pastel.entry)
+plotVennPolyominoes(venn(m[,1:4],show.plot=FALSE),col.scheme=rainbow)
 @
 \end{centering}
 \caption{Polyominoes of 3 and 4 dimensions. The 4-dimensional on the right
@@ -302,9 +302,9 @@ number of sets intersected (the default) or the statistics or ...
 <<fig=TRUE,echo=TRUE>>=
 par("mar"=c(0,0,0,0))
 nf <- layout(matrix(c(1,2),nrow=1),respect=TRUE)
-plot.venn.polyominoes(venn(m[,1:5],show.plot=FALSE),
+plotVennPolyominoes(venn(m[,1:5],show.plot=FALSE),
                       col.scheme=col.pastel.entry)
-plot.venn.polyominoes(venn(m[,1:6],show.plot=FALSE),
+plotVennPolyominoes(venn(m[,1:6],show.plot=FALSE),
                       col.scheme=col.pastel.entry,cex.value=0.5,cex.label=0.3)
 @
 \caption{Polyominoes with five and six dimensions, plotted by the tailored
@@ -325,7 +325,7 @@ may be helped by explicitly setting font sizes.
 \begin{figure}
 \begin{centering}
 <<fig=TRUE,echo=TRUE>>=
-plot.venn.polyominoes(venn(m[,1:7],show.plot=FALSE),
+plotVennPolyominoes(venn(m[,1:7],show.plot=FALSE),
     col.scheme=col.pastel.entry,
     fields.label.function=drawVennPolyominoes.fields.labels.letter)
 @
@@ -418,7 +418,7 @@ The explicit notion of the namespace is optional as seen in the second
 line.
 
 In general the task to colour graphs represents a perfect analogy to
-the colouring tasks for polyominoes. The {\tt plot.venn.graph()}
+the colouring tasks for polyominoes. The {\tt plotVennGraph()}
 attempts to help readability by adjusting default sizes as it becomes
 a necessity for larger dimensions. But it does so only if respective
 attributes are not already present in the graph to not interfere
@@ -434,7 +434,7 @@ plot(b.graph)
 @
 \end{center}
 
-The {\it col} attribute can also be passed to the plot.venn.graph
+The {\it col} attribute can also be passed to the plotVennGraph
 function.  Not surprisingly, also offered
 the two functions col.scheme and col.function, just as for
 polyominoes:
@@ -447,15 +447,15 @@ b.graph <- venn.graph.colouring(b,
                                 col.function=
                    drawVennPolyominoes.colouring.featureCount,
                                 debug=F)
-plot.venn.graph(b.graph)
+plotVennGraph(b.graph)
 @
 \end{center}
 
 The separate invocation of venn.graph.colouring is not required
-as it would be invoked also by the plot.venn.graph function if
+as it would be invoked also by the plotVennGraph function if
 no {\it color} attribute is yet assigned to the graph. Both
 the igraph object and the venn object (counts) are valid inputs
-to {\tt plot.venn.graph()}.
+to {\tt plotVennGraph()}.
 
 
 \subsection{Simplifications}
@@ -493,7 +493,7 @@ m<-matrix(sample(c(T,F),replace=T,size=2*3*4*5),
           ncol=5)
 a<-venn(m,intersections=F,graph=T,show.plot=F)
 a.graph <- attr(a,"graph")
-plot.venn.graph(a.graph)
+plotVennGraph(a.graph)
 @
 \caption{A five-dimensional graph directly as generated.}
 \label{fig:simplification:pristine}
@@ -501,7 +501,7 @@ plot.venn.graph(a.graph)
 \begin{figure}
 <<fig=TRUE,echo=TRUE>>=
 a.graph.simpler <- venn.graph.simplify(a.graph,simplification=c("noUniverse","minNum1"))
-plot.venn.graph(a.graph.simpler)
+plotVennGraph(a.graph.simpler)
 @
 \caption{Same data as of Figure \ref{fig:simplification:pristine}
          with the 0 node removed and also all nodes that
@@ -627,7 +627,7 @@ explains the low P value for the 0 entry.
 \begin{figure}
 \begin{centering}
 <<fig=TRUE,echo=TRUE>>=
-plot.venn.polyominoes(counts,
+plotVennPolyominoes(counts,
                       col.scheme=colorRampPalette(c("green","white","red")),
                       col.function=drawVennPolyominoes.colouring.pValue)
 @
@@ -643,7 +643,7 @@ plot.venn.polyominoes(counts,
 \begin{figure}
 \begin{centering}
 <<fig=TRUE,echo=TRUE>>=
-a <- plot.venn.polyominoes(venn(m[,1:4],show.plot=FALSE,statistics="permutations",
+a <- plotVennPolyominoes(venn(m[,1:4],show.plot=FALSE,statistics="permutations",
                                 intersections=FALSE),
                            col.scheme=colorRampPalette(c("green","white","red")),
                            col.function=drawVennPolyominoes.colouring.pValue)

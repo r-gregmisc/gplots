@@ -56,7 +56,7 @@ plot.venn <- function(x, y, ...,
      if (simplify) {
        # simplification should possibly go here
      }
-     r <- plot.venn.graph(x, col=col, debug=debug)
+     r <- plotVennGraph(x, col=col, debug=debug)
   }
   else if (!is.logical(type)) {
     stop(paste("Do not know how to plot Venn diagrams of type '",type,"'.",sep=""))
@@ -422,11 +422,11 @@ drawVennDiagram <-function(data,
     r <- drawVennPolyominoes(data, add=F, h=h, debug=debug)
   }
   else if ( "graph"==type && numCircles <= 7) {
-    r <- plot.venn.graph(x=data, add=F, simplify=simplify, debug=debug)
+    r <- plotVennGraph(x=data, add=F, simplify=simplify, debug=debug)
   }
   else {
     warning("For more than 7 dimensions get the graph attribute and manually simplify it.")
-    r <- plot.venn.graph(x=data, add=F, simplify=simplify, debug=debug)
+    r <- plotVennGraph(x=data, add=F, simplify=simplify, debug=debug)
   }
   r
 }

@@ -1,17 +1,17 @@
 # Authors: Steffen Moeller and Sarah Fischer
 #          University of Rostock, Germany, 2017
-plot.venn.graph<-function(x,
-                          col=NULL,
-                          col.scheme=rainbow,
-                          col.function=NULL,
-                          add=FALSE, debug=FALSE, ...)
+plotVennGraph<-function(x,
+                        col=NULL,
+                        col.scheme=rainbow,
+                        col.function=NULL,
+                        add=FALSE, debug=FALSE, ...)
 {
-  if (is.null(x)) stop("plot.venn.graph: is.null(x)")
+  if (is.null(x)) stop("plotVennGraph: is.null(x)")
 
   g<-NULL
   if ("igraph"==class(x)) {
     if (!is.null(col.function)) {
-      warning("plot.venn.graph: submit object returned from venn() for colouring with col.function, not the graph")
+      warning("plotVennGraph: submit object returned from venn() for colouring with col.function, not the graph")
     }
     g <- x
   } else {
@@ -22,8 +22,8 @@ plot.venn.graph<-function(x,
   if (is.null(igraph::V(g)$label.cex)) igraph::V(g)$label.cex=0.7
 
   if ("igraph" != class(g)) {
-    cat("plot.venn.graph: class(g) == ",class(g),"\n",sep="")
-    stop("plot.venn.graph: Not working on a graph - likely internal error")
+    cat("plotVennGraph: class(g) == ",class(g),"\n",sep="")
+    stop("plotVennGraph: Not working on a graph - likely internal error")
   } 
   igraph::plot.igraph(g, add=add, ...)
 

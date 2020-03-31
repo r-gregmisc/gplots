@@ -1,8 +1,8 @@
 \name{venn}
 \alias{venn}
 \alias{plot.venn}
-\alias{plot.venn.graph}
-\alias{plot.venn.polyominoes}
+\alias{plotVennGraph}
+\alias{plotVennPolyominoes}
 \alias{drawVennPolyominoes}
 \title{Venn Diagram}
 \description{Plot a Venn diagrams for up to 5 sets.}
@@ -15,10 +15,10 @@ venn(x, universe=NA, small=0.7, showSetLogicLabel=FALSE,
      simplify=FALSE, type = "regular",
      col = NA, density = NULL, border = NULL, angle = NA, lty = par("lty"),
      debug=F)
-plot.venn.graph(x,
+plotVennGraph(x,
      col=NULL, col.scheme=rainbow, col.function=NULL,
      add=FALSE, debug=FALSE, \dots)
-plot.venn.polyominoes(x,y,\dots,
+plotVennPolyominoes(x,y,\dots,
      col.bg="gray", col.scheme=rainbow,
      col.function=drawVennPolyominoes.colouring.featureCount,
      fields.label.function=drawVennPolyominoes.fields.labels.binary,

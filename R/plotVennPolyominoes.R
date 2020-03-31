@@ -324,7 +324,7 @@ venn.polyominoe.matrix.transform <- function(m) {
 # Transforming all position matrices to define the venn.polyominoes.positions list.
 venn.polyominoes.positions <- lapply(venn.polyominoes.positions.input,venn.polyominoe.matrix.transform)
 
-plot.venn.polyominoes <- function(x,y,...,
+plotVennPolyominoes <- function(x,y,...,
                                   col.bg="gray",
                                   col.scheme=rainbow,
                                   col.function=drawVennPolyominoes.colouring.featureCount,
