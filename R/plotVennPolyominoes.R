@@ -327,13 +327,13 @@ venn.polyominoes.positions <- lapply(venn.polyominoes.positions.input,venn.polyo
 plotVennPolyominoes <- function(x,y,...,
                                   col.bg="gray",
                                   col.scheme=rainbow,
-                                  col.function=drawVennPolyominoes.colouring.featureCount,
-                                  fields.label.function=drawVennPolyominoes.fields.labels.binary,
-                                  fields.value.function=drawVennPolyominoes.fields.values.direct,
+                                  col.function=pV_colouringFeatureCount,
+                                  fields.label.function=pV_fieldsLabelsBinary,
+                                  fields.value.function=pV_fieldsValuesDirect,
                                   cex.label=0.5,cex.value=0.9,
                                   debug=F) {
   invisible(
-            drawVennPolyominoes(data=x,col.bg=col.bg,
+            pV_draw(data=x,col.bg=col.bg,
                                 col.scheme=col.scheme, col.function=col.function,
                                 fields.label.function=fields.label.function,
                                 fields.value.function=fields.value.function,
@@ -342,21 +342,21 @@ plotVennPolyominoes <- function(x,y,...,
 }
 
 # assigns the number of features present in this set
-drawVennPolyominoes.colouring.featureCount <- function(current.rowname,data) {
+pV_colouringFeatureCount <- function(current.rowname,data) {
   if (is.numeric(current.rowname)) current.rowname<-rownames(data)[current.rowname]
   nchar(gsub(x=current.rowname,pattern="0",replacement=""))
 }
 
 # present P value as percent integer value
-drawVennPolyominoes.colouring.pValue <- function(current.rowname,data,factor=100) {
+pV_colouringPValue <- function(current.rowname,data,factor=100) {
   p.values <- attr(data,"p.values")
-  if (is.null(p.values)) stop("drawVennPolyominoes.colouring.pValue: is null")
+  if (is.null(p.values)) stop("pV_colouringPValue: is null")
   if (is.numeric(current.rowname)) current.rowname<-rownames(data)[current.rowname]
   round(p.values[current.rowname]*factor)
 }
 
 
-drawVennPolyominoes.fields.labels.letter <- function(current.rowname,data,x,y,x.max,y.max,
+pV_fieldsLabelsLetter <- function(current.rowname,data,x,y,x.max,y.max,
                                                      cex=c(2,1,0.6,0.4,rep(0.3,length.out=(ncol(data)-1)))[ncol(data)],
                                                      debug=F)
 {
@@ -368,23 +368,23 @@ drawVennPolyominoes.fields.labels.letter <- function(current.rowname,data,x,y,x.
   new.rowname["0"==current.rowname.split]=" ";
   x_var=(x-1)/max((x.max-1),1)
   y_var=(y-1+0.25)/max((y.max-1),1)
-  if (debug) cat("drawVennPolyominoes.fields.labels.letter Label:",
+  if (debug) cat("pV_fieldsLabelsLetter Label:",
   paste(new.rowname,collapse="",sep="")," in x variable",x_var,"with the y variable ",y_var," \n")
   text(x_var,y_var,paste(new.rowname,collapse="",sep=""),cex=cex,adj=c(0.5,0.5))
 }
 
-drawVennPolyominoes.fields.labels.binary <- function(current.rowname,data,x,y,x.max,y.max,cex=c(1,1,0.3),
+pV_fieldsLabelsBinary <- function(current.rowname,data,x,y,x.max,y.max,cex=c(1,1,0.3),
                                                      debug=F)
 {
   if (is.numeric(current.rowname)) current.rowname<-rownames(data)[current.rowname]
   x_var=(x-1)/max((x.max-1),1)
   y_var=(y-1+0.27)/max((y.max-1),1)
-  if (debug) cat("drawVennPolyominoes.fields.labels.binary Label:",
+  if (debug) cat("pV_fieldsLabelsBinary Label:",
                  current.rowname," in x variable ",x_var," with the y variable ",y_var,"\n",sep="")
   text(x_var,y_var,current.rowname,cex=cex,adj=c(0.5,0.5),offset=0)
 }
 
-drawVennPolyominoes.fields.values.direct <- function(current.rowname,data,x,y,x.max,y.max,
+pV_fieldsValuesDirect <- function(current.rowname,data,x,y,x.max,y.max,
                                                      #     1 2 3 4   5   6   7   8   9
                                                      cex=c(4,3,2,1,0.6,0.6,0.4,0.4,0.3)[ncol(data)-1],
                                                      debug=F)
@@ -397,11 +397,11 @@ drawVennPolyominoes.fields.values.direct <- function(current.rowname,data,x,y,x.
   text(x_var,y_var,data[current.rowname,1],cex=cex,adj=c(0.5,0.5),offset=0)
 }
 
-drawVennPolyominoes <- function(data,col.bg="lightgray",
+pV_draw <- function(data,col.bg="lightgray",
                                 col.scheme=NULL,
                                 col.function=NULL,
-                                fields.label.function=drawVennPolyominoes.fields.labels.binary,
-                                fields.value.function=drawVennPolyominoes.fields.values.direct,
+                                fields.label.function=pV_fieldsLabelsBinary,
+                                fields.value.function=pV_fieldsValuesDirect,
                                 cex.label=0.5,cex.value=0.9, add=F, h=400,
                                 debug=F)
 {
@@ -415,7 +415,7 @@ drawVennPolyominoes <- function(data,col.bg="lightgray",
   }
 
   if (! "num" %in% colnames(data)) {
-    stop("drawVennPolyominoes: data needs to contain 'num' column as obtained from 'getVennCounts()'")
+    stop("pV_draw: data needs to contain 'num' column as obtained from 'getVennCounts()'")
   }
 
   ndim <- ncol(data)-1
@@ -425,13 +425,13 @@ drawVennPolyominoes <- function(data,col.bg="lightgray",
   	cat("ndim=",ndim,"\n")
   }
 	
-  if (is.null(data)) stop("drawVennPolyominoes: data is null")
+  if (is.null(data)) stop("pV_draw: data is null")
 	
   if (is.null(col.function)) {
     if(is.null(attr(data,"p.values"))) {
-      col.function <- drawVennPolyominoes.colouring.featureCount
+      col.function <- pV_colouringFeatureCount
     } else {
-      col.function <- drawVennPolyominoes.colouring.pValue
+      col.function <- pV_colouringPValue
     }
   }
 

@@ -248,7 +248,7 @@ col.pastel.entry <- function(n) {
 par("mfrow"=c(1,2))
 plotVennPolyominoes(venn(m[,1,drop=F],show.plot=F),col.scheme=col.pastel.entry)
 plotVennPolyominoes(venn(m[,1:2],     show.plot=F),col.scheme=col.pastel.entry,
-    fields.label.function=drawVennPolyominoes.fields.labels.letter)
+    fields.label.function=pV_fieldsLabelsLetter)
 par("mfrow"=c(1,1))
 @
 \end{centering}
@@ -327,7 +327,7 @@ may be helped by explicitly setting font sizes.
 <<fig=TRUE,echo=TRUE>>=
 plotVennPolyominoes(venn(m[,1:7],show.plot=FALSE),
     col.scheme=col.pastel.entry,
-    fields.label.function=drawVennPolyominoes.fields.labels.letter)
+    fields.label.function=pV_fieldsLabelsLetter)
 @
 \caption{Venn Polyominoes for 7-dimensional input data. Other than the
 diagrams in Figure \ref{fig:polyominoes:56}, the naming of contributing
@@ -445,7 +445,7 @@ b<-venn(m[,1:6],intersections=F,show.plot=F,graph=T)
 b.graph <- venn.graph.colouring(b,
                                 col.scheme=rainbow,
                                 col.function=
-                   drawVennPolyominoes.colouring.featureCount,
+                                pV_colouringFeatureCount,
                                 debug=F)
 plotVennGraph(b.graph)
 @
@@ -629,7 +629,7 @@ explains the low P value for the 0 entry.
 <<fig=TRUE,echo=TRUE>>=
 plotVennPolyominoes(counts,
                       col.scheme=colorRampPalette(c("green","white","red")),
-                      col.function=drawVennPolyominoes.colouring.pValue)
+                      col.function=pV_colouringPValue)
 @
 \end{centering}
 \caption{Count matrix plotted with a colour function that gets its values
@@ -646,7 +646,7 @@ plotVennPolyominoes(counts,
 a <- plotVennPolyominoes(venn(m[,1:4],show.plot=FALSE,statistics="permutations",
                                 intersections=FALSE),
                            col.scheme=colorRampPalette(c("green","white","red")),
-                           col.function=drawVennPolyominoes.colouring.pValue)
+                           col.function=pV_colouringPValue)
 print(attr(a,"p.values"))
 @
 \end{centering}

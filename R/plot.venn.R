@@ -49,8 +49,7 @@ plot.venn <- function(x, y, ...,
             col=col, density=density, border=border, angle=angle, lty=lty,
             debug=debug)
   else if ("polyominoes"==type || ncol(x)-1<8 && ncol(x)-1>5 ) {
-     r <- drawVennPolyominoes(
-            data=x, debug=debug)
+     r <- pV_draw(data=x, debug=debug)
   }
   else if ("graph"==type) {
      if (simplify) {
@@ -419,7 +418,7 @@ drawVennDiagram <-function(data,
   else if (    ("polyominoes"==type && numCircles <= 7)
             || ( "regular"==type    && 6 <= numCircles && numCircles <= 7)) {
     # no new plot window required
-    r <- drawVennPolyominoes(data, add=F, h=h, debug=debug)
+    r <- pV_draw(data, add=F, h=h, debug=debug)
   }
   else if ( "graph"==type && numCircles <= 7) {
     r <- plotVennGraph(x=data, add=F, simplify=simplify, debug=debug)

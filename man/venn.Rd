@@ -3,7 +3,7 @@
 \alias{plot.venn}
 \alias{plotVennGraph}
 \alias{plotVennPolyominoes}
-\alias{drawVennPolyominoes}
+\alias{pV_draw}
 \title{Venn Diagram}
 \description{Plot a Venn diagrams for up to 5 sets.}
 \usage{
@@ -20,15 +20,15 @@ plotVennGraph(x,
      add=FALSE, debug=FALSE, \dots)
 plotVennPolyominoes(x,y,\dots,
      col.bg="gray", col.scheme=rainbow,
-     col.function=drawVennPolyominoes.colouring.featureCount,
-     fields.label.function=drawVennPolyominoes.fields.labels.binary,
-     fields.value.function=drawVennPolyominoes.fields.values.direct,
+     col.function=pV_colouringFeatureCount,
+     fields.label.function=pV_fieldsLabelsBinary,
+     fields.value.function=pV_fieldsValuesDirect,
      cex.label=0.5,cex.value=0.9, debug=F)
-drawVennPolyominoes(data,col.bg="lightgray",
+pV_draw(data,col.bg="lightgray",
      col.scheme=NULL,
      col.function=NULL,
-     fields.label.function=drawVennPolyominoes.fields.labels.binary,
-     fields.value.function=drawVennPolyominoes.fields.values.direct,
+     fields.label.function=pV_fieldsLabelsBinary,
+     fields.value.function=pV_fieldsValuesDirect,
      cex.label=0.5,cex.value=0.9, add=F, h=400,
      debug=F)
 }

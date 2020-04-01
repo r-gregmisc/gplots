@@ -97,9 +97,9 @@ venn.graph.colouring <- function(data,
   if (is.null(col)) {
     if (is.null(col.function)) {
       if(is.null(attr(data,"p.values"))){
-        col.function=drawVennPolyominoes.colouring.featureCount
+        col.function=pV_colouringFeatureCount
       } else {
-        col.function=drawVennPolyominoes.colouring.pValue
+        col.function=pV_colouringPValue
       }
     }
   }

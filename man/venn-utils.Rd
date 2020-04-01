@@ -1,9 +1,9 @@
 \name{venn-utils}
-\alias{drawVennPolyominoes.colouring.featureCount}
-\alias{drawVennPolyominoes.colouring.pValue}
-\alias{drawVennPolyominoes.fields.labels.binary}
-\alias{drawVennPolyominoes.fields.labels.letter}
-\alias{drawVennPolyominoes.fields.values.direct}
+\alias{pV_colouringFeatureCount}
+\alias{pV_colouringPValue}
+\alias{pV_fieldsLabelsBinary}
+\alias{pV_fieldsLabelsLetter}
+\alias{pV_fieldsValuesDirect}
 \alias{venn.graph.colouring}
 \alias{venn.graph.simplify}
 \alias{venn.observed2expected}
@@ -14,22 +14,22 @@
 }
 \usage{
 venn.graph.simplify(graph,simplification=NULL,verbose=F,\dots)
-drawVennPolyominoes.colouring.featureCount(current.rowname,data)
-drawVennPolyominoes.colouring.pValue(current.rowname,data,factor=100)
-drawVennPolyominoes.fields.labels.binary(
+pV_colouringFeatureCount(current.rowname,data)
+pV_colouringPValue(current.rowname,data,factor=100)
+pV_fieldsLabelsBinary(
     current.rowname,data,x,y,x.max,y.max,cex=c(1,1,0.3),
     debug=F)
-drawVennPolyominoes.fields.labels.letter(
+pV_fieldsLabelsLetter(
     current.rowname, data,x,y,x.max,y.max,
     cex=c(2,1,0.6,0.4,rep(0.3,length.out=(ncol(data)-1)))[ncol(data)], debug=F)
 venn.graph.colouring(data,
     col=NULL, col.scheme=rainbow, col.function=NULL,
     debug=FALSE)
-drawVennPolyominoes.fields.labels.binary(
+pV_fieldsLabelsBinary(
     current.rowname,
     data,x,y,x.max,y.max,
     cex=c(1,1,0.3), debug=F)
-drawVennPolyominoes.fields.values.direct(
+pV_fieldsValuesDirect(
     current.rowname, data, x,y,x.max,y.max,
     #     1 2 3 4   5   6   7   8   9
     cex=c(4,3,2,1,0.6,0.6,0.4,0.4,0.3)[ncol(data)-1], debug=F)
