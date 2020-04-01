@@ -9,13 +9,17 @@
 
 \maketitle
 
+\begin{abstract}
+
 Venn diagrams\footnote{http://en.wikipedia.org/wiki/Venn\_diagram} 
 allow for a quick overview on the number of elements that multiple
 sets share. And when those elements are representing traits of
 real objects, like observations in biomedical sciences/marketing/...,
 then this may direct researchers to further investigations/decisions.
 
-The {\tt gplots} package provides Venn diagrams for up to five sets.
+The {\tt gplots} package provides circular/ellipsoidal Venn diagrams for
+up to five sets, Polyominoes for up to seven, and a graph representation
+for an unlimited number of interacting sets.
 The R code to produce the diagrams is not complicated. The plot
 function behaves alwas the same, depending only on the number of
 overlapping circles to draw. Its input is a table that is produced
@@ -24,49 +28,749 @@ other and is the only one to be seen by the user. The values shown
 are returned invisibly.
 
 The {\tt venn()} function accepts either a list of sets as an argument,
-or it takes a binary matrix, one column per set, indicating for every
-element, one per row, the membership with every set.
+or it takes a binary matrix. That matrix represents sets as columns
+and individuals as rows. A binary value indicates for every sample if
+it is a member of that column's assigned set.
+
+\end{abstract}
+
+\section{Classical Venn diagrams}
 
 The common form with overlapping circles only works with up to three
-sets, as seen here:
-\begin{center}
+sets, as seen below in Figure \ref{fig:classic3}. 
+
+\begin{figure}
 <<fig=TRUE,echo=TRUE>>=
 library(gplots)
 venn( list(A=1:5,B=4:6,C=c(4,8:10)) )
 @
-\end{center}
+\caption{Classical Venn diagram featuring three overlapping circles.}
+\label{fig:classic3}
+\end{figure}
+
+
+The assignments of individuals (here: numbers from 1 to 10)
+to overlapping areas in the Venn diagram (intersections) is returned
+together with the count matrix as the attribute "intersections".
+This may not be desireable and can be switched off, shown below
+for four dimensions.
 
 The names of columns or the list elements are the set names.
 To squeeze extra circles in, those circles need to become ellipses.
-This works for four sets
-\begin{center}
+This works for four sets in Figure \ref{fig:ellipsoid4}
+\begin{figure}
 <<fig=TRUE,echo=TRUE>>=
-v.table<-venn( list(A=1:5,B=4:6,C=c(4,8:10),D=c(4:12)) )
-print(v.table)
+v.table<-venn( list(A=1:5,B=4:6,C=c(4,8:10),D=c(4:12)),intersections=F)
 @
-\end{center}
-
-and maybe even more impressively also for five.
-\begin{center}
+\caption{Four interacting sets are presented by overlapping ellipses. With a different orientation, ....}
+\label{fig:ellipsoid4}
+\end{figure}
+and maybe even more impressively also for five:
+\begin{figure}
 <<fig=TRUE,echo=FALSE>>=
 venn( list(A=1:5,B=4:6,C=c(4,8:10),D=c(4:12),E=c(2,4,6:9)) )
+print(v.table)
+@
+\caption{... the use of ellipses also saves five-dimensional Venn diagrams.}
+\label{fig:ellipsoid5}
+\end{figure}
+
+\subsection{Specification of input}
+
+Above, we used numbers as a quick representation of individuals. In Figure \ref{fig:Wordlists},
+it are named lists of words that define sets. In complete analogy to the lists of numbers shown before,
+interactions represents the words that appear in multiple sets.
+
+\begin{figure}
+<<fig=FALSE,echo=TRUE>>=
+sets <- list(
+  small=c("flea","tooth","pencil","atom"),
+  tangible=c("pencil","tooth","flea","sea"),
+  blue=c("sky","pencil","sea","part of rainbow")
+)
+print(venn(sets),intersections=TRUE,show.plot=F)
+@
+\caption{Lists of objects as input for Venn diagram}
+\label{fig:Wordlists}
+\end{figure}
+
+Other than passing the membership lists for each set, one can specify what
+we refer to as an incidence matrix or membership matrix. This is a matrix
+of binary values, with individuals of all sets (the universe) as rows
+and all sets as columns. If and only if an individual is a member of a set then the
+corresponding field [member,set] is set to TRUE, otherwise it is FALSE.
+
+<<fig=FALSE,echo=TRUE>>=
+random.membership.matrix <-
+   matrix(sample(c(F,T),size=6*7*800,replace=TRUE),ncol=3)
+dimnames(random.membership.matrix) <-
+   list("members"=NULL,"sets"=c("first","second","third"))
+head(random.membership.matrix,n=10)
+@
+R converts a numerical matrix to logicals, interpreting 0 as false and values of 1 or higher as true.
+
+\subsection{Colouring}
+
+Colouring is a bit tricky with circular or ellipsoidal diagrams. The blending
+of colours is not idealy performed in R. And the intersections are somewhat difficult
+to define as borders for colouring them invidiually. We got closest by defining
+transparent colours in figure \ref{fig:rgb:manual}.
+
+\begin{figure}
+<<fig=TRUE,echo=TRUE>>=
+plot.venn(venn(matrix(random.membership.matrix,ncol=3),show.plot=F),
+          col=c(rgb(red=0,green=1,blue=0,alpha=1/3),
+                rgb(red=1,green=0,blue=0,alpha=1/3),
+                rgb(red=0,green=0,blue=1,alpha=1/3)),
+          border="red")
+@
+\caption{By subtractively adding colours in R (middle turns darker), one mimics the impression of Venn diagrams that are typically blended additively (middle turns brighter).}
+\label{fig:rgb:manual}
+\end{figure}
+
+
+For an arbitrary number of sets the rainbow palette may be helpful to
+find a fixed number of colours that are equally separated in the spectrum:
+
+\begin{figure}
+<<fig=TRUE,echo=TRUE>>=
+my.rainbow <- rainbow(3,alpha=1/3)
+print(my.rainbow)
+plot.venn(venn(matrix(random.membership.matrix,ncol=3),
+               show.plot=F),
+          col=my.rainbow, border="green")
+@
+\caption{The colours selected by the rainbow palette are not exactly the same as the manual explicit concentration on Red, Green and Blue. However, the overall impression is very similar. The {\it border} attribute defines the colour of the enclosing circles/ellipses.}
+\label{fig:rgb:rainbow}
+\end{figure}
+
+The {\it alpha} value sets the transparency and should add up to one.
+To emphasize a subset of sets, the distribution of the alpha value
+may also be higher for those sets than for others. Figure \ref{fig:rgb:rainbow5}
+presents fine results for five dimensions.
+
+\begin{figure}
+<<fig=TRUE,echo=TRUE>>=
+ndim=5
+alpha.distribution <- c(1+2*(ndim-1)/ndim,
+                        rep(1,ndim-1)-2*(ndim-1)/ndim/(ndim-1))/ndim
+print(alpha.distribution)
+print(sum(alpha.distribution))
+counts <- venn(matrix(sample(c(T,F),replace=T,
+                             size=2*3*5*7*11*13*10),
+                      ncol=ndim,
+                      dimnames=list(NULL,LETTERS[1:ndim])),
+              intersections=F,
+              show.plot=F)
+plot.venn(x=counts,
+          col=rainbow(ndim,alpha=alpha.distribution),
+          border=1:ndim)
+@
+\caption{5-dimensional automated colouring. The distribution of the
+         alpha value is not identical for all sets (the first is
+         emphasized).}
+\label{fig:rgb:rainbow5}
+\end{figure}
+
+Please be aware of the {\it border} attribute added in
+Figure \ref{fig:rgb:rainbow5} which defines the
+colour of the outline of ellipses. If the {\it col} attribute colours the
+border instead of filling them, then you have set it as an attribute of
+the {\tt venn} function, not of {\it plot.venn}. It may be worthwhile to
+also investigate the effect of another palette, maybe in combination with
+additional features of R polygons that make up the ellipses as shown in
+Figure \ref{fig:rgb:features}.
+
+\begin{figure}
+\begin{centering}
+<<fig=TRUE,echo=TRUE>>=
+ndim=5
+library(RColorBrewer)
+col.fill=rgb(t(col2rgb(brewer.pal(ndim,"Pastel1"),alpha=F)),
+             alpha=as.integer(255/ndim),maxColorValue=255)
+col.border=rgb(t(col2rgb(brewer.pal(ndim,"Pastel1"),alpha=F)),
+               alpha=255,maxColorValue=255)
+col.density <- c(NA,3,6,9,12)
+col.angle <- (360/ndim)*(1:ndim)
+col.lty <- 0:(ndim-1)
+
+plot.venn(venn(matrix(sample(c(T,F),replace=T,size=ndim*200),
+                      ncol=ndim,dimnames=list(NULL,LETTERS[1:ndim])),
+               intersections=F,
+               show.plot=F),
+          col=col.fill, border=col.border,
+          angle=col.angle, density=col.density, lty=col.lty)
+@
+\end{centering}
+\caption{To emphasize individual sets it may be appropriate to change
+         other attributes than colour. The omitted first set was caused by
+         line type (lty) at 0.}
+\label{fig:rgb:features}
+\end{figure}
+
+Please see 'example(RColorBrewer::brewer.pal)' for more ideas on available
+palettes. The man page to 'polygon' instructs on its paramters.
+
+\section{Polyominoes}
+
+
+To ease the generation of data for this tutorial. Figure \ref{fig:random.matrices}
+quickly defines a few matrices from eight dimensions downwards.
+
+\begin{figure}
+\begin{centering}
+<<fig=FALSE,echo=TRUE>>=
+m<-matrix(sample(c(T,F),replace=T,size=6*7*800),ncol=8)
+dimnames(m) <- list(samples=NULL,sets=LETTERS[1:8])
+@
+\end{centering}
+\caption{Generation of matrices with random data}
+\label{fig:random.matrices}
+\end{figure}
+
+We have already seen diagrams for up to 5-dimensional inputs.
+For 6 and 7 dimensions, polyominoes are the default. This 
+section will show polyominoes from 1 dimension (which would
+be equivalent of a single circle) to up to seven dimensions.
+
+To show
+polyominoes for up to 5 dimensions, the polyominoes may
+be invoked explicitly as in Figure \ref{fig:polyominoes:12}.
+
+\begin{figure}
+\begin{centering}
+<<fig=TRUE,echo=TRUE>>=
+library("RColorBrewer")
+col.pastel.entry <- function(n) {
+  return(brewer.pal(n, "Pastel1"))
+}
+
+par("mfrow"=c(1,2))
+plotVennPolyominoes(venn(m[,1,drop=F],show.plot=F),col.scheme=col.pastel.entry)
+plotVennPolyominoes(venn(m[,1:2],     show.plot=F),col.scheme=col.pastel.entry,
+    fields.label.function=pV_fieldsLabelsLetter)
+par("mfrow"=c(1,1))
+@
+\end{centering}
+\caption{A distorted view of the two simplest polyonimoes. Every
+    should-be-square field represents a field in a Venn diagram. The
+    large number indicates the number of samples that are found to be
+    members of a particular selection of sets. In a smaller font on top
+    of that number the sets that determine that number are indicated. To
+    the left, the sets are represented as a sequence of 0s and 1s,
+    where 1s denote the sets that to which samples referenced in that
+    fields are members. To the right, letters indicate the same, where
+    sets not contributing are not shown.}
+\label{fig:polyominoes:12}
+\end{figure}
+
+By default, the regular {\tt venn()} routine also plots the diagram. This
+is prevented by setting the show.plot attribute to FALSE. It then only returns
+a Venn data object that can then be interpreted by the
+plotVennPolyominoes function. The use of the mfrow parameter to arrange
+multiple plots in a single figure will distort the diagram. Instead,
+use for instancen {\it layout()}. More elegantly, {\tt venn()} is instructed
+to perform the plot in Figure \ref{fig:polyominoes:34}.
+
+\begin{figure}
+\begin{centering}
+<<fig=TRUE,echo=TRUE>>=
+nf <- layout(matrix(c(1,2),nrow=1),respect=TRUE)
+plotVennPolyominoes(venn(m[,1:3],show.plot=FALSE),col.scheme=col.pastel.entry)
+plotVennPolyominoes(venn(m[,1:4],show.plot=FALSE),col.scheme=rainbow)
+@
+\end{centering}
+\caption{Polyominoes of 3 and 4 dimensions. The 4-dimensional on the right
+         was coloured in the default colour scheme that was explicitly stated
+         only for clarity.}
+\label{fig:polyominoes:34}
+\end{figure}
+
+But one can see how the instructions on the colouring are not passed
+to the routine performing the drawing. The reason is that for circular
+diagrams only the borders representing the sets are coloured, while
+for Polyominoes it is every intersection, so the semantics of the "col"
+attributes are different. Also, the colouring of Polyominoes features
+two attributes, i.e. the {\it col.scheme} and the {\it col.function}.
+The scheme returns a colour for a given number, the function determines
+a value to be passed to the col.scheme function. This could be the
+number of sets intersected (the default) or the statistics or ... 
+
+
+\begin{figure}
+\begin{centering}
+<<fig=TRUE,echo=TRUE>>=
+par("mar"=c(0,0,0,0))
+nf <- layout(matrix(c(1,2),nrow=1),respect=TRUE)
+plotVennPolyominoes(venn(m[,1:5],show.plot=FALSE),
+                      col.scheme=col.pastel.entry)
+plotVennPolyominoes(venn(m[,1:6],show.plot=FALSE),
+                      col.scheme=col.pastel.entry,cex.value=0.5,cex.label=0.3)
+@
+\caption{Polyominoes with five and six dimensions, plotted by the tailored
+         print routine knowing how to set the colour scheme. The diagram
+         to the right compensates the smaller fields by a manually-set smaller
+         font size.}
+\label{fig:polyominoes:56}
+\end{centering}
+\end{figure}
+
+In Figure \ref{fig:polyominoes:56}, the left example on five dimensions shows how when the boxes
+of the polyominoes become smaller, there may be issues with readability
+as the font may not scale proportionally with the box. The very same would look
+perfectly fine outside the layout environment. Such situations
+may be helped by explicitly setting font sizes.
+
+
+\begin{figure}
+\begin{centering}
+<<fig=TRUE,echo=TRUE>>=
+plotVennPolyominoes(venn(m[,1:7],show.plot=FALSE),
+    col.scheme=col.pastel.entry,
+    fields.label.function=pV_fieldsLabelsLetter)
+@
+\caption{Venn Polyominoes for 7-dimensional input data. Other than the
+diagrams in Figure \ref{fig:polyominoes:56}, the naming of contributing
+sets is given by absent or present captial letters that are at the same
+relative position within the single field.}
+\label{fig:polyominoes:7}
+\end{centering}
+\end{figure}
+
+
+\section{Graph representation}
+
+For more than 5 interacting sets there is no planar ordering for which
+the vicinity is in perfect concordance with the representation of
+the underlying interacting sets. Even though this R package offers
+polyominoes as a rescue also for 6 and 7 dimentions, they are 
+a compromise.
+
+\begin{figure}
+\begin{centering}
+\includegraphics{4dimEllipsesWithGraph.png}
+\caption{Intersections connect sets and intersections of sets. Intersections are represented as nodes.
+Intersections that differ only by a single set are connected by an edge.}
+\end{centering}
+\end{figure}
+
+\begin{figure}
+\begin{centering}
+\includegraphics{4dimPolyominoesWithGraph.png}
+\caption{Graphs express the by edges what Polyominoes approximately indicate by neighbourhood}
+\end{centering}
+\end{figure}
+
+However, this compromise is only about the presentation of the numbers,
+not about their computation. And conceptionall,y, we know that any
+interaction of X sets should be somehow connected with an intersection
+that has just one additional underlying set. This defines a directed
+graph.
+
+\begin{center}
+<<fig=TRUE,echo=TRUE>>=
+library(igraph)
+a<-venn(m[,1:4], intersections=F, show.plot="graph")
 @
 \end{center}
 
-The man page of {\it venn()} lists options to change the appearance of
-the plots, e.g., the names of the sets may be omitted and sizes changed.
-However, there is ample of opportunity to extend the functionality of
-this package.  To mind come
+In R, the most popular graph handling code ships with the {\it igraph}
+package. The explicit loading of the igraph is suggested for clarity. The
+igraph library is not a strong dependency for the installation of gplots since
+these are only used for this graph interface of Venn diagrams, which is
+still a borderline feature.
+
+With the {\it graph} attribute set, the object returned by {\tt venn()}
+thus also features an igraph object as the "graph" attribute:
+
+\begin{center}
+<<fig=FALSE,echo=TRUE>>=
+a<-venn(m[,1:4],intersections=F,show.plot=F,graph=T)
+a.graph <- attr(a,"graph")
+cat("The class of the 'graph' attribute is '",class(a.graph),"'.\n",sep="")
+print(a.graph)
+@
+\end{center}
+
+\subsection{Colouring}
+
+The export from a Venn diagram to a graph was meant as an escape route from
+the need to graphically present the data. It hence seems surprising to
+care about the graph's colouring. But with the option to simplify graphs,
+the desire for an optical impression raised again.
+
+With an igraph object at hand, one has all the options of the igraph
+library at one's disposal. This includes the colouring. It may be performed
+by parameters passed to the plotting routine or by adding an attribute
+'color' to the nodes or edges. There is more on plotting and layouting
+graphs in the R man pages on {\it plot.igraph} and {\it igraph.plotting}.
+
+As a quick technical exercise we may
+add colour to the graph of the previous example:
+\begin{center}
+<<fig=TRUE,echo=TRUE>>=
+igraph::V(a.graph)$color<-rainbow(length(igraph::V(a.graph)))
+V(a.graph)$size<-15:(15+length(V(a.graph))-1)
+plot(a.graph)
+@
+\end{center}
+The explicit notion of the namespace is optional as seen in the second
+line.
+
+In general the task to colour graphs represents a perfect analogy to
+the colouring tasks for polyominoes. The {\tt plotVennGraph()}
+attempts to help readability by adjusting default sizes as it becomes
+a necessity for larger dimensions. But it does so only if respective
+attributes are not already present in the graph to not interfere
+with custom highlighting.
+
+\begin{center}
+<<fig=TRUE,echo=TRUE>>=
+b<-venn(m[,1:6],intersections=F,show.plot=F,graph=T)
+b.graph <- venn.graph.colouring(b,col=c("red","green"))
+V(b.graph)$size <- 20
+V(b.graph)$label.cex=0.7
+plot(b.graph)
+@
+\end{center}
+
+The {\it col} attribute can also be passed to the plotVennGraph
+function.  Not surprisingly, also offered
+the two functions col.scheme and col.function, just as for
+polyominoes:
+
+\begin{center}
+<<fig=TRUE,echo=TRUE>>=
+b<-venn(m[,1:6],intersections=F,show.plot=F,graph=T)
+b.graph <- venn.graph.colouring(b,
+                                col.scheme=rainbow,
+                                col.function=
+                                pV_colouringFeatureCount,
+                                debug=F)
+plotVennGraph(b.graph)
+@
+\end{center}
+
+The separate invocation of venn.graph.colouring is not required
+as it would be invoked also by the plotVennGraph function if
+no {\it color} attribute is yet assigned to the graph. Both
+the igraph object and the venn object (counts) are valid inputs
+to {\tt plotVennGraph()}.
+
+
+\subsection{Simplifications}
+
+A message to read from a 5-dimensional Venn diagram, whatever like it may
+be plotted, is challenging. Polyominoes may come to a rescue, possibly
+if supported with colouring, but it remains challenging to bring the
+message across.  For even higher dimensions, a graph based layout is
+no longer interpretable by a human. Even when structured in the typical
+partial ordering structure of a "part-of" relation (a lattice), the
+number of edges per nodes is too large to serve human intuition.
+
+We yet cannot propse an ultimate solution to this situaion. It depends
+on the respective problem domain but there may be an opportunity to
+simplify the graph.  Since exported as an igraph object, the users have
+all flexibility. We expect software external to gplots to provide
+respective domain expertise.
+
+At the time of writing, we have implemented simplifications as filters
+on nodes. But also selection criteria for edges come to mind, e.g. on
+the difference of the values of connected nodes:
 
 \begin{itemize}
-\item more dimensions (next)
-\item colors
-\item variation of size of circles with the number of members the set has
-\item density plot rather than numbers, identification of individual entries
+\item remove intersections (nodes) with no entries
+\item remote the node "0000..000" that hosts all samples not assigned to any of the sets
 \end{itemize}
 
-The prime personal interest is more in the increase of dimensions. Please
-send patches for features you are most interested in.
+Especially for the nodes, the filtering could be performed on the table
+of counts, directly, from which the graph is derived. We yet find it superior to leave all mending of data to the graph level.
+
+\begin{figure}
+<<fig=TRUE,echo=TRUE>>=
+require(igraph)
+m<-matrix(sample(c(T,F),replace=T,size=2*3*4*5),
+          ncol=5)
+a<-venn(m,intersections=F,graph=T,show.plot=F)
+a.graph <- attr(a,"graph")
+plotVennGraph(a.graph)
+@
+\caption{A five-dimensional graph directly as generated.}
+\label{fig:simplification:pristine}
+\end{figure}
+\begin{figure}
+<<fig=TRUE,echo=TRUE>>=
+a.graph.simpler <- venn.graph.simplify(a.graph,simplification=c("noUniverse","minNum1"))
+plotVennGraph(a.graph.simpler)
+@
+\caption{Same data as of Figure \ref{fig:simplification:pristine}
+         with the 0 node removed and also all nodes that
+         have a 0 value.}
+\label{fig:simplification:predefined}
+\end{figure}
+
+Figure \ref{fig:simplification:predefined} uses two predefined filters
+on the graph created within the {\tt venn()} routine.
+
+It is yet not clear if the filtering on nodes of the graphs should be peformed
+within the Venn library or better be left to the embracing code. When for instance
+removing nodes with non-zero assignments, there is no way for the Venn library
+to tell how to perform with those removed entries. It would demand a larger
+concept of aggregation from a given diagram. It may for instance completely
+reasonable for a node to be eliminated to reassign its assigned entries to
+{\it multiple} neighbouring nodes.
+
+The range of possibilities for graphs to express semantics when plotting
+them is much higher than for polyominoes or the circular Venn diagrams. Besides
+effects on the appearance of nodes (size, colour,shape), there are additional
+properties for connecting edges and the 2D or 3D layout. And why not develop
+an aggregation that shows the original data as a subgraph? All this is yet
+beyond the gplots' implementation of Venn diagram.
+
+\section{Statistics}
+
+With a higher number of dimensions, the human eye is likely to need extra
+guidance to find intersections of interest. Advanced users on a
+technical level have all the possible freedom via the callback functions
+that allow to override the default colouring and positioning of numbers.
+
+A likely assessment for everyone to perform is the comparison of observed
+numbers with the expect number under the assumption that all insersections
+are of random occurrence. We have taken two very different approaches
+to assess the likelihood to observe the numbers of individuals in
+different intersections in relation to each other:
+
+\begin{itemize}
+\item permutation test: randomize many times and observe the quantile
+at which a node's number appears
+\item derive expected values from relative abundance of each set
+\end{itemize}
+
+\subsection{Permutations}
+
+An easily understandable approach is to induce
+randomness oneselves that is compared against, i.e. to perform a
+permutation test. For this, the columns of the matrix are shuffled,
+which keeps the total number of assignments to sets invariant but the
+co-assignments of individuals to the same sets are decoupled.
+
+\begin{figure}
+\begin{center}
+<<fig=FALSE,echo=TRUE>>=
+m.r<-matrix(sample(c(T,F),replace=T,size=2*3*5*100),ncol=3)
+m.r[rep(c(F,F,F,F,F,F,T),length.out=nrow(m.r)),c(3)]<-c(T)
+m.r[rep(c(F,F,F,F,T),length.out=nrow(m.r)),c(1,2)]<-c(T,T)
+
+counts<-venn(m.r,intersections=F,statistics="permutations",show.plot=FALSE,n.perm=1000)
+str(counts)
+@
+\end{center}
+\caption{Random counts matrix is skewed strongly towards the observation
+         seeing members in all three sets, in the first two, and in the last.
+         The default colouring is indicating
+         the P values derived by permutations. The values themselves are
+         all stored as attributes to the invisibly returned counts table.}
+\label{fig:permutations:polyominoes}
+\end{figure}
+
+Figure \ref{fig:permutations:polyominoes} starts out with a random matrix
+to assign samples to sets. Then additional flag are set to true:
+For every 7th entry the last set is made to contain it and every 5th sample
+is assigned to the first two sets.
+
+The permutations are a three-dimensional extension of the two-dimensional
+count table:
+
+\begin{center}
+<<fig=FALSE,echo=TRUE>>=
+perm <- attr(counts,"permutations")
+head(perm[,,  1],3)
+head(perm[,,  2],3)
+cat("...")
+@
+\end{center}
+
+For any observed value in the original count table, one can immediately derive
+the number of permutations that exceed that value:
+
+\begin{center}
+<<fig=FALSE,echo=TRUE>>=
+print(perm["001","num",1:100])
+print(counts["000","num"])
+print(sum(perm["001","num",]>counts["001","num"]))
+print(sum(perm["001","num",]>counts["001","num"])/length(perm["001","num",]))
+@
+\end{center}
+
+The last number is the fraction of permutations that exceeds the
+observed value, which is interpreted as a P value. A value >0.05
+would indicate that we cannot be confident at that $\alpha=0.05$ 
+that the value observed cannot be reached purely by chance. But
+we have changed that last set and the P value reflects that.
+
+With that increase on the last set and also augmenting the co-occurence
+of the first two sets, there is also an increased likelihood to
+observe the assignment to all three sets:
+
+\begin{center}
+<<fig=FALSE,echo=TRUE>>=
+print(attr(counts,"p.values"))
+@
+\end{center}
+
+The changes that have been performed to the initial random matrix
+were introducing lots of additional memberships, the first and second
+sets being assigned together. This made it more difficult to find
+entries in the permutations that have no assignments at all. This
+explains the low P value for the 0 entry.
+
+\begin{figure}
+\begin{centering}
+<<fig=TRUE,echo=TRUE>>=
+plotVennPolyominoes(counts,
+                      col.scheme=colorRampPalette(c("green","white","red")),
+                      col.function=pV_colouringPValue)
+@
+\end{centering}
+\caption{Count matrix plotted with a colour function that gets its values
+         from the p.value attribute instead of the count matrix itself.
+         The extreme colours are accredited to the extreme P values
+         after the manual medling with the random seed.}
+\label{fig:permutation:3dim}
+\end{figure}
+
+
+\begin{figure}
+\begin{centering}
+<<fig=TRUE,echo=TRUE>>=
+a <- plotVennPolyominoes(venn(m[,1:4],show.plot=FALSE,statistics="permutations",
+                                intersections=FALSE),
+                           col.scheme=colorRampPalette(c("green","white","red")),
+                           col.function=pV_colouringPValue)
+print(attr(a,"p.values"))
+@
+\end{centering}
+\caption{With more dimensions and hence more intersections, there is also
+         more of a chance to observe more deviations from the expected
+         in the initial random setup. Similarly, the lower default number
+         100 permutations (n.perm) may contribute to a fluctuation.}
+\label{fig:permutation:4dim}
+
+\end{figure}
+
+\subsection{Expected values}
+
+The sum of all numbers in the counts table produced by {\tt venn()} 
+is the number of all individuals:
+
+<<fig=FALSE,echo=TRUE>>=
+m <- matrix(sample(c(T,F),replace=T,size=2*3*5*7*11*13),ncol=3)
+colnames(m)<-LETTERS[1:ncol(m)]
+nrow(m)
+counts <- venn(m,show.plot=F,intersections=F,graph=F)
+print(counts)
+sum(counts[,"num"])
+@
+
+When reading only the lines that are assigned to a particular set,
+then from the numbers we determine the number of individuals assigned
+to it:
+
+<<fig=FALSE,echo=TRUE>>=
+n.sets <- apply(counts[,-1],2,function(X) sum(counts[X==1,"num"]))
+@
+
+And by setting it in ratio to the overall number of samples, one
+determines the likelihood to be assigned to that feature.
+Not to have that feature is 1 minus that relative frequency.
+
+<<fig=FALSE,echo=TRUE>>=
+p <- n.sets/sum(counts[,"num"])
+p.not <- 1-p
+print(rbind(p.not,p))
+@
+
+The number of individuals to appear in a Venn diagram in the intersection,
+e.g. of sets A and C but not in B, is the product of the total
+number and the frequencies in the respective row of frequencies, i.e.
+<<fig=FALSE,echo=TRUE>>=
+prod(c(sum(counts[,"num"]),p[c("A","C")],p.not["B"]))
+@
+for the example. This number is roughly the one initially observed,
+not too surprising since it is >10k samples and all data was randomly
+generated.
+
+The routine {\tt venn.observed2expected()} addresses
+that all. It expects a count matrix as its first argument and returns
+a count matrix with its numbers in proportion to the expected frequencies.
+When {\tt venn.observed2expected} is applied on a a count matrix it
+had generated itself, that count matrix will not change - it reached
+a fixed point.
+
+The interest may be be highest not in the expected values but in the
+difference of the observed from the expected. And these may also be plotted
+as a Venn diagram of Figure \ref{fig:expected.vs.observed}:
+
+\begin{figure}
+<<fig=TRUE,echo=TRUE>>=
+counts.expected <- venn.observed2expected(counts)
+counts.diff <- counts - counts.expected
+plot.venn(round(counts.diff,0))
+@
+\caption{Venn diagram of observed counts (random generated) from expected
+         counts. The rounding is required for readability of the
+         space-constrained diagram.}
+\label{fig:expected.vs.observed}
+\end{figure}
+
+While statistical assessments, e.g. on the basis of the hypergeometric
+distribution in analogy to term enrichment are likely to help with an
+assessment of the deviation from the equilibrium, we are still left
+undecided. The problem becomes evident e.g. with strong differences in the
+set sizes, which renders the same deviation of a single intersection
+to be interpreted very differently, depending what set has a particular
+focus. But a hypergeometric tests only leaves us with one P value for
+each intersection when we would need one P value for every set that
+contributes to the intersection.
+
+\section{Future development}
+
+
+There are ample opportunities to extend the functionality of
+this package. To mind come:
+
+\begin{itemize}
+\item variation of size of circles with the number of members the set has,
+\item density plot rather than numbers, identification of individual entries.
+\item have polyominoes as true rectangles, not based on R image, to allow for the presentation of multiple colouring schemes in the same plot
+\item develop a more homogeneous interface between the ways that Venn diagrams
+      are presented
+\item better statistics
+\item use graphs more for visualisation
+\item tabular representation with Gray code (proposed by Peter Sarkozy)
+\item allow for multidimensional data
+\item legends for colour plots
+\end{itemize}
+
+The technical implementation and the attributes allowing for customisations are going
+connected. Please send patches for features you are most interested in.
+
+For size-adjusted circles and their repositioning to best represent the
+abundance of intersections with their area, see eulerAPE \cite{eulerAPE}.
+
+\section{Acknowledgements}
+
+Mathias Ernst and Sarah Fischer gave valuable feedback to this
+vignette. Jaak Vilo and Peter Sarkoyz had helpful suggestions for
+future development. Sarah also contributed the nice graph overlay figures.
+
+\begin{thebibliography}{}
+\bibitem[Chow and Ruskey, 2005]{chow2005}
+Sitrling Chow and Frank Ruskey (2005) "Towards a General Solution to Drawing Area-Proportional Euler Diagrams" Electronic Notes in Theroretical Computer Science, 134: 3-18.
+\bibitem[Micallef and Rodgers]{eulerAPE}
+eulerAPE: Drawing Area-Proportional 3-Venn Diagrams Using Ellipses
+Luana Micallef, Peter Rodgers (2014) "eulerAPE: Drawing Area-Proportional 3-Venn Diagrams Using Ellipses." PLOS ONE 9(7): e101717. https://doi.org/10.1371/journal.pone.0101717
+\end{thebibliography}
 
 \end{document}
 

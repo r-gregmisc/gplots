@@ -1,8 +1,15 @@
 export(angleAxis, balloonplot, bandplot, barplot2, bluered, boxplot2,
-       bubbleplot, ci2d, col2hex, colorpanel, greenred, heatmap.2, hist2d,
-       lmplot2, lowess, ooplot, overplot, panel.overplot, plot.venn, plotCI,
-       plotLowess, plotmeans, qqnorm.aov, redblue, redgreen, residplot,
-       rich.colors, sinkplot, smartlegend, space, textplot, venn, wapply)
+       bubbleplot, ci2d, col2hex, colorpanel,
+       greenred, heatmap.2, hist2d,
+       lmplot2, lowess, ooplot, overplot, panel.overplot,
+       plot.venn, plotVennGraph, plotVennPolyominoes, plotCI,
+       plotLowess, plotmeans,
+       pV_colouringFeatureCount, pV_colouringPValue,
+       pV_fieldsLabelsBinary, pV_fieldsLabelsLetter,
+       qqnorm.aov, redblue, redgreen, residplot,
+       rich.colors, sinkplot, smartlegend, space, textplot, venn,
+       venn.graph.colouring, venn.graph.simplify, venn.observed2expected,
+       wapply)
 
 importFrom(caTools, runmean, runsd)
 importFrom(graphics, abline, arrows, axis, axTicks, barplot, contour,
@@ -10,16 +17,19 @@ importFrom(graphics, abline, arrows, axis, axTicks, barplot, contour,
            lines, matlines, matpoints, mtext, panel.smooth, par, plot,
            plot.default, plot.new, plot.window, points, polygon, rect,
            segments, strheight, strwidth, text, title, xinch, yinch)
-importFrom(grDevices, col2rgb, contourLines, dev.flush, dev.hold,
-           dev.interactive, heat.colors, rgb, topo.colors)
+importFrom(grDevices, colorRampPalette, col2rgb, contourLines,
+           dev.flush, dev.hold, dev.interactive, heat.colors, rainbow,
+           rgb, topo.colors)
 importFrom(gtools, invalid, odd)
+importFrom(igraph, add_edges, delete.vertices, graph.empty, plot.igraph,
+           set_vertex_attr, V)
 importFrom(KernSmooth, bkde2D, dpik)
 importFrom(stats, as.dendrogram, cooks.distance, density, deviance,
            df.residual, dist, dnorm, effects, expand.model.frame,
            fitted, hclust, is.leaf, lm.influence, median, model.frame,
            na.omit, order.dendrogram, ppoints, predict, qnorm, qqline,
            qqnorm, qt, reorder, residuals, sd, var, weights)
-importFrom(utils, str, type.convert)
+importFrom(utils, head, str, type.convert)
 
 S3method(balloonplot, default)
 S3method(balloonplot, table)

@@ -1,11 +1,12 @@
 Package: gplots
 Version: 3.1.0
-Date: 2020-02-24
+Date: 2020-03-29
 Title: Various R Programming Tools for Plotting Data
 Authors@R: c(person("Gregory", "Warnes", role=c("aut","cre"),
                email="greg@warnes.net"),
              person("Ben", "Bolker", role="aut"),
              person("Lodewijk", "Bonebakker", role="aut"),
+             person("Sarah", "Fischer", role="ctb"),
              person("Robert", "Gentleman", role="aut"),
              person("Wolfgang", "Huber", role="aut"),
              person("Andy", "Liaw", role="aut"),
@@ -17,16 +18,16 @@ Authors@R: c(person("Gregory", "Warnes", role=c("aut","cre"),
              person("Bill", "Venables", role="aut"))
 Depends: R (>= 3.0)
 Imports: graphics, grDevices, KernSmooth, stats, utils,
-  caTools, gtools
-Suggests: MASS, nlme
+  caTools, gtools, igraph
+Suggests: MASS, nlme, RColorBrewer
 LazyData: yes
 Description: Various R programming tools for plotting data, including: local
   smoothing, enhanced versions of standard plots, manipulating colors,
   two-dimensional data summaries, diagnostic plots for linear regression and
   analysis of variance, formula interface to lowess, text plots, balloon plot
-  and bubble plot, Venn diagrams, Open-Office style plots, separate y axes,
-  means and confidence intervals, spaced scatterplot where points do not
-  overlap, and rotated axis labels.
+  and bubble plot, Venn diagrams, Polyominoes, Open-Office style plots,
+  separate y axes, means and confidence intervals,
+  spaced scatterplot where points do not overlap, and rotated axis labels.
 License: GPL-2
 Encoding: UTF-8
 URL: https://github.com/r-gregmisc/gplots
