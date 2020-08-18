@@ -1,6 +1,6 @@
 %% Revision 2.2 2020/03/26
 %% - updated function with vectorInput according to current version 
-%%   of grpahics::barplot
+%%   of graphics::barplot
 %% - Added order and decr arguments (logical; default = FALSE) to order
 %%   bars according to their values while keeping colors.
 
