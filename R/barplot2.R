@@ -1,3 +1,9 @@
+# Revision 2.2 2020/03/26
+# - updated function with vectorInput according to current version 
+#   of grpahics::barplot
+# - Added order and decr arguments (logical; default = FALSE) to order
+#   bars according to their values while keeping colors.
+
 # Revision 2.1 2005/06/06
 # - Modified default behavior with 0's and NA's in
 #   'height' so that these values are not plotted.
@@ -65,6 +71,9 @@ barplot2.default <-
         add = FALSE,
         panel.first = NULL,
         panel.last = NULL,
+        
+        order = FALSE, 
+        decr = TRUE,
         ...)
 {
     if (!missing(inside)) .NotYetUsed("inside", error = FALSE)# -> help(.)
@@ -77,9 +86,10 @@ barplot2.default <-
       names.arg <-
           if(is.matrix(height)) colnames(height) else names(height)
 
-    if (is.vector(height)
-        || (is.array(height) && (length(dim(height)) == 1))) {
+    vectorInput <- (is.vector(height)
+        || (is.array(height) && (length(dim(height)) == 1)))
         ## Treat vectors and 1-d arrays the same.
+    if(vectorInput){
 	height <- cbind(height)
 	beside <- TRUE
         ## The above may look strange, but in particular makes color
@@ -117,7 +127,7 @@ barplot2.default <-
     NC <- ncol(height)
 
     if (beside) {
-	if (length(space) == 2)
+	if (length(space) == 2 && !vectorInput)
 	    space <- rep.int(c(space[2], rep.int(space[1], NR - 1)), NC)
 	width <- rep(width, length.out = NR)
     } else
@@ -218,7 +228,14 @@ barplot2.default <-
 
       # if stacked bar, set up base/cumsum levels, adjusting for log scale
       if (!beside)
-        height <- rbind(rectbase, apply(height, 2, cumsum))
+        if(order){
+          orderHeight <- apply(height, 2L, order, decreasing = decr)
+          height <- rbind(
+            rectbase, 
+            apply(apply(height, 2L, sort, decreasing = decr), 2L, cumsum))
+        }else{
+          height <- rbind(rectbase, apply(height, 2, cumsum))
+        }
 
       # if plot.ci, be sure that appropriate axis limits are set to include range(ci)
       lim <-
@@ -237,7 +254,14 @@ barplot2.default <-
 
       # if stacked bar, set up base/cumsum levels
       if (!beside)
-        height <- rbind(rectbase, apply(height, 2, cumsum))
+        if(order){
+          orderHeight <- apply(height, 2L, order, decreasing = decr)
+          height <- rbind(
+            rectbase, 
+            apply(apply(height, 2L, sort, decreasing = decr), 2L, cumsum))
+        }else{
+          height <- rbind(rectbase, apply(height, 2, cumsum))
+        }
 
       # if plot.ci, be sure that appropriate axis limits are set to include range(ci)
       lim <-
@@ -357,10 +381,20 @@ barplot2.default <-
                angle = angle, density = density, col = col, border = border)
       else
       {
-        for (i in 1:NC)
-          xyrect(height[1:NR, i] + offset[i], w.l[i], height[-1, i] + offset[i], w.r[i],
-                 horizontal=horiz, angle = angle, density = density,
-                 col = col, border = border)
+        if(!order)
+        {
+          for (i in 1:NC)
+            xyrect(height[1:NR, i] + offset[i], w.l[i], height[-1, i] + offset[i], w.r[i],
+                   horizontal=horiz, angle = angle, density = density,
+                   col = col, border = border)
+        }else{
+          for (i in 1L:NC) {
+            xyrect(height[1L:NR, i] + offset[i], w.l[i],
+                   height[ -1,  i] + offset[i], w.r[i],
+                   horizontal = horiz, angle = angle, density = density,
+                   col = col[orderHeight[,i]], border = border)
+          }
+        }
       }
 
       # Execute the panel.last expression here
